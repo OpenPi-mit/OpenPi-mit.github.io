@@ -30,7 +30,7 @@ const manualBlogs: BlogPost[] = [
         date: "Jan 20, 2026",
         author: "Tomaso Poggio, Gemini, ChatGPT",
         category: "Interesting Bit",
-        link: "https://poggio-lab.mit.edu/files/2026/01/FoundationsDeepLearning.pdf",
+        link: "/assets/FoundationsDeepLearning.pdf",
         content: ""
     },
     {
