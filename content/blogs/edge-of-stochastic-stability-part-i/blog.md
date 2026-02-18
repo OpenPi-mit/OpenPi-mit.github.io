@@ -1,10 +1,10 @@
 # Edge of (Stochastic) Stability made simple
 Date: Feb 18, 2026
-By [Pierfrancesco Beneventano](https://pierbeneventano.github.io//), [pierb@mit.edu](mailto:pierb@mit.edu).
+By Pierfrancesco Beneventano
 
-Based on **[Edge of Stochastic Stability (Andreyev and Beneventano, arXiv:2412.20553)](https://arxiv.org/abs/2412.20553). 
+Based on **[Edge of Stochastic Stability (Andreyev and Beneventano, arXiv:2412.20553)](https://arxiv.org/abs/2412.20553)**.
 
-I remember in high school manually checking the stationary points to locate minima and maxima. Later in undergrad I was told a comforting mantra: go down (follow $- \nabla L$) and you end up at a stationary point. 
+I remember in high school manually checking the stationary points to locate minima and maxima. Later in undergrad I was told a comforting mantra: go down (follow $-\nabla L$) and you end up at a stationary point.
 
 This post is about these intuitions breaking for neural networks: how and why.
 
@@ -12,7 +12,7 @@ This post is about these intuitions breaking for neural networks: how and why.
 
 ***Acknowledgements / lineage.*** I’m very grateful to [Jeremy Cohen](https://jmcohen.github.io/), [Alex Damian](https://alex-damian.github.io/), and [Arseniy Andreyev](https://scholar.google.com/citations?user=CI36v0sAAAAJ&hl=en) for many discussions over the years that shaped how I think about stability-limited training and curvature. For an intuitive introduction to Edge of Stability, I especially recommend their writing at [https://centralflows.github.io/](https://centralflows.github.io/).
 
-***Conceptual Map* (where this is going):** Inspired by the structure of those posts, I’ll split this into three parts:
+***Conceptual Map*** **(where this is going):** Inspired by the structure of those posts, I'll split this into three parts:
 
 **Part I:** a quick refresher on (full-batch) Edge of Stability (EOS) to set the scene for what comes next.
 
@@ -22,15 +22,14 @@ This post is about these intuitions breaking for neural networks: how and why.
 
 ---
 
-# Part I: 
-A crash course on (full-batch) Edge of Stability
+# Part I: A crash course on (full-batch) Edge of Stability
 
 In this part I introduce the phenomenon and what I believe are the two key mechanisms—which we’ll use as the springboard for the mini-batch story of **Part II**.
 
-Importantly, this part is ***not*** based on my work but on the work of [*Jeremy Cohen](https://jmcohen.github.io/), [Alex Damian](https://alex-damian.github.io/)* and coauthors:
+Importantly, this part is ***not*** based on my work but on the work of [Jeremy Cohen](https://jmcohen.github.io/), [Alex Damian](https://alex-damian.github.io/) and coauthors:
 
-- https://arxiv.org/abs/2103.00065
-- https://arxiv.org/abs/2209.15594
+- [Gradient Descent on Neural Networks Typically Occurs at the Edge of Stability (Cohen et al., 2021)](https://arxiv.org/abs/2103.00065)
+- [Self-Stabilization: The Implicit Bias of Gradient Descent at the Edge of Stability (Damian et al., 2022)](https://arxiv.org/abs/2209.15594)
 
 ## Where does GD stop?
 
@@ -43,7 +42,7 @@ $$
 Thus $\theta_t \to 0$ exponentially fast… or maybe not. 
 
 The behavior is completely determined by the multiplier $|1 - \eta \lambda|$.
-When $|1- \eta \lambda| < 1$ (equivalently $0 < \eta < 2/\lambda$ ), the iterate converge to $0$  exponentially fast. 
+When $|1- \eta \lambda| < 1$ (equivalently $0 < \eta < 2/\lambda$), the iterates converge to $0$ exponentially fast.
 
 However, iterates could also diverge (for $\eta > 2/\lambda$) or oscillate in a period-2 orbit (for $\eta = 2/\lambda$), jumping between initialization $\theta_0$ and $-\theta_0$.
 
@@ -55,10 +54,8 @@ Classical optimization treats the latter two regimes as *‘wrong step sizes’*
 
 [Jeremy](https://jmcohen.github.io/) and co-authors ([Cohen et al., 2021](https://arxiv.org/abs/2103.00065)) made (at least) 2 sharp observations:
 
-1.     *As the loss goes down, sharpness (top-eigenvalue of the Hessian, our $\lambda$ above) increases.*
-
-  2.     *When it reaches $2/\eta$ it stabilizes there; the loss keeps decreasing on average, but
-           becomes non-monotone (oscillatory).*
+1. *As the loss goes down, sharpness (top-eigenvalue of the Hessian, our $\lambda$ above) increases.*
+2. *When it reaches $2/\eta$ it stabilizes there; the loss keeps decreasing on average, but becomes non-monotone (oscillatory).*
 
 *Gifs inspired by those on* [Jeremy Cohen's website](https://jmcohen.github.io/).
 
@@ -66,13 +63,10 @@ Classical optimization treats the latter two regimes as *‘wrong step sizes’*
 
 ## Mechanism 1: the instability threshold is when a power iteration happens
 
-A major insight is that for self-stabilization to happen in full-batch algorithms, the algorithm needs to locally diverge, thus to becomes unstable. Precisely, a EoS and AEoS is present when: 
+A major insight is that for self-stabilization to happen in full-batch algorithms, the algorithm needs to locally diverge, thus becomes unstable. Precisely, an EoS and AEoS is present when:
 
 <aside>
-💡
-
-Locally, one direction expands while the others contract—so the update aligns with the sharpest direction like a power iteration.
-
+💡 Locally, one direction expands while the others contract—so the update aligns with the sharpest direction like a power iteration.
 </aside>
 
 This is the mechanism of the oscillations we see in the train loss, and the main submechanism in the self-stabilization phenomenon above, the fact that as we enter the red—unstable—area, GD works as a power iteration along the direction of “high curvature”, precisely
@@ -91,17 +85,14 @@ $$
 \lambda \text{ increases!}
 $$
 
-What is called ***progressive sharpening***, indeed, in 1. we saw that as the loss goes down the Hessian goes up! 
+What is called ***progressive sharpening***: indeed, in observation 1 we saw that as the loss goes down the Hessian goes up!
 
-And what about observation 2.? 
+And what about observation 2?
 
 [Alex](https://alex-damian.github.io/), [Eshaan](https://eshaannichani.com/), and [Jason](https://jasondlee88.github.io/) ([Damian et al., 2022](https://arxiv.org/abs/2209.15594)) showed that also that is a consequence of progressive sharpening!
 
 <aside>
-💡
-
-Progressive Sharpening provides (1.) the drift toward instability **and also** (2.) the push-back when local divergence happens, which yields hovering near the edge.
-
+💡 Progressive Sharpening provides (1.) the drift toward instability <strong>and also</strong> (2.) the push-back when local divergence happens, which yields hovering near the edge.
 </aside>
 
 To build up a mental picture of this, let’s pick the smaller landscape in which progressive sharpening is present: there are 2 variables, the gradient (going down inside the screen) points in a direction in which the Hessian grows (in the perpendicular direction).
@@ -112,17 +103,12 @@ Actually this is not the case and the gif above was made-up. The fact that it lo
 
 ![image.gif](assets/gif_GD.gif)
 
-[https://www.notion.so](https://www.notion.so)
-
 *Gifs inspired by those on* [Alex Damian's website](https://alex-damian.github.io/).
 
-We thus saw that (1) progressive sharpening is not just an observation in early training, it is the observation that explains the whole phenomenon, also the stabilization is ***caused*** by progressive sharpening.
+We thus saw that (1) progressive sharpening is not just an observation in early training—it is the observation that explains the whole phenomenon. The stabilization itself is ***caused*** by progressive sharpening.
 
 <aside>
-💡
-
-*Progressive Sharpening is the main actor and cause of all these related observations*
-
+💡 <em>Progressive Sharpening is the main actor and cause of all these related observations</em>
 </aside>
 
 In particular progressive sharpening is what causes ***Mechanism 2*** (the self-stabilization phenomenon), when ***Mechanism 1*** (the local divergence) kicks in.
@@ -139,11 +125,7 @@ So:
 What we said so far implies that:
 
 <aside>
-💡
-
-1. *The loss locally increase monotonically $\implies$	Descent-type lemmas do not apply.*
-
-Thus not only the landscapes of neural networks are non-convex, there is another stronger ingredient of the convergence proofs that fails: *Descent lemma!*
+💡 <em>The loss locally increases monotonically</em> ⟹ <em>Descent-type lemmas do not apply.</em> Thus not only are the landscapes of neural networks non-convex, there is another stronger ingredient of convergence proofs that fails: <em>the Descent lemma!</em>
 </aside>
 
 And with this also most arguments about location of convergence are broken, as long as most arguments that have been proposed by the community which hold under bounds on the Hessian.
@@ -151,28 +133,19 @@ And with this also most arguments about location of convergence are broken, as l
 Importantly, this is a further argument (the first in the literature being the proofs of implicit regularization) which shows a **principle that mathematicians have to follow** when working with neural network theory:
 
 <aside>
-💡
-
-One need to expand in Taylor deeper than order 2 to understand what is going on in training.
-
+💡 One needs to expand in Taylor deeper than order 2 to understand what is going on in training.
 </aside>
 
 Cool, not only, this gives the first such argument supporting what practitioners always saw:
 
 <aside>
-💡
-
-Location of convergence (thus performance?) qualitatively depend on the hyper parameters chosen. They do not just influence speed of descent, they set where you go.
-
+💡 Location of convergence (thus performance?) qualitatively depend on the hyper parameters chosen. They do not just influence speed of descent, they set where you go.
 </aside>
 
 Moreover, Edge of Stability is a mechanism that surprisingly shows that:
 
 <aside>
-💡
-
-GD is implicitly making use of higher order derivatives (Hessian through the power iteration, which also unlocks the use of third derivative through the self-stabilization process).
-
+💡 GD is implicitly making use of higher order derivatives (Hessian through the power iteration, which also unlocks the use of third derivative through the self-stabilization process).
 </aside>
 
 ---
@@ -191,11 +164,8 @@ However, for instance, the loss of SGD always oscillates through the training, s
 
 The punchline is, see **Part II**: for SGD, **loss oscillations are not diagnostic**, and $\lambda_{\max}$ of the full-batch Hessian typically does *not* track the relevant stability threshold—so we need a different, mini-batch-native notion of “edge.”
 
-To bridge with the next parts, the questions here are: 
-*How to find out whether other algorithms are working at their own version of EoS, what is that, and what are the implications?*” —> Part II
+To bridge with the next parts, the questions here are:
 
-[Part II: The mini-batch case](https://www.notion.so/Part-II-The-mini-batch-case-3057394b8e318009b82dcdf937f7d0aa?pvs=21)
+*How to find out whether other algorithms are working at their own version of EoS, what is that, and what are the implications?* → **Part II: The mini-batch case**
 
-*Which implications carry and which new ones are there? Is this even interesting, apart the mathematical beauty of the description?* —> Part III
-
-[Part III: Getting practical](https://www.notion.so/Part-III-Getting-practical-3057394b8e318009a2e7c9d1f4021522?pvs=21)
+*Which implications carry and which new ones are there? Is this even interesting, apart the mathematical beauty of the description?* → **Part III: Getting practical**
