@@ -1,12 +1,12 @@
-# Edge of (Stochastic) Stability made simple
+# Edge of (Stochastic) Stability made simple -- Part I
 Date: Feb 18, 2026
 By Pierfrancesco Beneventano
 
 Based on **[Edge of Stochastic Stability (Andreyev and Beneventano, arXiv:2412.20553)](https://arxiv.org/abs/2412.20553)**; correspondence to [Pierfrancesco Beneventano](https://pierbeneventano.github.io/), [pierb@mit.edu](mailto:pierb@mit.edu).
 
-I remember in high school manually checking the stationary points to locate minima and maxima. Later in undergrad I was told a comforting mantra: go down (follow $-\nabla L$) and you end up at a stationary point.
+***What this post is about****I remember in high school manually checking the stationary points to locate minima and maxima. Later in undergrad I was told a comforting mantra: go down (follow $-\nabla L$) and you end up at a stationary point.*
 
-This post is about these intuitions breaking for neural networks: how and why.
+*This post is about these intuitions breaking for neural networks: how and why.*
 
 ---
 
@@ -57,7 +57,7 @@ Classical optimization treats the latter two regimes as *‘wrong step sizes’*
 1. *As the loss goes down, sharpness (top-eigenvalue of the Hessian, our $\lambda$ above) increases.*
 2. *When it reaches $2/\eta$ it stabilizes there; the loss keeps decreasing on average, but becomes non-monotone (oscillatory).*
 
-*Gifs inspired by those on* [Jeremy Cohen's website](https://jmcohen.github.io/).
+<!-- *Gifs inspired by those on* [Jeremy Cohen's website](https://jmcohen.github.io/). -->
 
 ---
 
@@ -97,9 +97,11 @@ And what about observation 2?
 
 To build up a mental picture of this, let’s pick the smaller landscape in which progressive sharpening is present: there are 2 variables, the gradient (going down inside the screen) points in a direction in which the Hessian grows (in the perpendicular direction).
 
-We would expect here that the dynamics quickly reaches the river and flows towards sharper and sharper canyons, and this is what happens in the blue area (stable, $\lambda \leq 2/\eta$). By going down the dynamics enters the red area (unstable, $\lambda > 2/\eta$) and it diverges along the perpendicular direction (see GIF).
+We would expect here that the dynamics quickly reaches the river and flows towards sharper and sharper canyons, and this is what happens in the blue area (stable, $\lambda \leq 2/\eta$). By going down the dynamics enters the red area (unstable, $\lambda > 2/\eta$) and it diverges along the perpendicular direction (see GIF below).
 
-Actually this is not the case and the gif above was made-up. The fact that it locally diverges implies that it goes in areas where the gradient points backward (because the gradient is perpendicular to the level lines and the level lines are curved, since going forward the landscape is sharpening!). Thus the trajectory jumps back in the blue area and the chaotic cycle restarts:
+![image.gif](assets/gif_GD.gif)
+
+Actually... this is not the case and the gif above was straight made-up. The fact that it locally diverges implies that it goes in areas where the gradient points backward (because the gradient is perpendicular to the level lines and the level lines are curved, since going forward the landscape is sharpening!). Thus the trajectory jumps back in the blue area and the chaotic cycle restarts:
 
 ![image.gif](assets/gif_GD.gif)
 
