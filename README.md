@@ -35,8 +35,6 @@ cd Poggio-Lab.github.io
 
 npm install
 
-uv pip install -r requirements.txt
-
 ```
 
 # Run the website locally
