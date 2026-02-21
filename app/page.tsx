@@ -220,7 +220,7 @@ export default async function Home() {
                 New Seminar Series
               </p>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-6 text-balance">
-                AI: Foundations for Academia (and Startups)
+                AI: Foundations -- for Academia (and Startups)
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                 The landscape of AI research is shifting. Many problems that once defined academia are now dominated by scale, data, and incumbent advantage. Yet the most important questions remain open. What are the fundamental principles of intelligence, and how can they guide systems that learn efficiently, generalize robustly, and create real societal and economic value?
