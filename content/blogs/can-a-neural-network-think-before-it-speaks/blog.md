@@ -139,11 +139,12 @@ What the papers reviewed here establish, at minimum, is a proof of concept: late
 
 ## References
 
-- <a name="hrm"></a>Wang et al., *Hierarchical Reasoning Model*, arXiv:2506.21734, 2025.
-- <a name="ge-thesis"></a>R. Ge, *Evaluating Layer-Sharing in Transformers for Language and Reasoning Tasks*, MIT MEng Thesis, 09/02/2025.
-- <a name="ge-liao"></a>R. Ge, Q. Liao, T. Poggio, *Hierarchical Reasoning Models: Perspectives and Misconceptions*, 2025.
-- <a name="trm"></a>A. Jolicoeur-Martineau, *Less is More: Recursive Reasoning with Tiny Networks*, arXiv:2510.04871, 2025.
-- <a name="srm"></a>Q. Liao, T. Poggio, *Simple Recursive Model: Simplified, Single-State Reasoning with Skip Connections*, 2025. Code: https://github.com/liaoq/SimpleRecursiveModel
+
+- <a name="hrm"></a>Guan Wang, Jin Li, Yuhao Sun, Xing Chen, Changling Liu, Yue Wu, Meng Lu, Sen Song, Yasin Abbasi Yadkori, *Hierarchical Reasoning Model*, arXiv:2506.21734, 2025.
+- <a name="ge-thesis"></a>Renee Ge, *Evaluating Layer-Sharing in Transformers for Language and Reasoning Tasks*, MIT MEng Thesis, 09/02/2025.
+- <a name="ge-liao"></a>Renee Ge, Qianli Liao, Tomaso Poggio, *Hierarchical Reasoning Models: Perspectives and Misconceptions*, 2025.
+- <a name="trm"></a>Alexia Jolicoeur-Martineau, *Less is More: Recursive Reasoning with Tiny Networks*, arXiv:2510.04871, 2025.
+- <a name="srm"></a>Qianli Liao, Tomaso Poggio, *Simple Recursive Model: Simplified, Single-State Reasoning with Skip Connections*, 2025. Code: https://github.com/liaoq/SimpleRecursiveModel
 - <a name="arc-blog"></a>ARC-Foundation, *The Hidden Drivers of HRM's Performance on ARC-AGI*, 2025. https://arcprize.org/blog/hrm-analysis
-- <a name="resnet-rnn"></a>Q. Liao, T. Poggio, *Bridging the Gaps Between Residual Learning, Recurrent Neural Networks and Visual Cortex*, arXiv:1604.03640, 2016.
-- <a name="resnet-iterative"></a>S. Jastrzębski et al., *Residual Connections Encourage Iterative Inference*, arXiv:1710.04773, 2017.
+- <a name="resnet-rnn"></a>Qianli Liao, Tomaso Poggio, *Bridging the Gaps Between Residual Learning, Recurrent Neural Networks and Visual Cortex*, arXiv:1604.03640, 2016.
+- <a name="resnet-iterative"></a>Stanisław Jastrzębski, Devansh Arpit, Nicolas Ballas, Vikas Verma, Tong Wang, Sanjiv Kumar, Yoshua Bengio, *Residual Connections Encourage Iterative Inference*, arXiv:1710.04773, 2017.
