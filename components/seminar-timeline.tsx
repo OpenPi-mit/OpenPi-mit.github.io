@@ -7,7 +7,7 @@ const seminars = [
         speaker: "Tomaso Poggio",
         affiliation: "MIT, McGovern Institute",
         title: "Principles of Deep Learning",
-        location: "McGovern Reading Room (46-5165)",
+        location: "McGovern Singleton Room",
     },
     {
         date: "March 9, 2025",
@@ -15,7 +15,7 @@ const seminars = [
         speaker: "Adam Marblestone",
         affiliation: "Convergent Research",
         title: "The Missing Fundamentals",
-        location: "McGovern Reading Room (46-5165)",
+        location: "McGovern Singleton Room",
     },
     {
         date: "March 16, 2025",
@@ -23,7 +23,7 @@ const seminars = [
         speaker: "Blaise Agüera y Arcas",
         affiliation: "Google",
         title: "Intelligence as Prediction: Cybernetics, LLMs, and Sociality",
-        location: "McGovern Reading Room (46-5165)",
+        location: "McGovern Singleton Room",
     },
     {
         date: "March 30, 2025",
@@ -31,7 +31,7 @@ const seminars = [
         speaker: "Joe Bates",
         affiliation: "Singular Computing",
         title: "Billion Core Science",
-        location: "McGovern Reading Room (46-5165)",
+        location: "McGovern Singleton Room",
     },
 ]
 
