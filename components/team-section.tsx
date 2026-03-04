@@ -55,9 +55,8 @@ export function TeamSection() {
               <h3 className="text-base font-semibold text-foreground leading-tight px-2 group-hover:text-primary transition-colors">
                 {member.name}
               </h3>
-              {/* Optional: Add role if available in data, otherwise keep minimal */}
               <p className="text-xs text-muted-foreground mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                Researcher
+                {member.role || "Researcher"}
               </p>
             </div>
           ))}

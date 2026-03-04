@@ -113,6 +113,8 @@ export default async function BlogPost(context: { params: Promise<{ slug: string
                                 ul: ({ node, ...props }) => <ul className="list-disc pl-6 my-4 space-y-2" {...props} />,
                                 ol: ({ node, ...props }) => <ol className="list-decimal pl-6 my-4 space-y-2" {...props} />,
                                 li: ({ node, ...props }) => <li className="text-foreground" {...props} />,
+                                pre: ({ node, ...props }) => <pre className="bg-muted rounded-lg p-4 my-6 overflow-x-auto text-sm font-mono whitespace-pre" {...props} />,
+                                code: ({ node, ...props }) => <code className="font-mono text-sm" {...props} />,
                             }}
                         >
                             {post.content

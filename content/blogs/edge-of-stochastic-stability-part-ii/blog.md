@@ -85,7 +85,7 @@ That captures *one* randomness source (the gradient estimator), but misses anoth
 So the geometry is genuinely stochastic: both **directions** and **curvatures** fluctuate.
 
 <aside>
-💡 <strong>Key shift:</strong> in SGD, stability is controlled by the <em>mini-batch geometry along the direction you actually step</em>, not by the full-batch \(\lambda_{\max}\) alone.
+💡 <strong>Key shift:</strong> in SGD, stability is controlled by the <em>mini-batch geometry along the direction you actually step</em>, not by the full-batch λ<sub>max</sub> alone.
 </aside>
 
 ---
@@ -94,14 +94,14 @@ So the geometry is genuinely stochastic: both **directions** and **curvatures** 
 
 Here is the clean conceptual separation that makes the rest of the story click:
 
-### Type-1 oscillations (stable wobbling)
+## Type-1 oscillations (stable wobbling)
 These are oscillations that exist **even when the dynamics is stable**.
 They are driven by gradient noise with a non-vanishing step size.
 They can look dramatic in the loss, but they do *not* imply edge-like instability.
 
-### Type-2 oscillations (edge-like, curvature-driven)
+## Type-2 oscillations (edge-like, curvature-driven)
 These are oscillations associated with **saturating a genuine instability boundary** on a local quadratic model.
-They are the stochastic analogue of EOS behavior: if you push \(\eta\) up (or \(b\) down) a little, you can trigger a runaway “catapult”.
+They are the stochastic analogue of EOS behavior: if you push \(\eta\) up (or \(b\) down) a little, you can trigger a runaway "catapult".
 
 <aside>
 💡 <strong>Practical warning:</strong> Type-1 and Type-2 oscillations can look similar in the loss.  
@@ -133,8 +133,7 @@ And the key operational tool is:
 
 If you truly were saturating a tight instability boundary, the perturbed run should exhibit a **catapult**: a sudden excursion + loss spike that the baseline does not.
 
-```pseudo
-# Edge test (checkpoint-level)
+<pre><code># Edge test (checkpoint-level)
 
 train with (η, b) → checkpoint θ_t
 
@@ -145,7 +144,7 @@ if baseline is stable but perturb catapults:
     evidence: θ_t was near a tight instability boundary for SGD
 else:
     whatever you measured is probably not a valid instability criterion
-```
+</code></pre>
 
 <aside>
 💡 <strong>Why this matters:</strong> it turns “training at the edge” into something falsifiable:
@@ -164,7 +163,7 @@ That scalar is sometimes called **Gradient–Noise Interaction (GNI)**, and it i
 - It is **not** a certificate that you are near a curvature instability boundary.
 
 <aside>
-💡 <strong>Main point:</strong> A “\(2/\eta\) saturation” is not automatically an “edge” signal.  
+💡 <strong>Main point:</strong> A "2/η saturation" is not automatically an "edge" signal.
 You must ask: does it pass the edge test?
 </aside>
 
@@ -208,7 +207,7 @@ Here is the empirical headline:
 
 <aside>
 <strong>Edge of Stochastic Stability (EoSS):</strong><br/>
-<strong>Batch Sharpness progressively increases (progressive sharpening) and then hovers near</strong> \(2/\eta\).
+<strong>Batch Sharpness progressively increases (progressive sharpening) and then hovers near 2/η.</strong>
 </aside>
 
 And this resolves the earlier puzzle:
@@ -223,8 +222,8 @@ Empirically, a phase transition occurs:
 - If you change hyperparameters mid-training, the “location” (hence \(\lambda_{\max}\)) can be path-dependent — Batch Sharpness reacts immediately and then re-saturates.
 
 <aside>
-💡 <strong>Takeaway:</strong> in mini-batch training, the stable region is governed by the mini-batch geometry.  
-The full-batch \(\lambda_{\max}\) is a downstream consequence, not the control knob.
+💡 <strong>Takeaway:</strong> in mini-batch training, the stable region is governed by the mini-batch geometry.
+The full-batch λ<sub>max</sub> is a downstream consequence, not the control knob.
 </aside>
 
 ---
@@ -274,7 +273,7 @@ One blog-friendly way to remember it:
 
 <aside>
 💡 <strong>One-line theorem statement (informal):</strong><br/>
-On the local quadratic model, if Batch Sharpness crosses \((2+\varepsilon)/\eta\), then the SGD dynamics admits a one-sided instability certificate: mini-batch gradient norms begin to grow (in a multiplicative drift sense), leading to a catapult / loss spike.
+On the local quadratic model, if Batch Sharpness crosses (2+ε)/η, then the SGD dynamics admits a one-sided instability certificate: mini-batch gradient norms begin to grow (in a multiplicative drift sense), leading to a catapult / loss spike.
 </aside>
 
 (We keep the proof details in the paper; the important point here is: this is an <em>instability criterion</em>, not just an oscillation meter.)
@@ -308,7 +307,7 @@ Part III is where we make this fully practical: hyperparameter tuning, diagnosti
   <li><strong>Oscillations are not diagnostic in SGD.</strong> There are stable (Type-1) oscillations and edge-like (Type-2) oscillations.</li>
   <li><strong>“Edge” should be defined by a falsifiable instability boundary.</strong> Use the checkpoint restart + small destabilization edge test.</li>
   <li><strong>GNI certifies oscillations, not instability.</strong> It can saturate near <span style="white-space:nowrap;">2/η</span> even in stable regimes.</li>
-  <li><strong>EoSS:</strong> Batch Sharpness sharpens and then hovers near <span style="white-space:nowrap;">2/η</span>, while full-batch \(\lambda_{\max}\) is suppressed and batch-size-dependent.</li>
+  <li><strong>EoSS:</strong> Batch Sharpness sharpens and then hovers near <span style="white-space:nowrap;">2/η</span>, while full-batch λ<sub>max</sub> is suppressed and batch-size-dependent.</li>
 </ul>
 </aside>
 
@@ -327,8 +326,7 @@ g_B=\nabla L_B(\theta),\ \ H_B=\nabla^2 L_B(\theta).
 
 Practical Monte Carlo estimator (no explicit Hessian needed):
 
-```pseudo
-# Batch Sharpness estimator at θ
+<pre><code># Batch Sharpness estimator at θ
 input: θ, sampler for batches B ~ P_b, num_samples M
 
 vals = []
@@ -339,7 +337,7 @@ for m in 1..M:
     vals.append( dot(g, Hg) / dot(g, g) )
 
 return mean(vals)
-```
+</code></pre>
 
 **Tip:** if you want a quick-and-dirty “edge test” for your own run:
 - log Batch Sharpness over training,
@@ -351,5 +349,5 @@ return mean(vals)
 
 # References / further reading
 
-- **Cohen et al. (2021):** Gradient Descent on Neural Networks Typically Occurs at the Edge of Stability — https://arxiv.org/abs/2103.00065  
-- **Andreyev & Beneventano (2025):** Edge of Stochastic Stability — https://arxiv.org/abs/2412.20553
+- **Cohen et al. (2021):** Gradient Descent on Neural Networks Typically Occurs at the Edge of Stability — <a href="https://arxiv.org/abs/2103.00065">https://arxiv.org/abs/2103.00065</a>
+- **Andreyev & Beneventano (2025):** Edge of Stochastic Stability — <a href="https://arxiv.org/abs/2412.20553">https://arxiv.org/abs/2412.20553</a>
