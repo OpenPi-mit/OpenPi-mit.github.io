@@ -106,6 +106,9 @@ export default async function Home() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] text-balance mb-4">
             PoggioAI
           </h1>
+          <p className="text-base md:text-lg text-muted-foreground italic mb-2">
+            Proof-Oriented Generative General Intelligence Orchestration: Agentic Investigation
+          </p>
           <p className="text-sm text-muted-foreground mb-8">
             Made by{" "}
             <a
@@ -118,7 +121,7 @@ export default async function Home() {
             </a>
           </p>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-12 text-pretty">
-            A multi-agent AI system that turns research hypotheses into high-quality, literature-grounded, experiment-backed papers with minimal human steering.
+            Try PoggioAI/MSc, a multi-agent AI system that turns research hypotheses into high-quality, literature-grounded, experiment-backed papers with minimal human steering.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
@@ -135,6 +138,15 @@ export default async function Home() {
               className="inline-flex items-center gap-2 text-foreground px-6 py-3 text-sm font-medium hover:text-muted-foreground transition-colors"
             >
               View on GitHub
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+            <a
+              href="https://discord.gg/qSb23gTD"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-foreground px-6 py-3 text-sm font-medium hover:text-muted-foreground transition-colors"
+            >
+              Join us on Discord
               <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
@@ -188,7 +200,8 @@ export default async function Home() {
               Getting Started
             </p>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-6 text-balance">
-              5-Minute Quickstart
+              5-Minute Quickstart to{" "}
+              <span className="italic">MSc</span>
             </h2>
             <div className="flex flex-wrap gap-6 text-sm text-muted-foreground mb-8">
               <span>Cost: ~$2&ndash;10</span>

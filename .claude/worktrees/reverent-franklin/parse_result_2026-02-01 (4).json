@@ -1,0 +1,1647 @@
+{
+  "job_id": "45094982-263e-4762-a59b-f9a837bb73b9",
+  "duration": 30.641987800598145,
+  "pdf_url": "https://prod-storage20241010144745140900000001.s3.amazonaws.com/9ebd791e-b2af-414e-8162-c51a99791406.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2UOK6OVBOUYL7WYA%2F20260201%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260201T204159Z&X-Amz-Expires=43200&X-Amz-SignedHeaders=host&X-Amz-Signature=a44f30f8adbf8fb9aabeb50c00996e0419c7cd73bd6352f1fd85eddad4622514",
+  "studio_link": "https://studio.reducto.ai/job/45094982-263e-4762-a59b-f9a837bb73b9",
+  "usage": {
+    "num_pages": 5,
+    "credits": 12
+  },
+  "result": {
+    "type": "full",
+    "chunks": [
+      {
+        "content": "## Most Real Numbers Do Not Exist (And Why That Matters for Intelligence)\n\nThe most useful mathematical objects are the ones that aren’t real at all.\n\nWe think of numbers as the foundation of science. We measure positions, voltages, masses, probabilities, and temperatures using quantities that—at least in theory—take values in the contin-uum of real numbers. This continuous line underpins classical mathematics and physics.\n\nBut when we examine real numbers through the lenses of logic, computation, and physics, a striking conclusion emerges:\n\nReal numbers—uncountable, infinitely precise objects—do not exist in nature. They are mathematical idealizations.\n\nThis insight is central to understanding intelligence and computation.\n\n## 1. Logic: The Continuum Is Not a Logical Necessity\n\nThe continuum hypothesis, a fundamental question about the size of the real line, was shown by Godel and Cohen to be ¨ undecidable from the standard axioms of mathematics. This means that the existence of a continuous infinity of real numbers is not a logical consequence of our usual foundations. It is a choice.\n\n## 2. Computation: Almost All Real Numbers Are Uncomputable\n\nA real number requires infinitely many bits to store exactly. But finite machines—including brains, computers, and physical systems—cannot store or generate infinite precision.\n\nIn fact:\n\n• almost all real numbers have no finite description,\n\n• they cannot be approximated algorithmically,\n\n• and no Turing machine can compute them.\n\nThey lie beyond the reach of any physical or computational process.\n\n| Level | Title | Details |\n| :--- | :--- | :--- |\n| **1. Top (Green)** | **Finite** | **Represents:** Physical Reality (\"What actually exists\").<br>**Properties:** Finite bits & energy. |\n| **2. Middle (Blue)** | **Computable Numbers** | **Represents:** Computation.<br>**Properties:** Countable, accessible to Turing Machines. Includes π, e, √2. |\n| **3. Bottom (Gray)** | **All Real Numbers (R)** | **Represents:** The mathematical continuum.<br>**Properties:** Uncountable, mostly uncomputable noise. This region contains \"The Uncomputable Void\" (e.g., Chaitin's Ω, random reals). |\n\nFigure 1: The Hierarchy of ”Reality.” While mathematics assumes the existence of the entire gray pyramid (the continuum), computation is restricted to the blue triangle, and physical reality— limited by finite energy and entropy—is restricted to the green tip. Most real numbers are mathe-matical fictions that can never be measured or stored.\n\n## 3. Physics: We Never Measure Anything with Infinite Precision\n\nThe universe has finite energy, finite time, and finite resolution. No physical measuring device can produce infinitely many bits or distinguish infinitely close values.\n\nWhat physicists call “continuous quantities” are idealized models, not physical objects. Nature gives us finite, discrete data.\n\nWhy information is finite despite the infinity of rational numbers. A common confusion arises here: if there are infinitely many rational numbers, how can information in the physical world be finite? The resolution is simple. Although rational numbers form an infinite set, a finite physical system cannot represent arbitrarily large integers or arbitrarily fine ratios. Representing a rational p/q requires storing the integers p and q, but a system with finite energy, finite volume, and finite entropy can only store a finite number of bits. Thus only finitely many rationals are physically representable, even in principle. Moreover, every real measurement has finite resolution, so the set of distinguishable values in any experiment is always a finite discrete lattice. In this precise sense, information in physics is finite even though mathematics allows infinite numerical sets.\n\n## Maps, Not Territory\n\nReal numbers are like maps: extraordinarily useful but ultimately simplified representations of a more complex, finite world.\n\nThey let us reason elegantly, but they are not themselves part of physical reality.\n\n## Why This Matters for Intelligence\n\nIf the physical world does not contain real numbers, then:\n\n• information is finite,\n\n• computation is finite,\n\n• and learnable functions must be finite and structured.\n\nThis ties directly into the two pillars of this blog series:\n\n## Sparse Compositionality\n\nFinite computation produces hierarchical, bounded-fanin processes. There is no capacity for dense, unstructured, infinite-precision functions.\n\n## Genericity\n\nFinite physical systems are noisy and stable. Thus real-world functions have detectable low-degree components, making learning feasible.\n\nThe nonexistence of real numbers is not a limitation—it is what makes intelligence and learning possible.\n\n## A Glimpse Ahead\n\nSome physical systems, especially chaotic dynamical systems, may not be efficiently computable even in principle. We will explore this subtle topic in a future post on chaos, prediction, and simulation.\n\nFor now, the key point is this:\n\nIntelligence is possible because the universe is finite. Continuous mathematics is the useful fiction that helps us understand it.\n\n## Technical Note: Algebraic and Transcendental Real Numbers\n\nThis appendix provides a brief mathematical background on two central classes of real numbers: algebraic and transcendental numbers. Understanding their structure clarifies why almost all real numbers are mathematically legitimate but physically meaningless.\n\n## Algebraic Real Numbers\n\nA real number α is called algebraic if it is a root of a polynomial with integer coefficients:\n\n\\( a_{0}+a_{1} \\alpha+\\cdots+a_{d} \\alpha^{d}=0, \\quad a_{i} \\in Z \\).\n\nExamples include:\n\n• all rational numbers,\n\n\\( \\cdot \\sqrt{2}, \\sqrt[3]{5}, i \\) (in the complex case),\n\n• roots of any finite-degree polynomial equation.\n\nKey facts:\n\n1. The set of algebraic numbers is countable.\n\n2. Every algebraic number has a finite description: it is fully determined by a finite polynomial and its degree.\n\n3. All algebraic numbers are computable: a Turing machine can approximate them to arbitrary precision since root-finding is a constructive process.\n\nThus algebraic numbers form the “computational core” of the real line: they are the numbers that can sensibly arise in algorithms, physical models, and finite systems.\n\n## Transcendental Numbers\n\nA real number is transcendental if it is not algebraic—that is, it is not the root of any integer-coefficient polynomial. Famous examples include:\n\n\\( \\pi, \\quad e, \\quad \\) Liouville numbers.\n\nThe structure of the transcendental numbers is radically different:\n\n1. The set of transcendental numbers has the same cardinality as the continuum. In fact: (allreals) = (algebraic) ∪ (transcendental), and since algebraic numbers are countable, almost all real numbers (measure 1) are tran-scendental.\n\n2. Almost all transcendental numbers are uncomputable. They have no finite description, no generating algorithm, and no Turing machine that can list their digits.\n\n3. A typical transcendental number cannot even be approximated in principle: its first million digits might encode an incompressible random string that no physical system could store.\n\nThis is the source of a paradoxical conclusion:\n\nAlmost every real number is a perfectly valid mathematical object that cannot, even in principle, appear in physical reality.\n\n## Consequences for Physics and Intelligence\n\nBecause algebraic numbers are computable and finitely specifiable, they (and a small subset of computable transcendental numbers such as π and e) are the only real numbers that can arise in:\n\n• finite physical measurements,\n\n\t• digital computation,\n\n• neural or biological systems,\n\n• any finite-energy physical process.\n\nTranscendental numbers of measure 1 on the real line require infinite precision, infinite entropy, and infinite memory—none of which exist in physics.\n\nThus:\n\nFrom the standpoint of computation and physics, the “real line” is a useful fiction. The physically meaningful numbers form a tiny, structured, computable subset.\n\nThis supports the main thesis of the blog:\n\n• information in the universe is finite,\n\n• learnable functions must be structured and computable,\n\n• continuous mathematics is an idealization, not a physical ontology.\n\nThese facts motivate the two pillars discussed elsewhere in the series: sparse compositionality (the structure required by finite computation) and genericity (the low-degree signals imposed by finite, noisy systems).",
+        "embed": "## Most Real Numbers Do Not Exist (And Why That Matters for Intelligence)\n\nThe most useful mathematical objects are the ones that aren’t real at all.\n\nWe think of numbers as the foundation of science. We measure positions, voltages, masses, probabilities, and temperatures using quantities that—at least in theory—take values in the contin-uum of real numbers. This continuous line underpins classical mathematics and physics.\n\nBut when we examine real numbers through the lenses of logic, computation, and physics, a striking conclusion emerges:\n\nReal numbers—uncountable, infinitely precise objects—do not exist in nature. They are mathematical idealizations.\n\nThis insight is central to understanding intelligence and computation.\n\n## 1. Logic: The Continuum Is Not a Logical Necessity\n\nThe continuum hypothesis, a fundamental question about the size of the real line, was shown by Godel and Cohen to be ¨ undecidable from the standard axioms of mathematics. This means that the existence of a continuous infinity of real numbers is not a logical consequence of our usual foundations. It is a choice.\n\n## 2. Computation: Almost All Real Numbers Are Uncomputable\n\nA real number requires infinitely many bits to store exactly. But finite machines—including brains, computers, and physical systems—cannot store or generate infinite precision.\n\nIn fact:\n\n• almost all real numbers have no finite description,\n\n• they cannot be approximated algorithmically,\n\n• and no Turing machine can compute them.\n\nThey lie beyond the reach of any physical or computational process.\n\n| Level | Title | Details |\n| :--- | :--- | :--- |\n| **1. Top (Green)** | **Finite** | **Represents:** Physical Reality (\"What actually exists\").<br>**Properties:** Finite bits & energy. |\n| **2. Middle (Blue)** | **Computable Numbers** | **Represents:** Computation.<br>**Properties:** Countable, accessible to Turing Machines. Includes π, e, √2. |\n| **3. Bottom (Gray)** | **All Real Numbers (R)** | **Represents:** The mathematical continuum.<br>**Properties:** Uncountable, mostly uncomputable noise. This region contains \"The Uncomputable Void\" (e.g., Chaitin's Ω, random reals). |\n\nFigure 1: The Hierarchy of ”Reality.” While mathematics assumes the existence of the entire gray pyramid (the continuum), computation is restricted to the blue triangle, and physical reality— limited by finite energy and entropy—is restricted to the green tip. Most real numbers are mathe-matical fictions that can never be measured or stored.\n\n## 3. Physics: We Never Measure Anything with Infinite Precision\n\nThe universe has finite energy, finite time, and finite resolution. No physical measuring device can produce infinitely many bits or distinguish infinitely close values.\n\nWhat physicists call “continuous quantities” are idealized models, not physical objects. Nature gives us finite, discrete data.\n\nWhy information is finite despite the infinity of rational numbers. A common confusion arises here: if there are infinitely many rational numbers, how can information in the physical world be finite? The resolution is simple. Although rational numbers form an infinite set, a finite physical system cannot represent arbitrarily large integers or arbitrarily fine ratios. Representing a rational p/q requires storing the integers p and q, but a system with finite energy, finite volume, and finite entropy can only store a finite number of bits. Thus only finitely many rationals are physically representable, even in principle. Moreover, every real measurement has finite resolution, so the set of distinguishable values in any experiment is always a finite discrete lattice. In this precise sense, information in physics is finite even though mathematics allows infinite numerical sets.\n\n## Maps, Not Territory\n\nReal numbers are like maps: extraordinarily useful but ultimately simplified representations of a more complex, finite world.\n\nThey let us reason elegantly, but they are not themselves part of physical reality.\n\n## Why This Matters for Intelligence\n\nIf the physical world does not contain real numbers, then:\n\n• information is finite,\n\n• computation is finite,\n\n• and learnable functions must be finite and structured.\n\nThis ties directly into the two pillars of this blog series:\n\n## Sparse Compositionality\n\nFinite computation produces hierarchical, bounded-fanin processes. There is no capacity for dense, unstructured, infinite-precision functions.\n\n## Genericity\n\nFinite physical systems are noisy and stable. Thus real-world functions have detectable low-degree components, making learning feasible.\n\nThe nonexistence of real numbers is not a limitation—it is what makes intelligence and learning possible.\n\n## A Glimpse Ahead\n\nSome physical systems, especially chaotic dynamical systems, may not be efficiently computable even in principle. We will explore this subtle topic in a future post on chaos, prediction, and simulation.\n\nFor now, the key point is this:\n\nIntelligence is possible because the universe is finite. Continuous mathematics is the useful fiction that helps us understand it.\n\n## Technical Note: Algebraic and Transcendental Real Numbers\n\nThis appendix provides a brief mathematical background on two central classes of real numbers: algebraic and transcendental numbers. Understanding their structure clarifies why almost all real numbers are mathematically legitimate but physically meaningless.\n\n## Algebraic Real Numbers\n\nA real number α is called algebraic if it is a root of a polynomial with integer coefficients:\n\n\\( a_{0}+a_{1} \\alpha+\\cdots+a_{d} \\alpha^{d}=0, \\quad a_{i} \\in Z \\).\n\nExamples include:\n\n• all rational numbers,\n\n\\( \\cdot \\sqrt{2}, \\sqrt[3]{5}, i \\) (in the complex case),\n\n• roots of any finite-degree polynomial equation.\n\nKey facts:\n\n1. The set of algebraic numbers is countable.\n\n2. Every algebraic number has a finite description: it is fully determined by a finite polynomial and its degree.\n\n3. All algebraic numbers are computable: a Turing machine can approximate them to arbitrary precision since root-finding is a constructive process.\n\nThus algebraic numbers form the “computational core” of the real line: they are the numbers that can sensibly arise in algorithms, physical models, and finite systems.\n\n## Transcendental Numbers\n\nA real number is transcendental if it is not algebraic—that is, it is not the root of any integer-coefficient polynomial. Famous examples include:\n\n\\( \\pi, \\quad e, \\quad \\) Liouville numbers.\n\nThe structure of the transcendental numbers is radically different:\n\n1. The set of transcendental numbers has the same cardinality as the continuum. In fact: (allreals) = (algebraic) ∪ (transcendental), and since algebraic numbers are countable, almost all real numbers (measure 1) are tran-scendental.\n\n2. Almost all transcendental numbers are uncomputable. They have no finite description, no generating algorithm, and no Turing machine that can list their digits.\n\n3. A typical transcendental number cannot even be approximated in principle: its first million digits might encode an incompressible random string that no physical system could store.\n\nThis is the source of a paradoxical conclusion:\n\nAlmost every real number is a perfectly valid mathematical object that cannot, even in principle, appear in physical reality.\n\n## Consequences for Physics and Intelligence\n\nBecause algebraic numbers are computable and finitely specifiable, they (and a small subset of computable transcendental numbers such as π and e) are the only real numbers that can arise in:\n\n• finite physical measurements,\n\n\t• digital computation,\n\n• neural or biological systems,\n\n• any finite-energy physical process.\n\nTranscendental numbers of measure 1 on the real line require infinite precision, infinite entropy, and infinite memory—none of which exist in physics.\n\nThus:\n\nFrom the standpoint of computation and physics, the “real line” is a useful fiction. The physically meaningful numbers form a tiny, structured, computable subset.\n\nThis supports the main thesis of the blog:\n\n• information in the universe is finite,\n\n• learnable functions must be structured and computable,\n\n• continuous mathematics is an idealization, not a physical ontology.\n\nThese facts motivate the two pillars discussed elsewhere in the series: sparse compositionality (the structure required by finite computation) and genericity (the low-degree signals imposed by finite, noisy systems).",
+        "enriched": null,
+        "enrichment_success": false,
+        "blocks": [
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.15931372549019607,
+              "top": 0.14772727272727273,
+              "width": 0.6805555555555556,
+              "height": 0.05744949494949495,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Most Real Numbers Do Not Exist (And Why That Matters for Intelligence)",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.983045008778572
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.16258169934640523,
+              "top": 0.2922979797979798,
+              "width": 0.6740196078431373,
+              "height": 0.017676767676767676,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "The most useful mathematical objects are the ones that aren’t real at all.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9466304838657379
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.3440656565656566,
+              "width": 0.7671568627450981,
+              "height": 0.056818181818181816,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "We think of numbers as the foundation of science. We measure positions, voltages, masses, probabilities, and temperatures using quantities that—at least in theory—take values in the contin-uum of real numbers. This continuous line underpins classical mathematics and physics.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9682886838912964
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.398989898989899,
+              "width": 0.7647058823529411,
+              "height": 0.03282828282828283,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "But when we examine real numbers through the lenses of logic, computation, and physics, a striking conclusion emerges:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9719970881938934
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.4513888888888889,
+              "width": 0.6691176470588235,
+              "height": 0.03345959595959596,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Real numbers—uncountable, infinitely precise objects—do not exist in nature. They are mathematical idealizations.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9367542684078216
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.5044191919191919,
+              "width": 0.5408496732026143,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "This insight is central to understanding intelligence and computation.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9632158666849137
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5505050505050505,
+              "width": 0.6209150326797386,
+              "height": 0.022095959595959596,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "1. Logic: The Continuum Is Not a Logical Necessity",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9673150718212128
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.5896464646464646,
+              "width": 0.7655228758169934,
+              "height": 0.07007575757575757,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "The continuum hypothesis, a fundamental question about the size of the real line, was shown by Godel and Cohen to be ¨ undecidable from the standard axioms of mathematics. This means that the existence of a continuous infinity of real numbers is not a logical consequence of our usual foundations. It is a choice.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9895005255937577
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6906565656565656,
+              "width": 0.7508169934640523,
+              "height": 0.021464646464646464,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "2. Computation: Almost All Real Numbers Are Uncomputable",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9646438956260681
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.7297979797979798,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "A real number requires infinitely many bits to store exactly. But finite machines—including brains, computers, and physical systems—cannot store or generate infinite precision.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9427645117044449
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.7664141414141414,
+              "width": 0.05555555555555555,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "In fact:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8857399016618729
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8005050505050505,
+              "width": 0.40604575163398693,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• almost all real numbers have no finite description,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9592939883470535
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8314393939393939,
+              "width": 0.3700980392156863,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• they cannot be approximated algorithmically,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.960092869400978
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8623737373737373,
+              "width": 0.35049019607843135,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• and no Turing machine can compute them.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9612835198640823
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.8970959595959596,
+              "width": 0.5318627450980392,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "They lie beyond the reach of any physical or computational process.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9644375890493393
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4959150326797386,
+              "top": 0.9368686868686869,
+              "width": 0.007352941176470588,
+              "height": 0.010101010101010102,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "1",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8531974405050278
+            },
+            "extra": null
+          },
+          {
+            "type": "Figure",
+            "bbox": {
+              "left": 0.1491793962865094,
+              "top": 0.09023808951329704,
+              "width": 0.6968789692797692,
+              "height": 0.2744713600235756,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "| Level | Title | Details |\n| :--- | :--- | :--- |\n| **1. Top (Green)** | **Finite** | **Represents:** Physical Reality (\"What actually exists\").<br>**Properties:** Finite bits & energy. |\n| **2. Middle (Blue)** | **Computable Numbers** | **Represents:** Computation.<br>**Properties:** Countable, accessible to Turing Machines. Includes π, e, √2. |\n| **3. Bottom (Gray)** | **All Real Numbers (R)** | **Represents:** The mathematical continuum.<br>**Properties:** Uncountable, mostly uncomputable noise. This region contains \"The Uncomputable Void\" (e.g., Chaitin's Ω, random reals). |",
+            "image_url": "https://prod-storage20241010144745140900000001.s3.amazonaws.com/69f8d8bb-7211-4a9c-bc97-12d77a0435b3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2UOK6OVBOUYL7WYA%2F20260201%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260201T204158Z&X-Amz-Expires=43200&X-Amz-SignedHeaders=host&X-Amz-Signature=727346c40b8e59181b651ff1da3dcd29ee0d87f0041e61cf54bc2e5e6f3ac479",
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9909567207098007
+            },
+            "extra": {
+              "is_chart": false
+            }
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.38257575757575757,
+              "width": 0.7671568627450981,
+              "height": 0.0763888888888889,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Figure 1: The Hierarchy of ”Reality.” While mathematics assumes the existence of the entire gray pyramid (the continuum), computation is restricted to the blue triangle, and physical reality— limited by finite energy and entropy—is restricted to the green tip. Most real numbers are mathe-matical fictions that can never be measured or stored.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.987074863910675
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.47285353535353536,
+              "width": 0.7565359477124183,
+              "height": 0.022095959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "3. Physics: We Never Measure Anything with Infinite Precision",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9524251997470856
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5119949494949495,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "The universe has finite energy, finite time, and finite resolution. No physical measuring device can produce infinitely many bits or distinguish infinitely close values.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9699133336544037
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5486111111111112,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "What physicists call “continuous quantities” are idealized models, not physical objects. Nature gives us finite, discrete data.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9726435154676437
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.6066919191919192,
+              "width": 0.7655228758169934,
+              "height": 0.16161616161616163,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Why information is finite despite the infinity of rational numbers. A common confusion arises here: if there are infinitely many rational numbers, how can information in the physical world be finite? The resolution is simple. Although rational numbers form an infinite set, a finite physical system cannot represent arbitrarily large integers or arbitrarily fine ratios. Representing a rational p/q requires storing the integers p and q, but a system with finite energy, finite volume, and finite entropy can only store a finite number of bits. Thus only finitely many rationals are physically representable, even in principle. Moreover, every real measurement has finite resolution, so the set of distinguishable values in any experiment is always a finite discrete lattice. In this precise sense, information in physics is finite even though mathematics allows infinite numerical sets.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9926058173179626
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.7992424242424242,
+              "width": 0.2434640522875817,
+              "height": 0.021464646464646464,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Maps, Not Territory",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9508508384227753
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.8383838383838383,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Real numbers are like maps: extraordinarily useful but ultimately simplified representations of a more complex, finite world.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9507200419902802
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.875,
+              "width": 0.6241830065359477,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "They let us reason elegantly, but they are not themselves part of physical reality.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9343017965555191
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4934640522875817,
+              "top": 0.9368686868686869,
+              "width": 0.010620915032679739,
+              "height": 0.00946969696969697,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "2",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8586926162242889
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.08901515151515152,
+              "width": 0.4076797385620915,
+              "height": 0.022095959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Why This Matters for Intelligence",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9572098463773727
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.12815656565656566,
+              "width": 0.4493464052287582,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "If the physical world does not contain real numbers, then:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9567387700080872
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.16287878787878787,
+              "width": 0.17647058823529413,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• information is finite,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9655952692031861
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.19381313131313133,
+              "width": 0.18218954248366012,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• computation is finite,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9665060400962829
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.22411616161616163,
+              "width": 0.4305555555555556,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• and learnable functions must be finite and structured.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9667694926261902
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.2588383838383838,
+              "width": 0.43137254901960786,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "This ties directly into the two pillars of this blog series:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.958286514878273
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.30303030303030304,
+              "width": 0.24673202614379086,
+              "height": 0.015782828282828284,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Sparse Compositionality",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9520365208387375
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.3333333333333333,
+              "width": 0.7663398692810458,
+              "height": 0.03156565656565657,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Finite computation produces hierarchical, bounded-fanin processes. There is no capacity for dense, unstructured, infinite-precision functions.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9644664913415909
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.3939393939393939,
+              "width": 0.1053921568627451,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Genericity",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9390152186155319
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.4236111111111111,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Finite physical systems are noisy and stable. Thus real-world functions have detectable low-degree components, making learning feasible.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9653237193822861
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.4602272727272727,
+              "width": 0.7647058823529411,
+              "height": 0.03282828282828283,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "The nonexistence of real numbers is not a limitation—it is what makes intelligence and learning possible.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9736160039901733
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5246212121212122,
+              "width": 0.21241830065359477,
+              "height": 0.021464646464646464,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "A Glimpse Ahead",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9569407761096954
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5631313131313131,
+              "width": 0.7647058823529411,
+              "height": 0.05176767676767677,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Some physical systems, especially chaotic dynamical systems, may not be efficiently computable even in principle. We will explore this subtle topic in a future post on chaos, prediction, and simulation.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9816904366016388
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.6180555555555556,
+              "width": 0.2312091503267974,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "For now, the key point is this:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9591098040342331
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.6527777777777778,
+              "width": 0.6691176470588235,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Intelligence is possible because the universe is finite. Continuous mathematics is the useful fiction that helps us understand it.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9740368694067001
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.494281045751634,
+              "top": 0.9368686868686869,
+              "width": 0.00980392156862745,
+              "height": 0.008838383838383838,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "3",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8651005506515502
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.08901515151515152,
+              "width": 0.7377450980392157,
+              "height": 0.022095959595959596,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Technical Note: Algebraic and Transcendental Real Numbers",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9206553429365159
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.12815656565656566,
+              "width": 0.7655228758169934,
+              "height": 0.05176767676767677,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "This appendix provides a brief mathematical background on two central classes of real numbers: algebraic and transcendental numbers. Understanding their structure clarifies why almost all real numbers are mathematically legitimate but physically meaningless.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9816143453121186
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.20643939393939395,
+              "width": 0.24754901960784315,
+              "height": 0.017045454545454544,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Algebraic Real Numbers",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9508411884307861
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.23737373737373738,
+              "width": 0.7066993464052288,
+              "height": 0.015782828282828284,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "A real number α is called algebraic if it is a root of a polynomial with integer coefficients:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8867098331451416
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.33986928104575165,
+              "top": 0.26830808080808083,
+              "width": 0.3194444444444444,
+              "height": 0.019570707070707072,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "\\( a_{0}+a_{1} \\alpha+\\cdots+a_{d} \\alpha^{d}=0, \\quad a_{i} \\in Z \\).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.7755979537963866
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.3042929292929293,
+              "width": 0.14297385620915032,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Examples include:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9465295672416687
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14950980392156862,
+              "top": 0.336489898989899,
+              "width": 0.17647058823529413,
+              "height": 0.011363636363636364,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• all rational numbers,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "low",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.7452243447303772
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14705882352941177,
+              "top": 0.3648989898989899,
+              "width": 0.28104575163398693,
+              "height": 0.016414141414141416,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "\\( \\cdot \\sqrt{2}, \\sqrt[3]{5}, i \\) (in the complex case),",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8815999388694763
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.3970959595959596,
+              "width": 0.3839869281045752,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• roots of any finite-degree polynomial equation.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9433141201734543
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.42803030303030304,
+              "width": 0.0784313725490196,
+              "height": 0.01452020202020202,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Key facts:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9459780126810073
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.4577020202020202,
+              "width": 0.3562091503267974,
+              "height": 0.016414141414141416,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "1. The set of algebraic numbers is countable.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8192886501550674
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.48926767676767674,
+              "width": 0.7418300653594772,
+              "height": 0.03345959595959596,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "2. Every algebraic number has a finite description: it is fully determined by a finite polynomial and its degree.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9795274913311005
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.5378787878787878,
+              "width": 0.7418300653594772,
+              "height": 0.03409090909090909,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "3. All algebraic numbers are computable: a Turing machine can approximate them to arbitrary precision since root-finding is a constructive process.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9821175396442413
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5877525252525253,
+              "width": 0.7647058823529411,
+              "height": 0.03282828282828283,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Thus algebraic numbers form the “computational core” of the real line: they are the numbers that can sensibly arise in algorithms, physical models, and finite systems.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9653383255004883
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.1184640522875817,
+              "top": 0.6496212121212122,
+              "width": 0.25245098039215685,
+              "height": 0.013257575757575758,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Transcendental Numbers",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9468563199043274
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.672979797979798,
+              "width": 0.7671568627450981,
+              "height": 0.0422979797979798,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "A real number is transcendental if it is not algebraic—that is, it is not the root of any integer-coefficient polynomial. Famous examples include:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8973107367753983
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.38235294117647056,
+              "top": 0.7316919191919192,
+              "width": 0.23366013071895425,
+              "height": 0.013257575757575758,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "\\( \\pi, \\quad e, \\quad \\) Liouville numbers.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8435429036617279
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.7638888888888888,
+              "width": 0.511437908496732,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "The structure of the transcendental numbers is radically different:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9212176978588105
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.797979797979798,
+              "width": 0.7418300653594772,
+              "height": 0.1029040404040404,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "1. The set of transcendental numbers has the same cardinality as the continuum. In fact: (allreals) = (algebraic) ∪ (transcendental), and since algebraic numbers are countable, almost all real numbers (measure 1) are tran-scendental.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.7394440531730652
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4934640522875817,
+              "top": 0.9375,
+              "width": 0.010620915032679739,
+              "height": 0.008207070707070708,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "4",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8590004622936248
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.09406565656565656,
+              "width": 0.7418300653594772,
+              "height": 0.03345959595959596,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "2. Almost all transcendental numbers are uncomputable. They have no finite description, no generating algorithm, and no Turing machine that can list their digits.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9822983533143997
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.1433080808080808,
+              "width": 0.7418300653594772,
+              "height": 0.03345959595959596,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "3. A typical transcendental number cannot even be approximated in principle: its first million digits might encode an incompressible random string that no physical system could store.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9812735617160797
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.19633838383838384,
+              "width": 0.3627450980392157,
+              "height": 0.015151515151515152,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "This is the source of a paradoxical conclusion:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9612188190221786
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.23042929292929293,
+              "width": 0.6691176470588235,
+              "height": 0.03345959595959596,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "Almost every real number is a perfectly valid mathematical object that cannot, even in principle, appear in physical reality.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9651013344526291
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.2922979797979798,
+              "width": 0.4207516339869281,
+              "height": 0.016414141414141416,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "Consequences for Physics and Intelligence",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9470703512430192
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.32196969696969696,
+              "width": 0.7655228758169934,
+              "height": 0.03409090909090909,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "Because algebraic numbers are computable and finitely specifiable, they (and a small subset of computable transcendental numbers such as π and e) are the only real numbers that can arise in:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9824503421783447
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14950980392156862,
+              "top": 0.375,
+              "width": 0.24754901960784315,
+              "height": 0.015151515151515152,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "• finite physical measurements,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "low",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.7997725725173951
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.1503267973856209,
+              "top": 0.4065656565656566,
+              "width": 0.17238562091503268,
+              "height": 0.013888888888888888,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "\t• digital computation,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "low",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.7814090326428413
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.43686868686868685,
+              "width": 0.24101307189542484,
+              "height": 0.015151515151515152,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "• neural or biological systems,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9669033497571945
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.4671717171717172,
+              "width": 0.2867647058823529,
+              "height": 0.015151515151515152,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "• any finite-energy physical process.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9676680594682694
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5018939393939394,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "Transcendental numbers of measure 1 on the real line require infinite precision, infinite entropy, and infinite memory—none of which exist in physics.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9709715992212296
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.5410353535353535,
+              "width": 0.04411764705882353,
+              "height": 0.00946969696969697,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "Thus:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8950880825519562
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.5732323232323232,
+              "width": 0.6691176470588235,
+              "height": 0.03282828282828283,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "From the standpoint of computation and physics, the “real line” is a useful fiction. The physically meaningful numbers form a tiny, structured, computable subset.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9324152052402497
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.6256313131313131,
+              "width": 0.3227124183006536,
+              "height": 0.015151515151515152,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "This supports the main thesis of the blog:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9657780587673187
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.6603535353535354,
+              "width": 0.2957516339869281,
+              "height": 0.015151515151515152,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "• information in the universe is finite,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9617720693349838
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.6912878787878788,
+              "width": 0.4485294117647059,
+              "height": 0.015151515151515152,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "• learnable functions must be structured and computable,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9656804263591766
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7222222222222222,
+              "width": 0.5392156862745098,
+              "height": 0.015151515151515152,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "• continuous mathematics is an idealization, not a physical ontology.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9679968327283859
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.7563131313131313,
+              "width": 0.7647058823529411,
+              "height": 0.05176767676767677,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "These facts motivate the two pillars discussed elsewhere in the series: sparse compositionality (the structure required by finite computation) and genericity (the low-degree signals imposed by finite, noisy systems).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9827889174222946
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.494281045751634,
+              "top": 0.9368686868686869,
+              "width": 0.011437908496732025,
+              "height": 0.00946969696969697,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "5",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8736288845539093
+            },
+            "extra": null
+          }
+        ]
+      }
+    ],
+    "ocr": null,
+    "custom": null
+  }
+}

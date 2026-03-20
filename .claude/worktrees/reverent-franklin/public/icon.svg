@@ -1,0 +1,10 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .fill-current { fill: #000000; }
+    @media (prefers-color-scheme: dark) {
+      .fill-current { fill: #ffffff; }
+    }
+  </style>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M2 5H9C12.866 5 16 8.13401 16 12C16 15.866 12.866 19 9 19H6V26H2V5ZM6 9V15H9C10.6569 15 12 13.6569 12 12C12 10.3431 10.6569 9 9 9H6Z" class="fill-current"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M19 5H23V22H30V26H19V5Z" class="fill-current"/>
+</svg>

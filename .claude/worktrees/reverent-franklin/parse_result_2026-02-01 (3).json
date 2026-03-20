@@ -1,0 +1,1585 @@
+{
+  "job_id": "ca2bbb62-c5c8-4aa2-acad-c0bee97a525e",
+  "duration": 7.44221568107605,
+  "pdf_url": "https://prod-storage20241010144745140900000001.s3.amazonaws.com/f9f5d7c2-bcd3-4716-b9df-b546005871ad.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2UOK6OVBOUYL7WYA%2F20260201%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260201T204132Z&X-Amz-Expires=43200&X-Amz-SignedHeaders=host&X-Amz-Signature=2b048712a8c3f02361c1aac54ff9ec6b943f3aec5d40882dd7ba482943816ad4",
+  "studio_link": "https://studio.reducto.ai/job/ca2bbb62-c5c8-4aa2-acad-c0bee97a525e",
+  "usage": {
+    "num_pages": 4,
+    "credits": 8
+  },
+  "result": {
+    "type": "full",
+    "chunks": [
+      {
+        "content": "## Intelligence Begins with Memory:\nFrom Reflexes to Attention\n\nWhy associative memory is the oldest mechanism of intelligence—and still its computational core.\n\nModern AI systems—transformers, diffusion models, large language models—appear aston-ishingly sophisticated. Yet beneath their apparent complexity lies a very simple and ancient idea:\n\nStore associations between patterns, and retrieve them by similarity.\n\nThis is associative memory. It is not merely an engineering trick: it is the first form of intelli-gence invented by evolution, and it remains the conceptual core of modern learning architectures.\n\nThis post traces a precise line—from biological reflexes, through classical associative memo-ries, radial basis functions, and kernels, to attention mechanisms.\n\n## 1. Reflexes as Evolutionary Associative Memories\n\nLong before learning in the lifetime of an organism, evolution discovered a basic computational primitive:\n\nWhen a pattern appears, trigger the associated action.\n\nA reflex is not just hard-wired behavior. It is:\n\n• a memory acquired over evolutionary time,\n\n• encoded genetically,\n\n• implemented as a fixed neural microcircuit.\n\nA withdrawal reflex is essentially a one-entry associative memory:\n\nstimulus \\( \\longrightarrow \\) response.\n\nIn modern terms, it is a degenerate content-addressable lookup table with a single stored pair. As nervous systems evolved, synaptic plasticity allowed these associations to be modified dur-ing an organism’s lifetime. But the architecture remained the same:\n\n• detect an input pattern x,\n\n• retrieve an associated output y,\n\n• update the association based on outcome.\n\nIntelligence begins as associative lookup.\n\n## 2. Linear Associative Memories\n\nThe earliest mathematical models of associative memory in machine learning made this explicit.\n\nGiven stored input–output pairs {( xi , yi )} i=1 , a linear associative memory seeks a matrix A N such that\n\nAxi = yi for all i.\n\nIf the input patterns xi are approximately orthogonal (as happens for high-dimensional, noise-like representations), then a simple solution is\n\n\\( A=Y X^{\\top} \\),\n\nwhere \\( X=\\left[x_{1}, \\ldots, x_{N}\\right] \\) and \\( Y=\\left[y_{1}, \\ldots, y_{N}\\right] \\).\nThis construction appears, in various forms, in:\n\n- Willshaw and Longuet-Higgins' associative matrices,\n\n- Kohonen-style linear associative memories,\n\n- early content-addressable memory models.\n\nThese models already implement the essential idea: retrieve outputs by similarity in a high-dimensional space.\n\n## 3. Classical Radial Basis Function Networks\n\nLinear associative memories are brittle. Radial Basis Function (RBF) networks introduce smooth-ness.\n\nA classical RBF network has the form\n\n\\[\nf(x)=\\sum_{i=1}^{n} w_{i} \\exp \\left(-\\frac{\\left\\|x-\\mu_{i}\\right\\|_{2}^{2}}{2 \\sigma^{2}}\\right),\n\\]\n\nwhere:\n\n• µi are fixed centers (stored prototypes),\n\n• σ is a shared bandwidth,\n\n• distance is Euclidean and isotropic.\n\nThis is a smooth associative memory: nearby inputs retrieve similar stored values.\n\n## Kernel interpretation\n\nEquation (1) can be written equivalently as\n\n\\( f(x)=\\sum_{i=1}^{n} c_{i} K\\left(x, \\mu_{i}\\right), \\quad K(x, z)=\\exp \\left(-\\frac{\\left\\|x-z\\right\\|_{2}^{2}}{2 \\sigma^{2}}\\right) \\)\n\nThus classical RBF networks are linear models in a reproducing kernel Hilbert space. They perform content-addressable recall using a fixed similarity kernel.\n\n## 4. Learned Geometry: Metric-Based RBFs\n\nA natural generalization is to learn the geometry in which similarity is measured. Replacing the Euclidean norm with a Mahalanobis metric yields\n\n\\[\nf(x)=\\sum_{i=1}^{n} c_{i} \\exp \\left(-\\frac{\\left\\|x-t_{i}\\right\\|_{M}^{2}}{2 \\sigma^{2}}\\right), \\quad\\left\\|u\\right\\|_{M}^{2}=u^{\\top} M u, M \\succeq 0\n\\]\n\nThis is no longer a classical RBF network. It is an associative memory with learned represen-tation space.\n\nHere:\n\n- the prototypes \\( t_{i} \\) are learned,\n\n\t- the metric \\( M \\) is learned,\n\n• similarity itself becomes adaptive.\n\nThis is already representation learning.\n\n## 5. Attention as Normalized Associative Memory\n\nTransformers generalize this idea further.\n\nAn attention head computes\n\n\\( \\alpha_{i j}=\\operatorname{softmax}_{j}\\left(\\frac{q_{i}^{\\top} k_{j}}{\\sqrt{d}}\\right), \\quad \\operatorname{out}_{i}=\\sum_{j} \\alpha_{i j} v_{j} \\).\n\nThis is a normalized, temperature-controlled associative read:\n\n• queries q probe memory,\n\n• keys k define similarity,\n\n• values v are retrieved content.\n\nIn fact, softmax attention is a close relative of kernel regression with an adaptive, learned kernel. Unlike RBFs, however, the memory (keys and values) is recomputed at every layer and every time step.\n\nAttention is associative memory with dynamic, learned geometry.\n\n## 6. From Memory to Computation\n\nStacking associative reads with local nonlinear updates yields a computational system. Each trans-former layer performs:\n\n1. associative read (attention),\n\n2. local update (MLP),\n\n3. write-back to state (residual).\n\nIn separate technical work, we show that this pattern is sufficient for universal computation: associative memories combined with local updates are Turing-complete.\n\n## Takeaway\n\nAcross biology and machine learning, the same structure appears again and again:\n\n## Intelligence is built on associative memory.\n\nReflexes, linear associative memories, RBFs, kernel methods, and transformers are not separate ideas. They are successive refinements of a single computational principle: store, retrieve, and recombine memories by similarity.\n\nIn the next posts, we examine how sparse compositionality and genericity constrain and enable these memory-based computations.",
+        "embed": "## Intelligence Begins with Memory:\nFrom Reflexes to Attention\n\nWhy associative memory is the oldest mechanism of intelligence—and still its computational core.\n\nModern AI systems—transformers, diffusion models, large language models—appear aston-ishingly sophisticated. Yet beneath their apparent complexity lies a very simple and ancient idea:\n\nStore associations between patterns, and retrieve them by similarity.\n\nThis is associative memory. It is not merely an engineering trick: it is the first form of intelli-gence invented by evolution, and it remains the conceptual core of modern learning architectures.\n\nThis post traces a precise line—from biological reflexes, through classical associative memo-ries, radial basis functions, and kernels, to attention mechanisms.\n\n## 1. Reflexes as Evolutionary Associative Memories\n\nLong before learning in the lifetime of an organism, evolution discovered a basic computational primitive:\n\nWhen a pattern appears, trigger the associated action.\n\nA reflex is not just hard-wired behavior. It is:\n\n• a memory acquired over evolutionary time,\n\n• encoded genetically,\n\n• implemented as a fixed neural microcircuit.\n\nA withdrawal reflex is essentially a one-entry associative memory:\n\nstimulus \\( \\longrightarrow \\) response.\n\nIn modern terms, it is a degenerate content-addressable lookup table with a single stored pair. As nervous systems evolved, synaptic plasticity allowed these associations to be modified dur-ing an organism’s lifetime. But the architecture remained the same:\n\n• detect an input pattern x,\n\n• retrieve an associated output y,\n\n• update the association based on outcome.\n\nIntelligence begins as associative lookup.\n\n## 2. Linear Associative Memories\n\nThe earliest mathematical models of associative memory in machine learning made this explicit.\n\nGiven stored input–output pairs {( xi , yi )} i=1 , a linear associative memory seeks a matrix A N such that\n\nAxi = yi for all i.\n\nIf the input patterns xi are approximately orthogonal (as happens for high-dimensional, noise-like representations), then a simple solution is\n\n\\( A=Y X^{\\top} \\),\n\nwhere \\( X=\\left[x_{1}, \\ldots, x_{N}\\right] \\) and \\( Y=\\left[y_{1}, \\ldots, y_{N}\\right] \\).\nThis construction appears, in various forms, in:\n\n- Willshaw and Longuet-Higgins' associative matrices,\n\n- Kohonen-style linear associative memories,\n\n- early content-addressable memory models.\n\nThese models already implement the essential idea: retrieve outputs by similarity in a high-dimensional space.\n\n## 3. Classical Radial Basis Function Networks\n\nLinear associative memories are brittle. Radial Basis Function (RBF) networks introduce smooth-ness.\n\nA classical RBF network has the form\n\n\\[\nf(x)=\\sum_{i=1}^{n} w_{i} \\exp \\left(-\\frac{\\left\\|x-\\mu_{i}\\right\\|_{2}^{2}}{2 \\sigma^{2}}\\right),\n\\]\n\nwhere:\n\n• µi are fixed centers (stored prototypes),\n\n• σ is a shared bandwidth,\n\n• distance is Euclidean and isotropic.\n\nThis is a smooth associative memory: nearby inputs retrieve similar stored values.\n\n## Kernel interpretation\n\nEquation (1) can be written equivalently as\n\n\\( f(x)=\\sum_{i=1}^{n} c_{i} K\\left(x, \\mu_{i}\\right), \\quad K(x, z)=\\exp \\left(-\\frac{\\left\\|x-z\\right\\|_{2}^{2}}{2 \\sigma^{2}}\\right) \\)\n\nThus classical RBF networks are linear models in a reproducing kernel Hilbert space. They perform content-addressable recall using a fixed similarity kernel.\n\n## 4. Learned Geometry: Metric-Based RBFs\n\nA natural generalization is to learn the geometry in which similarity is measured. Replacing the Euclidean norm with a Mahalanobis metric yields\n\n\\[\nf(x)=\\sum_{i=1}^{n} c_{i} \\exp \\left(-\\frac{\\left\\|x-t_{i}\\right\\|_{M}^{2}}{2 \\sigma^{2}}\\right), \\quad\\left\\|u\\right\\|_{M}^{2}=u^{\\top} M u, M \\succeq 0\n\\]\n\nThis is no longer a classical RBF network. It is an associative memory with learned represen-tation space.\n\nHere:\n\n- the prototypes \\( t_{i} \\) are learned,\n\n\t- the metric \\( M \\) is learned,\n\n• similarity itself becomes adaptive.\n\nThis is already representation learning.\n\n## 5. Attention as Normalized Associative Memory\n\nTransformers generalize this idea further.\n\nAn attention head computes\n\n\\( \\alpha_{i j}=\\operatorname{softmax}_{j}\\left(\\frac{q_{i}^{\\top} k_{j}}{\\sqrt{d}}\\right), \\quad \\operatorname{out}_{i}=\\sum_{j} \\alpha_{i j} v_{j} \\).\n\nThis is a normalized, temperature-controlled associative read:\n\n• queries q probe memory,\n\n• keys k define similarity,\n\n• values v are retrieved content.\n\nIn fact, softmax attention is a close relative of kernel regression with an adaptive, learned kernel. Unlike RBFs, however, the memory (keys and values) is recomputed at every layer and every time step.\n\nAttention is associative memory with dynamic, learned geometry.\n\n## 6. From Memory to Computation\n\nStacking associative reads with local nonlinear updates yields a computational system. Each trans-former layer performs:\n\n1. associative read (attention),\n\n2. local update (MLP),\n\n3. write-back to state (residual).\n\nIn separate technical work, we show that this pattern is sufficient for universal computation: associative memories combined with local updates are Turing-complete.\n\n## Takeaway\n\nAcross biology and machine learning, the same structure appears again and again:\n\n## Intelligence is built on associative memory.\n\nReflexes, linear associative memories, RBFs, kernel methods, and transformers are not separate ideas. They are successive refinements of a single computational principle: store, retrieve, and recombine memories by similarity.\n\nIn the next posts, we examine how sparse compositionality and genericity constrain and enable these memory-based computations.",
+        "enriched": null,
+        "enrichment_success": false,
+        "blocks": [
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.2679738562091503,
+              "top": 0.14772727272727273,
+              "width": 0.4632352941176471,
+              "height": 0.05744949494949495,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Intelligence Begins with Memory:\nFrom Reflexes to Attention",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8649577587842942
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1323529411764706,
+              "top": 0.2904040404040404,
+              "width": 0.7344771241830066,
+              "height": 0.04040404040404041,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Why associative memory is the oldest mechanism of intelligence—and still its computational core.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9662818729877471
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.35353535353535354,
+              "width": 0.7671568627450981,
+              "height": 0.05303030303030303,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Modern AI systems—transformers, diffusion models, large language models—appear aston-ishingly sophisticated. Yet beneath their apparent complexity lies a very simple and ancient idea:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 1
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.41414141414141414,
+              "width": 0.5669934640522876,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Store associations between patterns, and retrieve them by similarity.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8728908181190491
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.44507575757575757,
+              "width": 0.7655228758169934,
+              "height": 0.037247474747474744,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "This is associative memory. It is not merely an engineering trick: it is the first form of intelli-gence invented by evolution, and it remains the conceptual core of modern learning architectures.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9423954844474792
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.47664141414141414,
+              "width": 0.7671568627450981,
+              "height": 0.04482323232323232,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "This post traces a precise line—from biological reflexes, through classical associative memo-ries, radial basis functions, and kernels, to attention mechanisms.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 1
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5473484848484849,
+              "width": 0.5906862745098039,
+              "height": 0.022095959595959596,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "1. Reflexes as Evolutionary Associative Memories",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9613558918237686
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.586489898989899,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Long before learning in the lifetime of an organism, evolution discovered a basic computational primitive:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9741645276546478
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.6376262626262627,
+              "width": 0.45098039215686275,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "When a pattern appears, trigger the associated action.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9342702597379684
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.6710858585858586,
+              "width": 0.352124183006536,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "A reflex is not just hard-wired behavior. It is:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9463738888502121
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7039141414141414,
+              "width": 0.35375816993464054,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• a memory acquired over evolutionary time,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9559520930051804
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14705882352941177,
+              "top": 0.7329545454545454,
+              "width": 0.1772875816993464,
+              "height": 0.015782828282828284,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• encoded genetically,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "low",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.7329130291938782
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.764520202020202,
+              "width": 0.3553921568627451,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• implemented as a fixed neural microcircuit.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9449316799640656
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.7973484848484849,
+              "width": 0.5187908496732027,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "A withdrawal reflex is essentially a one-entry associative memory:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8917864084243774
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.4035947712418301,
+              "top": 0.8301767676767676,
+              "width": 0.19362745098039216,
+              "height": 0.01452020202020202,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "stimulus \\( \\longrightarrow \\) response.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8507517009973526
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.8611111111111112,
+              "width": 0.7671568627450981,
+              "height": 0.05744949494949495,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "In modern terms, it is a degenerate content-addressable lookup table with a single stored pair. As nervous systems evolved, synaptic plasticity allowed these associations to be modified dur-ing an organism’s lifetime. But the architecture remained the same:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9681017488241196
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4959150326797386,
+              "top": 0.9375,
+              "width": 0.007352941176470588,
+              "height": 0.008838383838383838,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "1",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8041129738092423
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.09343434343434344,
+              "width": 0.21241830065359477,
+              "height": 0.016414141414141416,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• detect an input pattern x,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9608834207057952
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.12310606060606061,
+              "width": 0.25980392156862747,
+              "height": 0.016414141414141416,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• retrieve an associated output y,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9616598308086395
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.15404040404040403,
+              "width": 0.33986928104575165,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• update the association based on outcome.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.957418555021286
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.1856060606060606,
+              "width": 0.3366013071895425,
+              "height": 0.013888888888888888,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Intelligence begins as associative lookup.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9125020951032639
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.23042929292929293,
+              "width": 0.37745098039215685,
+              "height": 0.022095959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "2. Linear Associative Memories",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9611301749944687
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.26957070707070707,
+              "width": 0.7524509803921569,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "The earliest mathematical models of associative memory in machine learning made this explicit.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8087545394897461
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.2840909090909091,
+              "width": 0.7647058823529411,
+              "height": 0.037247474747474744,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Given stored input–output pairs {( xi , yi )} i=1 , a linear associative memory seeks a matrix A N such that",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.6315522223711014
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.4166666666666667,
+              "top": 0.3181818181818182,
+              "width": 0.16013071895424835,
+              "height": 0.027777777777777776,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Axi = yi for all i.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 1
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.3402777777777778,
+              "width": 0.7671568627450981,
+              "height": 0.045454545454545456,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "If the input patterns xi are approximately orthogonal (as happens for high-dimensional, noise-like representations), then a simple solution is",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 1
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.4542483660130719,
+              "top": 0.3970959595959596,
+              "width": 0.08986928104575163,
+              "height": 0.013888888888888888,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "\\( A=Y X^{\\top} \\),",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.795856174826622
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.4273989898989899,
+              "width": 0.39705882352941174,
+              "height": 0.03345959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "where \\( X=\\left[x_{1}, \\ldots, x_{N}\\right] \\) and \\( Y=\\left[y_{1}, \\ldots, y_{N}\\right] \\).\nThis construction appears, in various forms, in:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9418191820383072
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14787581699346405,
+              "top": 0.4753787878787879,
+              "width": 0.434640522875817,
+              "height": 0.012626262626262626,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "- Willshaw and Longuet-Higgins' associative matrices,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9595176905393601
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.5037878787878788,
+              "width": 0.3562091503267974,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "- Kohonen-style linear associative memories,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9602186292409897
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.5353535353535354,
+              "width": 0.35130718954248363,
+              "height": 0.013257575757575758,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "- early content-addressable memory models.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9567018479108811
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.5561868686868687,
+              "width": 0.7671568627450981,
+              "height": 0.041035353535353536,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "These models already implement the essential idea: retrieve outputs by similarity in a high-dimensional space.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.976853021979332
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6256313131313131,
+              "width": 0.5277777777777778,
+              "height": 0.022095959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "3. Classical Radial Basis Function Networks",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9638389706611633
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.6622474747474747,
+              "width": 0.7655228758169934,
+              "height": 0.03787878787878788,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Linear associative memories are brittle. Radial Basis Function (RBF) networks introduce smooth-ness.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8679601877927781
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.7007575757575758,
+              "width": 0.29983660130718953,
+              "height": 0.015782828282828284,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "A classical RBF network has the form",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.7771144330501556
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.3570261437908497,
+              "top": 0.7190656565656566,
+              "width": 0.5245098039215687,
+              "height": 0.04861111111111111,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "\\[\nf(x)=\\sum_{i=1}^{n} w_{i} \\exp \\left(-\\frac{\\left\\|x-\\mu_{i}\\right\\|_{2}^{2}}{2 \\sigma^{2}}\\right),\n\\]",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9226581633090973
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.7834595959595959,
+              "width": 0.05228758169934641,
+              "height": 0.00946969696969697,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "where:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9360609143972397
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8055555555555556,
+              "width": 0.3243464052287582,
+              "height": 0.02462121212121212,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• µi are fixed centers (stored prototypes),",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9601930975914001
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8390151515151515,
+              "width": 0.20751633986928106,
+              "height": 0.015782828282828284,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• σ is a shared bandwidth,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9460584819316864
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8693181818181818,
+              "width": 0.29248366013071897,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• distance is Euclidean and isotropic.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9601423054933548
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.8970959595959596,
+              "width": 0.6405228758169934,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "This is a smooth associative memory: nearby inputs retrieve similar stored values.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9579139232635498
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.494281045751634,
+              "top": 0.9368686868686869,
+              "width": 0.00980392156862745,
+              "height": 0.008838383838383838,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "2",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9079229593276977
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.09217171717171717,
+              "width": 0.21486928104575165,
+              "height": 0.017045454545454544,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Kernel interpretation",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9639977663755417
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.12247474747474747,
+              "width": 0.3349673202614379,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Equation (1) can be written equivalently as",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9581576943397522
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.2622549019607843,
+              "top": 0.14898989898989898,
+              "width": 0.4550653594771242,
+              "height": 0.041035353535353536,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "\\( f(x)=\\sum_{i=1}^{n} c_{i} K\\left(x, \\mu_{i}\\right), \\quad K(x, z)=\\exp \\left(-\\frac{\\left\\|x-z\\right\\|_{2}^{2}}{2 \\sigma^{2}}\\right) \\)",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9447209954261779
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.20012626262626262,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Thus classical RBF networks are linear models in a reproducing kernel Hilbert space. They perform content-addressable recall using a fixed similarity kernel.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9833122193813324
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.2638888888888889,
+              "width": 0.511437908496732,
+              "height": 0.021464646464646464,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "4. Learned Geometry: Metric-Based RBFs",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9698904365301132
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.3023989898989899,
+              "width": 0.6348039215686274,
+              "height": 0.03409090909090909,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "A natural generalization is to learn the geometry in which similarity is measured. Replacing the Euclidean norm with a Mahalanobis metric yields",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.7327516227960587
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.2361111111111111,
+              "top": 0.34785353535353536,
+              "width": 0.6446078431372549,
+              "height": 0.03977272727272727,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "\\[\nf(x)=\\sum_{i=1}^{n} c_{i} \\exp \\left(-\\frac{\\left\\|x-t_{i}\\right\\|_{M}^{2}}{2 \\sigma^{2}}\\right), \\quad\\left\\|u\\right\\|_{M}^{2}=u^{\\top} M u, M \\succeq 0\n\\]",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9338786453008652
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.3939393939393939,
+              "width": 0.7663398692810458,
+              "height": 0.039141414141414144,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "This is no longer a classical RBF network. It is an associative memory with learned represen-tation space.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9754810154438018
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.4375,
+              "width": 0.042483660130718956,
+              "height": 0.010101010101010102,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Here:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9297737389802934
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14787581699346405,
+              "top": 0.461489898989899,
+              "width": 0.24101307189542484,
+              "height": 0.013888888888888888,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "- the prototypes \\( t_{i} \\) are learned,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9660270601511002
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.1642156862745098,
+              "top": 0.49053030303030304,
+              "width": 0.1895424836601307,
+              "height": 0.011363636363636364,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "\t- the metric \\( M \\) is learned,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9649899870157241
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.5189393939393939,
+              "width": 0.2834967320261438,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• similarity itself becomes adaptive.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9685191661119461
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.5441919191919192,
+              "width": 0.30392156862745096,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "This is already representation learning.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9576020419597626
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5896464646464646,
+              "width": 0.5727124183006536,
+              "height": 0.021464646464646464,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "5. Attention as Normalized Associative Memory",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9740401625633239
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6294191919191919,
+              "width": 0.32189542483660133,
+              "height": 0.013257575757575758,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Transformers generalize this idea further.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9459940254688263
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.6470959595959596,
+              "width": 0.2181372549019608,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "An attention head computes",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9260171055793762
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.3088235294117647,
+              "top": 0.6685606060606061,
+              "width": 0.3815359477124183,
+              "height": 0.04482323232323232,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "\\( \\alpha_{i j}=\\operatorname{softmax}_{j}\\left(\\frac{q_{i}^{\\top} k_{j}}{\\sqrt{d}}\\right), \\quad \\operatorname{out}_{i}=\\sum_{j} \\alpha_{i j} v_{j} \\).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9382742345333099
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.7253787878787878,
+              "width": 0.4820261437908497,
+              "height": 0.013888888888888888,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "This is a normalized, temperature-controlled associative read:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9442102313041687
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7493686868686869,
+              "width": 0.2099673202614379,
+              "height": 0.015782828282828284,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• queries q probe memory,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.962952607870102
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7784090909090909,
+              "width": 0.2034313725490196,
+              "height": 0.015782828282828284,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• keys k define similarity,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9659532934427262
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8074494949494949,
+              "width": 0.25,
+              "height": 0.015782828282828284,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• values v are retrieved content.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9619763225317002
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.8333333333333334,
+              "width": 0.7647058823529411,
+              "height": 0.05176767676767677,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "In fact, softmax attention is a close relative of kernel regression with an adaptive, learned kernel. Unlike RBFs, however, the memory (keys and values) is recomputed at every layer and every time step.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9886020749807358
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.8970959595959596,
+              "width": 0.5416666666666666,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Attention is associative memory with dynamic, learned geometry.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9601257622241974
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4950980392156863,
+              "top": 0.9368686868686869,
+              "width": 0.008169934640522876,
+              "height": 0.008838383838383838,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "3",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9189341604709625
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11681113940521981,
+              "top": 0.08680463888929908,
+              "width": 0.40123310019658925,
+              "height": 0.02308617643434356,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "6. From Memory to Computation",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9600772559642792
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11496051509171061,
+              "top": 0.1158408607894704,
+              "width": 0.7673408811115445,
+              "height": 0.04734824321050968,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Stacking associative reads with local nonlinear updates yields a computational system. Each trans-former layer performs:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9716720342636108
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.1426206925769601,
+              "top": 0.17714649879043398,
+              "width": 0.2369790991741165,
+              "height": 0.01321111791421524,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "1. associative read (attention),",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9465702682733537
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.13922483611601014,
+              "top": 0.20617868676144976,
+              "width": 0.18224864701558754,
+              "height": 0.014969911015504628,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "2. local update (MLP),",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9641698747873306
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.13909693683278487,
+              "top": 0.23648156240944293,
+              "width": 0.2533293258205546,
+              "height": 0.01577669684310328,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "3. write-back to state (residual).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9627508342266082
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601764181133262,
+              "top": 0.26735927295859196,
+              "width": 0.764840319628633,
+              "height": 0.03534730403944577,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "In separate technical work, we show that this pattern is sufficient for universal computation: associative memories combined with local updates are Turing-complete.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9761239945888519
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.1182493537805258,
+              "top": 0.3374407237883095,
+              "width": 0.12016529120717785,
+              "height": 0.016710551435594214,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Takeaway",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9479388743638992
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11566526623509983,
+              "top": 0.37089409808923546,
+              "width": 0.6405822513809384,
+              "height": 0.016732738052963162,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Across biology and machine learning, the same structure appears again and again:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9549420237541199
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.16290708489216219,
+              "top": 0.4057331270480713,
+              "width": 0.35545298762445326,
+              "height": 0.0160288174153237,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Intelligence is built on associative memory.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9298702538013458
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11440976511246786,
+              "top": 0.4403361711513088,
+              "width": 0.7657330044172178,
+              "height": 0.05365730837468608,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Reflexes, linear associative memories, RBFs, kernel methods, and transformers are not separate ideas. They are successive refinements of a single computational principle: store, retrieve, and recombine memories by similarity.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9818370401859283
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11507797360804517,
+              "top": 0.4946308403185411,
+              "width": 0.764840319628633,
+              "height": 0.03534730403944577,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "In the next posts, we examine how sparse compositionality and genericity constrain and enable these memory-based computations.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9814059466123581
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.49325527047918805,
+              "top": 0.9368543554711022,
+              "width": 0.012291382068817927,
+              "height": 0.008868593199331158,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "4",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8725805968046189
+            },
+            "extra": null
+          }
+        ]
+      }
+    ],
+    "ocr": null,
+    "custom": null
+  }
+}

@@ -1,0 +1,1449 @@
+{
+  "job_id": "f542842d-7d1c-46a8-9ce7-23258a1d212f",
+  "duration": 30.057217121124268,
+  "pdf_url": "https://prod-storage20241010144745140900000001.s3.amazonaws.com/4cd97ee7-6585-4f89-9912-af9c92fc062b.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2UOK6OVBOUYL7WYA%2F20260201%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260201T204133Z&X-Amz-Expires=43200&X-Amz-SignedHeaders=host&X-Amz-Signature=82c08419990b139dfcf1b6a0c97de667998aab62223ef5a1b4e91212df568c94",
+  "studio_link": "https://studio.reducto.ai/job/f542842d-7d1c-46a8-9ce7-23258a1d212f",
+  "usage": {
+    "num_pages": 5,
+    "credits": 12
+  },
+  "result": {
+    "type": "full",
+    "chunks": [
+      {
+        "content": "## The First Principle: Solving Problems with LEGO\nBricks\n\nPoggio+Mitropolsky\n\nWhy can we understand a complex world? Because much of it is not a random mess—it is a hierarchy of reusable parts.\n\nIn our last post, we argued that modern AI resembles the period between Volta and Maxwell: we can build remarkable systems, but we do not yet have a fundamental scientific theory. We suggested that such a theory must rest on two pillars:\n\n• Sparse Compositionality — a structural principle about how the world is organized;\n\n• Genericity — a principle about why learning algorithms succeed in high-dimensional spaces.\n\nToday we turn to the first principle. Before using metaphors or examples, we begin with the central theoretical fact.\n\n## Sparse Compositionality Follows from Efficient Computability\n\nA foundational observation from the theory developed in our book is that:\n\nSparse compositionality isn’t just a lucky feature of our data. It is a mathematical necessity of efficient computation.\n\nAny function that a physical or digital machine can compute in polynomial time must be ex-pressed as a sequence of local operations. Locality forces bounded fan-in. Sequentiality forces composition along a directed acyclic graph. And computational efficiency forces this DAG to be sparse.\n\nThus:\n\nEvery function that is efficiently computable—and therefore every function that can be learned or simulated by a finite machine—must be sparse and composi-tional.\n\nThis is why deep networks can approximate the kinds of functions that arise in nature. Their architecture mirrors the hierarchical, low fan-in DAG required by efficient computation.\n\nA subtle but important caveat. The claim that the world is sparsely compositional because it is efficiently computable raises a natural question: is the physical world in fact efficiently com-putable? Surprisingly, this is not obvious. Certain physical systems—especially chaotic dynamical systems, turbulent flows, and high-energy many-body interactions—appear to require exponential resources to simulate with arbitrary precision. In such cases, efficient computability may fail, or hold only in an approximate, coarse-grained sense. This does not undermine sparse composition-ality as a principle; rather, it shows that the relationship between computation and physical law is subtle. We will return to this topic in a later post, where we examine whether nature is fundamen-tally computable, and what it means for intelligence if some physical processes are not.\n\n## The LEGO Principle\n\nWith the computational foundation established, we now turn to intuition. Imagine a giant bucket of LEGO bricks. With a few dozen types of simple pieces, you can assemble an unbounded variety of structures. The magic isn’t in the bricks themselves; it’s in the rules of combination.\n\nThree ingredients matter:\n\n1. Simplicity: Basic building blocks are simple and reusable.\n\n2. Hierarchy: Small structures combine to form larger ones.\n\n3. Sparsity: Only a tiny subset of bricks is needed for any given construction.\n\nThis captures the essence of Sparse Compositionality. The central argument of this series is that the functions governing the real world—vision, language, physics, motor control—are struc-tured exactly this way.\n\n## Seeing the Structure\n\nLet us examine domains where this structure is most evident.\n\n• Vision. A natural image is not a random array of pixels. It contains objects; objects contain parts; parts contain edges, corners, and textures. Deep networks naturally learn these layers of abstraction.\n\n• Language. A sentence is a hierarchical composition: phonemes → morphemes → words → phrases → clauses. Even a novel sentence such as “The purple giraffe played chess on the moon” is instantly interpretable because its compositional elements follow familiar rules.\n\n• Physics. Physical laws are overwhelmingly local. The behavior of a particle depends pri-marily on its immediate neighbors, not on a particle in another galaxy. Macroscopic behavior emerges from composing many local interactions.\n\nIn all these systems, complexity arises from structured reuse, not randomness.\n\n## The Technical Hook: Computational Graphs\n\nMathematically, sparse compositionality is captured by the structure of a computational graph. A general dense function has a graph where each output depends on nearly all inputs; such functions are unlearnable in practice.\n\nCompositionally sparse functions, by contrast, have:\n\n• Bounded fan-in: each node depends on only a few inputs;\n\n• Depth: a layered hierarchical structure.\n\nDeep learning works because deep networks implement exactly these kinds of graphs. Their success reflects the structure of the world.\n\n- Title: A. Dense (Intractable)\n- Diagram type: dependency graph\n- Nodes:\n  - f (top, highlighted)\n  - Inputs: x1, x2, x3, x4, x5, x6, x7, x8 (dashed circles)\n- Edges: Each xi → f (8 total; fully dense/all-to-one)\n- Key idea: f depends on all inputs without sparsity, implying an intractable dense dependency structure.\n\n- Title: B. Sparse (Compositional)\n- Structure: Hierarchical computation tree with small fan-in (2) at each node.\n- Nodes and dependencies:\n  - Leaves (inputs): x1, x2, x3, x4, x5, x6, x7, x8\n  - h1(x1, x2), h2(x3, x4), h3(x5, x6), h4(x7, x8)\n  - g1(h1, h2), g2(h3, h4)\n  - f(g1, g2)\n- Key idea: f depends on all inputs via sparse, local compositions rather than a single high–fan-in mapping, illustrating a compositional structure that mitigates the curse of dimensionality.\n\nCurse of Dimensionality: The output depends on all inputs simultaneously. Fan-in is d. Number of samples required is exponential in d.\n\nBlessing of Compositionality: The function is built from local opera-tions. Fan-in is bounded (here, 2). Learnable with polynomial samples.\n\nFigure 1: Visualizing the Difference. Left: A dense function where the output depends directly on all inputs (high fan-in). Right: A sparse, compositional function where the output is computed via a hierarchy of local operations (bounded fan-in).\n\n## A Profound Implication\n\nHere is the central takeaway:\n\nThe reason intelligence is possible is that much of the world is computable. And the reason the world is computable is that it is sparse and compositional.\n\nIf the world’s governing functions were dense and unstructured, no finite organism or machine could learn them—not even evolution. Sparse compositionality is therefore both a property of the environment and a requirement for learnability.\n\nNext time, we turn to the second pillar: Genericity. If the world is a giant LEGO set, Genericity explains how a simple algorithm, groping in the dark, can actually figure out how to put the pieces together.\n\n## Technical Note: Efficient Computability Implies Sparse Compositionality\n\nFor readers interested in the mathematical backbone behind this principle, we summarize the key structural fact:\n\nAny function computable by a deterministic Turing machine in time T (n) can be represented by a computation DAG of depth O(T(n)) and constant (or bounded) fan-in.\n\nThis provides the formal link between efficient computability and sparse compositionality.\n\n## Theorem (Informal)\n\nLet f : {0 , 1} n → {0 , 1} m be a function computable by a deterministic Turing machine in time T(n). Then f can be implemented by a directed acyclic graph (a circuit) with:\n\n• depth O(T(n)),\n\n• fan-in ≤ 2 at every node,\n\n• size polynomial in T (n).\n\nIn particular, all efficient computations admit a bounded-fan-in compositional structure.\n\n## Proof Sketch\n\nA Turing machine running for T(n) steps performs a sequence of local updates to a fixed-sized control register, a finite tape alphabet, and a head position. Each step depends on only a constant amount of information.\n\nBy unrolling the computation in time, one obtains a layered circuit:\n\n\\( \\operatorname{state}_{t+1}=F\\left(\\operatorname{state}_{t}\\right) \\),\n\nwhere F has constant fan-in and constant output dimension. Composing these layers T (n) times yields a computation DAG of depth T(n) and bounded fan-in.\n\nThis DAG is precisely a sparse compositional architecture: every node depends on only a few predecessors, and the global computation arises from composing many simple, local transfor-mations.\n\n## Interpretation\n\nThe theorem shows that:\n\n• Sparse compositionality is not an empirical coincidence.\n\n• It is a necessary structural property of any function that can be computed efficiently.\n\n• Therefore it must hold for any function that can be learned, simulated, or represented by a finite physical or biological system.\n\nThis is the theoretical core of the first pillar.",
+        "embed": "## The First Principle: Solving Problems with LEGO\nBricks\n\nPoggio+Mitropolsky\n\nWhy can we understand a complex world? Because much of it is not a random mess—it is a hierarchy of reusable parts.\n\nIn our last post, we argued that modern AI resembles the period between Volta and Maxwell: we can build remarkable systems, but we do not yet have a fundamental scientific theory. We suggested that such a theory must rest on two pillars:\n\n• Sparse Compositionality — a structural principle about how the world is organized;\n\n• Genericity — a principle about why learning algorithms succeed in high-dimensional spaces.\n\nToday we turn to the first principle. Before using metaphors or examples, we begin with the central theoretical fact.\n\n## Sparse Compositionality Follows from Efficient Computability\n\nA foundational observation from the theory developed in our book is that:\n\nSparse compositionality isn’t just a lucky feature of our data. It is a mathematical necessity of efficient computation.\n\nAny function that a physical or digital machine can compute in polynomial time must be ex-pressed as a sequence of local operations. Locality forces bounded fan-in. Sequentiality forces composition along a directed acyclic graph. And computational efficiency forces this DAG to be sparse.\n\nThus:\n\nEvery function that is efficiently computable—and therefore every function that can be learned or simulated by a finite machine—must be sparse and composi-tional.\n\nThis is why deep networks can approximate the kinds of functions that arise in nature. Their architecture mirrors the hierarchical, low fan-in DAG required by efficient computation.\n\nA subtle but important caveat. The claim that the world is sparsely compositional because it is efficiently computable raises a natural question: is the physical world in fact efficiently com-putable? Surprisingly, this is not obvious. Certain physical systems—especially chaotic dynamical systems, turbulent flows, and high-energy many-body interactions—appear to require exponential resources to simulate with arbitrary precision. In such cases, efficient computability may fail, or hold only in an approximate, coarse-grained sense. This does not undermine sparse composition-ality as a principle; rather, it shows that the relationship between computation and physical law is subtle. We will return to this topic in a later post, where we examine whether nature is fundamen-tally computable, and what it means for intelligence if some physical processes are not.\n\n## The LEGO Principle\n\nWith the computational foundation established, we now turn to intuition. Imagine a giant bucket of LEGO bricks. With a few dozen types of simple pieces, you can assemble an unbounded variety of structures. The magic isn’t in the bricks themselves; it’s in the rules of combination.\n\nThree ingredients matter:\n\n1. Simplicity: Basic building blocks are simple and reusable.\n\n2. Hierarchy: Small structures combine to form larger ones.\n\n3. Sparsity: Only a tiny subset of bricks is needed for any given construction.\n\nThis captures the essence of Sparse Compositionality. The central argument of this series is that the functions governing the real world—vision, language, physics, motor control—are struc-tured exactly this way.\n\n## Seeing the Structure\n\nLet us examine domains where this structure is most evident.\n\n• Vision. A natural image is not a random array of pixels. It contains objects; objects contain parts; parts contain edges, corners, and textures. Deep networks naturally learn these layers of abstraction.\n\n• Language. A sentence is a hierarchical composition: phonemes → morphemes → words → phrases → clauses. Even a novel sentence such as “The purple giraffe played chess on the moon” is instantly interpretable because its compositional elements follow familiar rules.\n\n• Physics. Physical laws are overwhelmingly local. The behavior of a particle depends pri-marily on its immediate neighbors, not on a particle in another galaxy. Macroscopic behavior emerges from composing many local interactions.\n\nIn all these systems, complexity arises from structured reuse, not randomness.\n\n## The Technical Hook: Computational Graphs\n\nMathematically, sparse compositionality is captured by the structure of a computational graph. A general dense function has a graph where each output depends on nearly all inputs; such functions are unlearnable in practice.\n\nCompositionally sparse functions, by contrast, have:\n\n• Bounded fan-in: each node depends on only a few inputs;\n\n• Depth: a layered hierarchical structure.\n\nDeep learning works because deep networks implement exactly these kinds of graphs. Their success reflects the structure of the world.\n\n- Title: A. Dense (Intractable)\n- Diagram type: dependency graph\n- Nodes:\n  - f (top, highlighted)\n  - Inputs: x1, x2, x3, x4, x5, x6, x7, x8 (dashed circles)\n- Edges: Each xi → f (8 total; fully dense/all-to-one)\n- Key idea: f depends on all inputs without sparsity, implying an intractable dense dependency structure.\n\n- Title: B. Sparse (Compositional)\n- Structure: Hierarchical computation tree with small fan-in (2) at each node.\n- Nodes and dependencies:\n  - Leaves (inputs): x1, x2, x3, x4, x5, x6, x7, x8\n  - h1(x1, x2), h2(x3, x4), h3(x5, x6), h4(x7, x8)\n  - g1(h1, h2), g2(h3, h4)\n  - f(g1, g2)\n- Key idea: f depends on all inputs via sparse, local compositions rather than a single high–fan-in mapping, illustrating a compositional structure that mitigates the curse of dimensionality.\n\nCurse of Dimensionality: The output depends on all inputs simultaneously. Fan-in is d. Number of samples required is exponential in d.\n\nBlessing of Compositionality: The function is built from local opera-tions. Fan-in is bounded (here, 2). Learnable with polynomial samples.\n\nFigure 1: Visualizing the Difference. Left: A dense function where the output depends directly on all inputs (high fan-in). Right: A sparse, compositional function where the output is computed via a hierarchy of local operations (bounded fan-in).\n\n## A Profound Implication\n\nHere is the central takeaway:\n\nThe reason intelligence is possible is that much of the world is computable. And the reason the world is computable is that it is sparse and compositional.\n\nIf the world’s governing functions were dense and unstructured, no finite organism or machine could learn them—not even evolution. Sparse compositionality is therefore both a property of the environment and a requirement for learnability.\n\nNext time, we turn to the second pillar: Genericity. If the world is a giant LEGO set, Genericity explains how a simple algorithm, groping in the dark, can actually figure out how to put the pieces together.\n\n## Technical Note: Efficient Computability Implies Sparse Compositionality\n\nFor readers interested in the mathematical backbone behind this principle, we summarize the key structural fact:\n\nAny function computable by a deterministic Turing machine in time T (n) can be represented by a computation DAG of depth O(T(n)) and constant (or bounded) fan-in.\n\nThis provides the formal link between efficient computability and sparse compositionality.\n\n## Theorem (Informal)\n\nLet f : {0 , 1} n → {0 , 1} m be a function computable by a deterministic Turing machine in time T(n). Then f can be implemented by a directed acyclic graph (a circuit) with:\n\n• depth O(T(n)),\n\n• fan-in ≤ 2 at every node,\n\n• size polynomial in T (n).\n\nIn particular, all efficient computations admit a bounded-fan-in compositional structure.\n\n## Proof Sketch\n\nA Turing machine running for T(n) steps performs a sequence of local updates to a fixed-sized control register, a finite tape alphabet, and a head position. Each step depends on only a constant amount of information.\n\nBy unrolling the computation in time, one obtains a layered circuit:\n\n\\( \\operatorname{state}_{t+1}=F\\left(\\operatorname{state}_{t}\\right) \\),\n\nwhere F has constant fan-in and constant output dimension. Composing these layers T (n) times yields a computation DAG of depth T(n) and bounded fan-in.\n\nThis DAG is precisely a sparse compositional architecture: every node depends on only a few predecessors, and the global computation arises from composing many simple, local transfor-mations.\n\n## Interpretation\n\nThe theorem shows that:\n\n• Sparse compositionality is not an empirical coincidence.\n\n• It is a necessary structural property of any function that can be computed efficiently.\n\n• Therefore it must hold for any function that can be learned, simulated, or represented by a finite physical or biological system.\n\nThis is the theoretical core of the first pillar.",
+        "enriched": null,
+        "enrichment_success": false,
+        "blocks": [
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.15931372549019607,
+              "top": 0.14772727272727273,
+              "width": 0.6805555555555556,
+              "height": 0.05744949494949495,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "The First Principle: Solving Problems with LEGO\nBricks",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9655390530824661
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.4019607843137255,
+              "top": 0.2316919191919192,
+              "width": 0.1977124183006536,
+              "height": 0.015782828282828284,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Poggio+Mitropolsky",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9386092215776443
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.13071895424836602,
+              "top": 0.2922979797979798,
+              "width": 0.7377450980392157,
+              "height": 0.04040404040404041,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Why can we understand a complex world? Because much of it is not a random mess—it is a hierarchy of reusable parts.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9608794689178467
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.3667929292929293,
+              "width": 0.7647058823529411,
+              "height": 0.05113636363636364,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "In our last post, we argued that modern AI resembles the period between Volta and Maxwell: we can build remarkable systems, but we do not yet have a fundamental scientific theory. We suggested that such a theory must rest on two pillars:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.985255840420723
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.4375,
+              "width": 0.6821895424836601,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• Sparse Compositionality — a structural principle about how the world is organized;",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9516696721315384
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.4684343434343434,
+              "width": 0.7369281045751634,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• Genericity — a principle about why learning algorithms succeed in high-dimensional spaces.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9653313517570495
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5031565656565656,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Today we turn to the first principle. Before using metaphors or examples, we begin with the central theoretical fact.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9816563427448273
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.5694444444444444,
+              "width": 0.7508169934640523,
+              "height": 0.019570707070707072,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Sparse Compositionality Follows from Efficient Computability",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9570919871330261
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6066919191919192,
+              "width": 0.5759803921568627,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "A foundational observation from the theory developed in our book is that:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.959133243560791
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.6414141414141414,
+              "width": 0.6691176470588235,
+              "height": 0.03282828282828283,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Sparse compositionality isn’t just a lucky feature of our data. It is a mathematical necessity of efficient computation.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8969854891300202
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.6925505050505051,
+              "width": 0.7655228758169934,
+              "height": 0.07133838383838384,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Any function that a physical or digital machine can compute in polynomial time must be ex-pressed as a sequence of local operations. Locality forces bounded fan-in. Sequentiality forces composition along a directed acyclic graph. And computational efficiency forces this DAG to be sparse.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9861306577920914
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.7695707070707071,
+              "width": 0.04411764705882353,
+              "height": 0.00946969696969697,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Thus:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9262192159891129
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1642156862745098,
+              "top": 0.8017676767676768,
+              "width": 0.670751633986928,
+              "height": 0.05366161616161616,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Every function that is efficiently computable—and therefore every function that can be learned or simulated by a finite machine—must be sparse and composi-tional.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9737225860357285
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.8724747474747475,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "This is why deep networks can approximate the kinds of functions that arise in nature. Their architecture mirrors the hierarchical, low fan-in DAG required by efficient computation.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9781360357999802
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4959150326797386,
+              "top": 0.9368686868686869,
+              "width": 0.008986928104575163,
+              "height": 0.00946969696969697,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "1",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.857728686928749
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.09406565656565656,
+              "width": 0.7671568627450981,
+              "height": 0.1672979797979798,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "A subtle but important caveat. The claim that the world is sparsely compositional because it is efficiently computable raises a natural question: is the physical world in fact efficiently com-putable? Surprisingly, this is not obvious. Certain physical systems—especially chaotic dynamical systems, turbulent flows, and high-energy many-body interactions—appear to require exponential resources to simulate with arbitrary precision. In such cases, efficient computability may fail, or hold only in an approximate, coarse-grained sense. This does not undermine sparse composition-ality as a principle; rather, it shows that the relationship between computation and physical law is subtle. We will return to this topic in a later post, where we examine whether nature is fundamen-tally computable, and what it means for intelligence if some physical processes are not.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9924113273620605
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.2866161616161616,
+              "width": 0.25163398692810457,
+              "height": 0.021464646464646464,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "The LEGO Principle",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9664900004863739
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.32575757575757575,
+              "width": 0.7655228758169934,
+              "height": 0.05176767676767677,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "With the computational foundation established, we now turn to intuition. Imagine a giant bucket of LEGO bricks. With a few dozen types of simple pieces, you can assemble an unbounded variety of structures. The magic isn’t in the bricks themselves; it’s in the rules of combination.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9479877293109894
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.3813131313131313,
+              "width": 0.1977124183006536,
+              "height": 0.012626262626262626,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Three ingredients matter:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.7822346866130829
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.4147727272727273,
+              "width": 0.48447712418300654,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "1. Simplicity: Basic building blocks are simple and reusable.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.962863227725029
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.4457070707070707,
+              "width": 0.4795751633986928,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "2. Hierarchy: Small structures combine to form larger ones.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9639729052782059
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.476010101010101,
+              "width": 0.6143790849673203,
+              "height": 0.015782828282828284,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "3. Sparsity: Only a tiny subset of bricks is needed for any given construction.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.965444365143776
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.5107323232323232,
+              "width": 0.7671568627450981,
+              "height": 0.054292929292929296,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "This captures the essence of Sparse Compositionality. The central argument of this series is that the functions governing the real world—vision, language, physics, motor control—are struc-tured exactly this way.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9842134594917298
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5940656565656566,
+              "width": 0.24428104575163398,
+              "height": 0.021464646464646464,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Seeing the Structure",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9656925916671752
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6325757575757576,
+              "width": 0.47630718954248363,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Let us examine domains where this structure is most evident.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9599296450614929
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.6672979797979798,
+              "width": 0.7336601307189542,
+              "height": 0.05176767676767677,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• Vision. A natural image is not a random array of pixels. It contains objects; objects contain parts; parts contain edges, corners, and textures. Deep networks naturally learn these layers of abstraction.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9860741704702377
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7342171717171717,
+              "width": 0.7336601307189542,
+              "height": 0.052398989898989896,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• Language. A sentence is a hierarchical composition: phonemes → morphemes → words → phrases → clauses. Even a novel sentence such as “The purple giraffe played chess on the moon” is instantly interpretable because its compositional elements follow familiar rules.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9854274332523346
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7998737373737373,
+              "width": 0.7336601307189542,
+              "height": 0.05366161616161616,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• Physics. Physical laws are overwhelmingly local. The behavior of a particle depends pri-marily on its immediate neighbors, not on a particle in another galaxy. Macroscopic behavior emerges from composing many local interactions.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9874691128730774
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.8731060606060606,
+              "width": 0.6086601307189542,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "In all these systems, complexity arises from structured reuse, not randomness.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9633924573659897
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4934640522875817,
+              "top": 0.9368686868686869,
+              "width": 0.010620915032679739,
+              "height": 0.00946969696969697,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "2",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.876500380039215
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.08901515151515152,
+              "width": 0.5383986928104575,
+              "height": 0.022095959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "The Technical Hook: Computational Graphs",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9629055351018906
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.1275252525252525,
+              "width": 0.7655228758169934,
+              "height": 0.052398989898989896,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Mathematically, sparse compositionality is captured by the structure of a computational graph. A general dense function has a graph where each output depends on nearly all inputs; such functions are unlearnable in practice.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9839354783296586
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1454248366013072,
+              "top": 0.18244949494949494,
+              "width": 0.4084967320261438,
+              "height": 0.016414141414141416,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Compositionally sparse functions, by contrast, have:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9419212281703949
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.21085858585858586,
+              "width": 0.47549019607843135,
+              "height": 0.015782828282828284,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• Bounded fan-in: each node depends on only a few inputs;",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9556089460849762
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.24053030303030304,
+              "width": 0.32598039215686275,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• Depth: a layered hierarchical structure.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9668240815401077
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.2689393939393939,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Deep learning works because deep networks implement exactly these kinds of graphs. Their success reflects the structure of the world.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9746381610631942
+            },
+            "extra": null
+          },
+          {
+            "type": "Figure",
+            "bbox": {
+              "left": 0.1568763583314185,
+              "top": 0.3185645402079881,
+              "width": 0.2923852259816687,
+              "height": 0.14531705837057093,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "- Title: A. Dense (Intractable)\n- Diagram type: dependency graph\n- Nodes:\n  - f (top, highlighted)\n  - Inputs: x1, x2, x3, x4, x5, x6, x7, x8 (dashed circles)\n- Edges: Each xi → f (8 total; fully dense/all-to-one)\n- Key idea: f depends on all inputs without sparsity, implying an intractable dense dependency structure.",
+            "image_url": "https://prod-storage20241010144745140900000001.s3.amazonaws.com/6679df2f-3df5-4b33-b539-e2a46be947af.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2UOK6OVBOUYL7WYA%2F20260201%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260201T204132Z&X-Amz-Expires=43200&X-Amz-SignedHeaders=host&X-Amz-Signature=d589cd7c4c90d3aed629f015264daedddb1a58435309bd0b73eabd904e27b28a",
+            "chart_data": null,
+            "confidence": "low",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.7662466689944267
+            },
+            "extra": {
+              "is_chart": false
+            }
+          },
+          {
+            "type": "Figure",
+            "bbox": {
+              "left": 0.5502220602596507,
+              "top": 0.31587022723573627,
+              "width": 0.2921697080524918,
+              "height": 0.14772580850003947,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "- Title: B. Sparse (Compositional)\n- Structure: Hierarchical computation tree with small fan-in (2) at each node.\n- Nodes and dependencies:\n  - Leaves (inputs): x1, x2, x3, x4, x5, x6, x7, x8\n  - h1(x1, x2), h2(x3, x4), h3(x5, x6), h4(x7, x8)\n  - g1(h1, h2), g2(h3, h4)\n  - f(g1, g2)\n- Key idea: f depends on all inputs via sparse, local compositions rather than a single high–fan-in mapping, illustrating a compositional structure that mitigates the curse of dimensionality.",
+            "image_url": "https://prod-storage20241010144745140900000001.s3.amazonaws.com/c84472b9-6d11-4cc4-b195-b57d8acc08aa.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2UOK6OVBOUYL7WYA%2F20260201%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260201T204132Z&X-Amz-Expires=43200&X-Amz-SignedHeaders=host&X-Amz-Signature=abd5ed46bc49c1d8d485a9db7cd4e3f22a69913537654ee3d02b787783c1a1a4",
+            "chart_data": null,
+            "confidence": "low",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8558074802160263
+            },
+            "extra": {
+              "is_chart": false
+            }
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.4715909090909091,
+              "width": 0.27532679738562094,
+              "height": 0.07007575757575757,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Curse of Dimensionality: The output depends on all inputs simultaneously. Fan-in is d. Number of samples required is exponential in d.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8660451203584671
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.5637254901960784,
+              "top": 0.4715909090909091,
+              "width": 0.26552287581699346,
+              "height": 0.06944444444444445,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Blessing of Compositionality: The function is built from local opera-tions. Fan-in is bounded (here, 2). Learnable with polynomial samples.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9524331420660019
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.5650252525252525,
+              "width": 0.7655228758169934,
+              "height": 0.05176767676767677,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Figure 1: Visualizing the Difference. Left: A dense function where the output depends directly on all inputs (high fan-in). Right: A sparse, compositional function where the output is computed via a hierarchy of local operations (bounded fan-in).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9853039979934692
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.663510101010101,
+              "width": 0.2883986928104575,
+              "height": 0.022095959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "A Profound Implication",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.941116064786911
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.7039141414141414,
+              "width": 0.22549019607843138,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Here is the central takeaway:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9551600694656373
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.7323232323232324,
+              "width": 0.6691176470588235,
+              "height": 0.03282828282828283,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "The reason intelligence is possible is that much of the world is computable. And the reason the world is computable is that it is sparse and compositional.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9305720061063767
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.7790404040404041,
+              "width": 0.7647058823529411,
+              "height": 0.05113636363636364,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "If the world’s governing functions were dense and unstructured, no finite organism or machine could learn them—not even evolution. Sparse compositionality is therefore both a property of the environment and a requirement for learnability.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9789574652910232
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.8333333333333334,
+              "width": 0.7647058823529411,
+              "height": 0.05176767676767677,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Next time, we turn to the second pillar: Genericity. If the world is a giant LEGO set, Genericity explains how a simple algorithm, groping in the dark, can actually figure out how to put the pieces together.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9805384516716004
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4950980392156863,
+              "top": 0.9368686868686869,
+              "width": 0.011437908496732025,
+              "height": 0.008838383838383838,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "3",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8751829862594604
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.08901515151515152,
+              "width": 0.7663398692810458,
+              "height": 0.04734848484848485,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Technical Note: Efficient Computability Implies Sparse Compositionality",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9530185490846634
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.15593434343434343,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "For readers interested in the mathematical backbone behind this principle, we summarize the key structural fact:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9786365956068039
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.20707070707070707,
+              "width": 0.6691176470588235,
+              "height": 0.05176767676767677,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Any function computable by a deterministic Turing machine in time T (n) can be represented by a computation DAG of depth O(T(n)) and constant (or bounded) fan-in.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9807542115449905
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.2765151515151515,
+              "width": 0.7050653594771242,
+              "height": 0.017045454545454544,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "This provides the formal link between efficient computability and sparse compositionality.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9648553550243377
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.1184640522875817,
+              "top": 0.32007575757575757,
+              "width": 0.20098039215686275,
+              "height": 0.015782828282828284,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Theorem (Informal)",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9421883434057237
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.34595959595959597,
+              "width": 0.7655228758169934,
+              "height": 0.03851010101010101,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Let f : {0 , 1} n → {0 , 1} m be a function computable by a deterministic Turing machine in time T(n). Then f can be implemented by a directed acyclic graph (a circuit) with:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9717274755239487
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.4015151515151515,
+              "width": 0.13970588235294118,
+              "height": 0.016414141414141416,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• depth O(T(n)),",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9548084765672684
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.432449494949495,
+              "width": 0.21241830065359477,
+              "height": 0.015782828282828284,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• fan-in ≤ 2 at every node,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.95473792552948
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.46275252525252525,
+              "width": 0.2107843137254902,
+              "height": 0.016414141414141416,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• size polynomial in T (n).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9585012286901474
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.4962121212121212,
+              "width": 0.6862745098039216,
+              "height": 0.016414141414141416,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "In particular, all efficient computations admit a bounded-fan-in compositional structure.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9613205969333649
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5410353535353535,
+              "width": 0.12908496732026145,
+              "height": 0.012626262626262626,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Proof Sketch",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.943357491493225
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.5694444444444444,
+              "width": 0.7655228758169934,
+              "height": 0.052398989898989896,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "A Turing machine running for T(n) steps performs a sequence of local updates to a fixed-sized control register, a finite tape alphabet, and a head position. Each step depends on only a constant amount of information.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9821422964334487
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.625,
+              "width": 0.5253267973856209,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "By unrolling the computation in time, one obtains a layered circuit:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9450715810060502
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.4166666666666667,
+              "top": 0.6603535353535354,
+              "width": 0.1650326797385621,
+              "height": 0.017045454545454544,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "\\( \\operatorname{state}_{t+1}=F\\left(\\operatorname{state}_{t}\\right) \\),",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8776192098855973
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6868686868686869,
+              "width": 0.7647058823529411,
+              "height": 0.03409090909090909,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "where F has constant fan-in and constant output dimension. Composing these layers T (n) times yields a computation DAG of depth T(n) and bounded fan-in.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9574024379253387
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.7234848484848485,
+              "width": 0.7655228758169934,
+              "height": 0.054292929292929296,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "This DAG is precisely a sparse compositional architecture: every node depends on only a few predecessors, and the global computation arises from composing many simple, local transfor-mations.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.980207896232605
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.8042929292929293,
+              "width": 0.14215686274509803,
+              "height": 0.01452020202020202,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Interpretation",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9480512291193008
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.8333333333333334,
+              "width": 0.1919934640522876,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "The theorem shows that:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9560702592134476
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8667929292929293,
+              "width": 0.45751633986928103,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• Sparse compositionality is not an empirical coincidence.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.953143572807312
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8970959595959596,
+              "width": 0.6740196078431373,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• It is a necessary structural property of any function that can be computed efficiently.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.964044812321663
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.494281045751634,
+              "top": 0.9375,
+              "width": 0.011437908496732025,
+              "height": 0.008838383838383838,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "4",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.892917874455452
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14757915128769244,
+              "top": 0.09095936681042174,
+              "width": 0.7338451327278989,
+              "height": 0.03597608565774171,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "• Therefore it must hold for any function that can be learned, simulated, or represented by a finite physical or biological system.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9779792040586471
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14492870916472522,
+              "top": 0.1439807391716781,
+              "width": 0.3424039364336998,
+              "height": 0.01632569472662898,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "This is the theoretical core of the first pillar.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9550473272800446
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4941677579850832,
+              "top": 0.937484477885792,
+              "width": 0.010671588594038188,
+              "height": 0.008874731765748484,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "5",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8958025425672531
+            },
+            "extra": null
+          }
+        ]
+      }
+    ],
+    "ocr": null,
+    "custom": null
+  }
+}

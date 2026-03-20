@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "openpi-dev",
+      "runtimeExecutable": "/opt/homebrew/bin/npx",
+      "runtimeArgs": ["next", "dev", "-p", "3002"],
+      "port": 3002,
+      "env": {
+        "PATH": "/opt/homebrew/bin:/opt/homebrew/Cellar/node/25.6.1/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    }
+  ]
+}

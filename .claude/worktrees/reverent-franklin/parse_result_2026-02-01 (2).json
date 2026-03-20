@@ -1,0 +1,2607 @@
+{
+  "job_id": "28123f00-a00d-4954-94d2-cb456f1ed985",
+  "duration": 30.585059642791748,
+  "pdf_url": "https://prod-storage20241010144745140900000001.s3.amazonaws.com/e781845a-be29-4cd3-98fd-5b9d0e599c45.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2UOK6OVBOUYL7WYA%2F20260201%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260201T204153Z&X-Amz-Expires=43200&X-Amz-SignedHeaders=host&X-Amz-Signature=26bb811b28fd942adb1aed3a2d9b849cf000bf8089df465904098d68dc542d9d",
+  "studio_link": "https://studio.reducto.ai/job/28123f00-a00d-4954-94d2-cb456f1ed985",
+  "usage": {
+    "num_pages": 7,
+    "credits": 14
+  },
+  "result": {
+    "type": "full",
+    "chunks": [
+      {
+        "content": "## The Second Pillar: Genericity\n\nPoggio+Beneventano\n\nWhy learning works at all—and why not all functions are learnable.\n\nIn our last post, we explored the first pillar of intelligence: Sparse Compositionality. It explains the structure of the functions we want to learn: they must be sparse, hierarchical, and built from simple reusable components. Sparse compositionality tells us what learnable functions look like.\n\nBut it does not tell us why learning succeeds.\n\nThis brings us to the second principle:\n\n## Genericity.\n\nWhere compositionality is about structure, genericity is about geometry: the shape of the opti-mization landscape, the presence of gradients, and the existence of stable signals that guide learn-ing.\n\nGenericity answers one of the deepest puzzles in modern AI:\n\nWhy does training enormous neural networks with simple gradient descent actu-ally work?\n\n## Why Optimization Should Have Been Impossible\n\nHigh-dimensional nonconvex optimization should, in principle, be hopeless. A naive theoretical picture suggests that training a neural network in a million-dimensional space should lead to:\n\n• countless poor local minima,\n\n• flat plateaus where gradients vanish,\n\n• chaotic behavior,\n\n• and no guarantee of convergence.\n\nYet in practice, none of this happens. Stochastic gradient descent:\n\n\\( \\cdot \\) converges reliably,\n\n• finds good solutions across architectures,\n\n• reaches global minima in massively overparameterized models,\n\n• is robust to noise and initialization.\n\nThe question is: Why?\n\n## The Principle of Genericity\n\nThe principle of Genericity states that:\n\nThe functions that arise in the real world, and the learning problems we care about, lie in a special “generic” subset of all possible functions—those that leave stable, low-order footprints that optimization can detect.\n\nIn other words:\n\n• They have strong low-degree components (especially linear terms).\n\n• Their gradients do not vanish everywhere.\n\n• Small perturbations do not destroy their structure.\n\n• The loss landscape contains reliable signals rather than adversarial traps.\n\nGeneric functions are well-behaved. They are stable, smooth, and cooperative enough for learning to succeed.\n\nLoss L(θ)\n\n| θ (arbitrary units) | Loss L(θ) (arbitrary units) |\n|---|---|\n| 0 | 8 |\n| 1 | 2 |\n| 2 | 9 |\n| 3 | 1 |\n| 4 | 8 |\n| 5 | 2 |\n| 6 | 7 |\n| 7 | 3 |\n| 8 | 6 |\n| 9 | 4 |\n| 10 | 5 |\n\n---\n\nLoss L(θ)\n\n**Legend**\n- **Actual Loss** — color: blue; symbol: Solid line\n- **Smoothed/Underlying Loss** — color: light blue; symbol: Dashed line\n\n| θ (arbitrary units) | Actual Loss (Solid Line) | Smoothed/Underlying Loss (Dashed Line) |\n|---|---|---|\n| 0 | 10 | 9.5 |\n| 1 | 8 | 7.5 |\n| 2 | 8.5 | 6 |\n| 3 | 5 | 4 |\n| 4 | 5.5 | 2.5 |\n| 5 | 4 | 1.5 |\n| 6 | 3 | 2.5 |\n| 7 | 5 | 4.5 |\n| 8 | 7 | 6.5 |\n| 9 | 8.5 | 8.5 |\n| 10 | 9.5 | 10 |\n\n**Notes:** The image contains two conceptual plots illustrating different types of loss landscapes as a function of a parameter θ. The axes are not labeled with numerical values, so the data is qualitative and represented with arbitrary units to capture the shape of the curves. The left chart shows a highly non-convex landscape with many local minima. The right chart shows a loss landscape with a clearer global structure (dashed line) underlying a more complex actual loss surface (solid line).\n\nFigure 1: Visualizing Genericity. (A) A pathological landscape (like a parity function) has no low-order structure; local gradients tell you nothing about the global minimum. (B) A generic landscape may be nonconvex and noisy, but it possesses a dominant low-degree “footprint” (the dashed basin) that guides gradient descent toward good solutions.\n\nWithout genericity, learning would be impossible, not just for neural networks but for biologi-cal brains and evolutionary processes.\n\n## An Analogy: Finding North in the Fog\n\nImagine walking through a mountainous landscape covered in fog. If the terrain is perfectly flat in every direction (or wildly jagged), you will never find your way.\n\nBut if there is even a faint slope—a low-order signal—you can follow it. Step by step, you make progress without ever seeing the final destination.\n\nGenericity says: real-world functions have these faint slopes. They leave low-degree traces that make optimization possible.\n\n## Where Does Genericity Come From?\n\nWhy should the world be generic? Several forces push functions toward this benign subset:\n\n1. Physics enforces smoothness and stability. Physical laws change continuously with con-tinuous inputs and suppress pathological behavior.\n\n2. Evolution filters out fragile computations. Neural systems that rely on improbable coin-cidences or vanishing signals do not survive.\n\n3. Noise destroys high-frequency irregularities. Real data is noisy; noise tends to wash away adversarial high-order components and highlight low-order structure.\n\n4. Learning architectures impose inductive biases. Deep networks naturally emphasize low-degree structure (e.g., linear terms in early training).\n\nThe convergence of physics, biology, noise, and learning theory all point to the same conclu-sion:\n\nThe functions we care to learn are far from arbitrary. They are generic.\n\n## Genericity as a Conjecture\n\nUnlike sparse compositionality—which follows from efficient computability and is well-established— genericity is closer to a working conjecture:\n\n• It is strongly supported by empirical evidence.\n\n• It is consistent with results in optimization and overparameterization.\n\n• It is motivated by physics, biology, and computational constraints.\n\nBut it is not yet a complete theorem. It is an organizing hypothesis for understanding why learning works.\n\n## Why Genericity Completes the Picture\n\nTogether, sparse compositionality and genericity form a coherent view:\n\n• Sparse compositionality makes the target function learnable in principle.\n\n• Genericity ensures it is learnable in practice.\n\nWith these two principles, we gain a unified explanation for:\n\n• why deep networks succeed,\n\n• why evolution can discover complex behaviors,\n\n• why generalization is possible,\n\n• why optimization rarely gets stuck,\n\n• and why intelligence—natural or artificial—can emerge in a complex universe.\n\n## What Comes Next\n\nIn the next posts, we will explore the consequences of genericity:\n\n• why linear terms matter so much for optimization,\n\n• how genericity emerges from noise, evolution, and data,\n\n• why model size helps optimization,\n\n• and what happens when genericity fails.\n\nWe will also address a deep open question:\n\n## Is the physical world itself generic and efficiently computable—or only approxi-mately so?\n\nThis will connect naturally to a future post on chaos, simulation, and computability. For now, we have the two pillars:\n\nSparse Compositionality and Genericity.\n\nTogether, they may form the beginnings of a theory of intelligence.\n\n## Technical Appendix: Hermite Expansion and the Crucial Role of Low-Degree Components\n\n## 1. Functions Have a Natural Spectral Expansion\n\nA central idea underlying the principle of Genericity is that the functions we want to learn can be decomposed into orthogonal degrees. When the input distribution is Gaussian (or close to Gaussian after whitening), the natural basis is the system of multivariate Hermite polynomials {H α (x)} :\n\n\\[\nH_{\\alpha}(x)=\\prod_{i=1}^{d} H_{\\alpha_{i}}\\left(x_{i}\\right), \\quad \\alpha=\\left(\\alpha_{1}, \\ldots, \\alpha_{d}\\right) \\in N^{d}\n\\]\n\nEvery square-integrable function \\( f: R^{d} \\rightarrow R \\) admits an expansion:\n\n\\( f(x)=\\sum_{\\alpha \\in N^{d}} \\hat{f}_{\\alpha} H_{\\alpha}(x), \\quad \\hat{f}_{\\alpha}=E[f(X) H_{\\alpha}(X)] \\),\n\nwhere X ∼ N (0, Id ). The Hermite degree of Hα is |α | = Pi αi . Low-degree terms (| α| = 0, 1, 2) capture smooth, slowly varying structure; high-degree terms contain oscillatory, fragile, or highly nonlinear com-ponents.\n\n## 2. Low-Degree Terms Produce Learnable Gradients\n\nGenericity asserts that real-world functions possess nontrivial low-degree components. The most important is the degree-1 (linear) part:\n\n\\( f_{\\mathrm{lin}}(x)=\\sum_{i=1}^{d} \\hat{f}_{e_{i}} x_{i}, \\quad e_{i}=(0, \\ldots, 1, \\ldots, 0) \\).\n\nThis linear component creates a reliable global trend in the loss landscape. The gradient of f is:\n\n\\( \\nabla f(x)=\\sum_{\\alpha} \\hat{f}_{\\alpha} \\nabla H_{\\alpha}(x) \\).\n\nA key identity for Hermite polynomials is:\n\n\\( E\\left[\\left\\|\\nabla f(X)\\right\\|^{2}\\right]=\\sum_{\\alpha}\\left|\\alpha\\right| \\hat{f}_{\\alpha}^{2} \\).\n\nThus:\n\n## The magnitude of the gradient is controlled by low-degree Hermite coefficients, especially the linear ones.\n\nIf all ˆ fe i = 0 (no linear term), gradients are much weaker and learning slows dramatically. If all coefficients of degrees 1 through k vanish, no gradient-based method can recover that structure without exponentially many samples.\n\n## 3. The Information Exponent\n\nThe information exponent, introduced in the book, formalizes this idea: it is the smallest Hermite degree ℓ for which the coefficient vector {\n\nˆ fα : |α | = ℓ} does not vanish.\n\n\\( \\ell(f)=\\min \\{|\\alpha|: \\hat{f}_{\\alpha} \\neq 0\\} \\).\n\nInterpretation:\n\n• ℓ = 1 (generic): strong linear signal; optimization is effective.\n\n• ℓ = 2: quadratic structure exists but linear terms vanish.\n\n• ℓ ≫ 1 (non-generic): function behaves like parity; gradients carry almost no globally useful information.\n\nGeneric functions have ℓ = 1. This ensures that the optimization landscape contains a global “tilt”—a weak but reliable slope guiding gradient descent.\n\n## 4. Why Parity-Like Functions Are Pathological\n\nConsider the parity function on {+1 , −1 } d or its Gaussian analog:\n\n\\( f(x)=\\prod_{i=1}^{d} x_{i} \\).\n\nIts Hermite expansion consists solely of the monomial of degree d. Thus:\n\n- all \\( \\hat{f}_{\\alpha}=0 \\) for \\( |\\alpha|<d \\),\n\n• the information exponent is ℓ = d,\n\n• gradients vanish in expectation,\n\n• optimization receives no informative signal.\n\nThis illustrates the essence of non-genericity: the function is structurally “orthogonal” to all low-degree components. Learning parity requires sample complexity exponential in d.\n\n## 5. Noise, Evolution, and Data Generically Reduce ℓ\n\nIn real-world systems, high-degree Hermite components are extremely fragile:\n\n• Noise attenuates high-degree terms exponentially fast.\n\n• Evolution eliminates computations that rely on vanishing signal.\n\n• Physical systems enforce smoothness, suppressing high frequencies.\n\n• Neural network training exhibits a spectral bias: low-degree coefficients are learned first.\n\nAll these mechanisms push real-world functions into the ℓ = 1 regime—precisely the generic regime where optimization works.\n\n## 6. Why Genericity Makes Learning Possible\n\nCombining these observations:\n\n• Low-degree Hermite components generate large, stable gradients.\n\n• Generic functions possess such components.\n\n• Non-generic functions do not; they provide no learnable signal.\n\nThus:\n\n## Genericity is the mathematical condition that guarantees learnability: functions possess low-degree structure strong enough to guide optimization.\n\nThis complements the first pillar, Sparse Compositionality, which constrains the structure of the function. Genericity constrains its spectrum and ensures that optimization, whether in brains or machines, can actually find that structure.",
+        "embed": "## The Second Pillar: Genericity\n\nPoggio+Beneventano\n\nWhy learning works at all—and why not all functions are learnable.\n\nIn our last post, we explored the first pillar of intelligence: Sparse Compositionality. It explains the structure of the functions we want to learn: they must be sparse, hierarchical, and built from simple reusable components. Sparse compositionality tells us what learnable functions look like.\n\nBut it does not tell us why learning succeeds.\n\nThis brings us to the second principle:\n\n## Genericity.\n\nWhere compositionality is about structure, genericity is about geometry: the shape of the opti-mization landscape, the presence of gradients, and the existence of stable signals that guide learn-ing.\n\nGenericity answers one of the deepest puzzles in modern AI:\n\nWhy does training enormous neural networks with simple gradient descent actu-ally work?\n\n## Why Optimization Should Have Been Impossible\n\nHigh-dimensional nonconvex optimization should, in principle, be hopeless. A naive theoretical picture suggests that training a neural network in a million-dimensional space should lead to:\n\n• countless poor local minima,\n\n• flat plateaus where gradients vanish,\n\n• chaotic behavior,\n\n• and no guarantee of convergence.\n\nYet in practice, none of this happens. Stochastic gradient descent:\n\n\\( \\cdot \\) converges reliably,\n\n• finds good solutions across architectures,\n\n• reaches global minima in massively overparameterized models,\n\n• is robust to noise and initialization.\n\nThe question is: Why?\n\n## The Principle of Genericity\n\nThe principle of Genericity states that:\n\nThe functions that arise in the real world, and the learning problems we care about, lie in a special “generic” subset of all possible functions—those that leave stable, low-order footprints that optimization can detect.\n\nIn other words:\n\n• They have strong low-degree components (especially linear terms).\n\n• Their gradients do not vanish everywhere.\n\n• Small perturbations do not destroy their structure.\n\n• The loss landscape contains reliable signals rather than adversarial traps.\n\nGeneric functions are well-behaved. They are stable, smooth, and cooperative enough for learning to succeed.\n\nLoss L(θ)\n\n| θ (arbitrary units) | Loss L(θ) (arbitrary units) |\n|---|---|\n| 0 | 8 |\n| 1 | 2 |\n| 2 | 9 |\n| 3 | 1 |\n| 4 | 8 |\n| 5 | 2 |\n| 6 | 7 |\n| 7 | 3 |\n| 8 | 6 |\n| 9 | 4 |\n| 10 | 5 |\n\n---\n\nLoss L(θ)\n\n**Legend**\n- **Actual Loss** — color: blue; symbol: Solid line\n- **Smoothed/Underlying Loss** — color: light blue; symbol: Dashed line\n\n| θ (arbitrary units) | Actual Loss (Solid Line) | Smoothed/Underlying Loss (Dashed Line) |\n|---|---|---|\n| 0 | 10 | 9.5 |\n| 1 | 8 | 7.5 |\n| 2 | 8.5 | 6 |\n| 3 | 5 | 4 |\n| 4 | 5.5 | 2.5 |\n| 5 | 4 | 1.5 |\n| 6 | 3 | 2.5 |\n| 7 | 5 | 4.5 |\n| 8 | 7 | 6.5 |\n| 9 | 8.5 | 8.5 |\n| 10 | 9.5 | 10 |\n\n**Notes:** The image contains two conceptual plots illustrating different types of loss landscapes as a function of a parameter θ. The axes are not labeled with numerical values, so the data is qualitative and represented with arbitrary units to capture the shape of the curves. The left chart shows a highly non-convex landscape with many local minima. The right chart shows a loss landscape with a clearer global structure (dashed line) underlying a more complex actual loss surface (solid line).\n\nFigure 1: Visualizing Genericity. (A) A pathological landscape (like a parity function) has no low-order structure; local gradients tell you nothing about the global minimum. (B) A generic landscape may be nonconvex and noisy, but it possesses a dominant low-degree “footprint” (the dashed basin) that guides gradient descent toward good solutions.\n\nWithout genericity, learning would be impossible, not just for neural networks but for biologi-cal brains and evolutionary processes.\n\n## An Analogy: Finding North in the Fog\n\nImagine walking through a mountainous landscape covered in fog. If the terrain is perfectly flat in every direction (or wildly jagged), you will never find your way.\n\nBut if there is even a faint slope—a low-order signal—you can follow it. Step by step, you make progress without ever seeing the final destination.\n\nGenericity says: real-world functions have these faint slopes. They leave low-degree traces that make optimization possible.\n\n## Where Does Genericity Come From?\n\nWhy should the world be generic? Several forces push functions toward this benign subset:\n\n1. Physics enforces smoothness and stability. Physical laws change continuously with con-tinuous inputs and suppress pathological behavior.\n\n2. Evolution filters out fragile computations. Neural systems that rely on improbable coin-cidences or vanishing signals do not survive.\n\n3. Noise destroys high-frequency irregularities. Real data is noisy; noise tends to wash away adversarial high-order components and highlight low-order structure.\n\n4. Learning architectures impose inductive biases. Deep networks naturally emphasize low-degree structure (e.g., linear terms in early training).\n\nThe convergence of physics, biology, noise, and learning theory all point to the same conclu-sion:\n\nThe functions we care to learn are far from arbitrary. They are generic.\n\n## Genericity as a Conjecture\n\nUnlike sparse compositionality—which follows from efficient computability and is well-established— genericity is closer to a working conjecture:\n\n• It is strongly supported by empirical evidence.\n\n• It is consistent with results in optimization and overparameterization.\n\n• It is motivated by physics, biology, and computational constraints.\n\nBut it is not yet a complete theorem. It is an organizing hypothesis for understanding why learning works.\n\n## Why Genericity Completes the Picture\n\nTogether, sparse compositionality and genericity form a coherent view:\n\n• Sparse compositionality makes the target function learnable in principle.\n\n• Genericity ensures it is learnable in practice.\n\nWith these two principles, we gain a unified explanation for:\n\n• why deep networks succeed,\n\n• why evolution can discover complex behaviors,\n\n• why generalization is possible,\n\n• why optimization rarely gets stuck,\n\n• and why intelligence—natural or artificial—can emerge in a complex universe.\n\n## What Comes Next\n\nIn the next posts, we will explore the consequences of genericity:\n\n• why linear terms matter so much for optimization,\n\n• how genericity emerges from noise, evolution, and data,\n\n• why model size helps optimization,\n\n• and what happens when genericity fails.\n\nWe will also address a deep open question:\n\n## Is the physical world itself generic and efficiently computable—or only approxi-mately so?\n\nThis will connect naturally to a future post on chaos, simulation, and computability. For now, we have the two pillars:\n\nSparse Compositionality and Genericity.\n\nTogether, they may form the beginnings of a theory of intelligence.\n\n## Technical Appendix: Hermite Expansion and the Crucial Role of Low-Degree Components\n\n## 1. Functions Have a Natural Spectral Expansion\n\nA central idea underlying the principle of Genericity is that the functions we want to learn can be decomposed into orthogonal degrees. When the input distribution is Gaussian (or close to Gaussian after whitening), the natural basis is the system of multivariate Hermite polynomials {H α (x)} :\n\n\\[\nH_{\\alpha}(x)=\\prod_{i=1}^{d} H_{\\alpha_{i}}\\left(x_{i}\\right), \\quad \\alpha=\\left(\\alpha_{1}, \\ldots, \\alpha_{d}\\right) \\in N^{d}\n\\]\n\nEvery square-integrable function \\( f: R^{d} \\rightarrow R \\) admits an expansion:\n\n\\( f(x)=\\sum_{\\alpha \\in N^{d}} \\hat{f}_{\\alpha} H_{\\alpha}(x), \\quad \\hat{f}_{\\alpha}=E[f(X) H_{\\alpha}(X)] \\),\n\nwhere X ∼ N (0, Id ). The Hermite degree of Hα is |α | = Pi αi . Low-degree terms (| α| = 0, 1, 2) capture smooth, slowly varying structure; high-degree terms contain oscillatory, fragile, or highly nonlinear com-ponents.\n\n## 2. Low-Degree Terms Produce Learnable Gradients\n\nGenericity asserts that real-world functions possess nontrivial low-degree components. The most important is the degree-1 (linear) part:\n\n\\( f_{\\mathrm{lin}}(x)=\\sum_{i=1}^{d} \\hat{f}_{e_{i}} x_{i}, \\quad e_{i}=(0, \\ldots, 1, \\ldots, 0) \\).\n\nThis linear component creates a reliable global trend in the loss landscape. The gradient of f is:\n\n\\( \\nabla f(x)=\\sum_{\\alpha} \\hat{f}_{\\alpha} \\nabla H_{\\alpha}(x) \\).\n\nA key identity for Hermite polynomials is:\n\n\\( E\\left[\\left\\|\\nabla f(X)\\right\\|^{2}\\right]=\\sum_{\\alpha}\\left|\\alpha\\right| \\hat{f}_{\\alpha}^{2} \\).\n\nThus:\n\n## The magnitude of the gradient is controlled by low-degree Hermite coefficients, especially the linear ones.\n\nIf all ˆ fe i = 0 (no linear term), gradients are much weaker and learning slows dramatically. If all coefficients of degrees 1 through k vanish, no gradient-based method can recover that structure without exponentially many samples.\n\n## 3. The Information Exponent\n\nThe information exponent, introduced in the book, formalizes this idea: it is the smallest Hermite degree ℓ for which the coefficient vector {\n\nˆ fα : |α | = ℓ} does not vanish.\n\n\\( \\ell(f)=\\min \\{|\\alpha|: \\hat{f}_{\\alpha} \\neq 0\\} \\).\n\nInterpretation:\n\n• ℓ = 1 (generic): strong linear signal; optimization is effective.\n\n• ℓ = 2: quadratic structure exists but linear terms vanish.\n\n• ℓ ≫ 1 (non-generic): function behaves like parity; gradients carry almost no globally useful information.\n\nGeneric functions have ℓ = 1. This ensures that the optimization landscape contains a global “tilt”—a weak but reliable slope guiding gradient descent.\n\n## 4. Why Parity-Like Functions Are Pathological\n\nConsider the parity function on {+1 , −1 } d or its Gaussian analog:\n\n\\( f(x)=\\prod_{i=1}^{d} x_{i} \\).\n\nIts Hermite expansion consists solely of the monomial of degree d. Thus:\n\n- all \\( \\hat{f}_{\\alpha}=0 \\) for \\( |\\alpha|<d \\),\n\n• the information exponent is ℓ = d,\n\n• gradients vanish in expectation,\n\n• optimization receives no informative signal.\n\nThis illustrates the essence of non-genericity: the function is structurally “orthogonal” to all low-degree components. Learning parity requires sample complexity exponential in d.\n\n## 5. Noise, Evolution, and Data Generically Reduce ℓ\n\nIn real-world systems, high-degree Hermite components are extremely fragile:\n\n• Noise attenuates high-degree terms exponentially fast.\n\n• Evolution eliminates computations that rely on vanishing signal.\n\n• Physical systems enforce smoothness, suppressing high frequencies.\n\n• Neural network training exhibits a spectral bias: low-degree coefficients are learned first.\n\nAll these mechanisms push real-world functions into the ℓ = 1 regime—precisely the generic regime where optimization works.\n\n## 6. Why Genericity Makes Learning Possible\n\nCombining these observations:\n\n• Low-degree Hermite components generate large, stable gradients.\n\n• Generic functions possess such components.\n\n• Non-generic functions do not; they provide no learnable signal.\n\nThus:\n\n## Genericity is the mathematical condition that guarantees learnability: functions possess low-degree structure strong enough to guide optimization.\n\nThis complements the first pillar, Sparse Compositionality, which constrains the structure of the function. Genericity constrains its spectrum and ensures that optimization, whether in brains or machines, can actually find that structure.",
+        "enriched": null,
+        "enrichment_success": false,
+        "blocks": [
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.2973856209150327,
+              "top": 0.14772727272727273,
+              "width": 0.40441176470588236,
+              "height": 0.025883838383838384,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "The Second Pillar: Genericity",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9576765835285187
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.39869281045751637,
+              "top": 0.19886363636363635,
+              "width": 0.20098039215686275,
+              "height": 0.017045454545454544,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Poggio+Beneventano",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9481844127178193
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.18137254901960784,
+              "top": 0.25946969696969696,
+              "width": 0.636437908496732,
+              "height": 0.018308080808080808,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Why learning works at all—and why not all functions are learnable.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.958938792347908
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.30997474747474746,
+              "width": 0.7647058823529411,
+              "height": 0.0707070707070707,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "In our last post, we explored the first pillar of intelligence: Sparse Compositionality. It explains the structure of the functions we want to learn: they must be sparse, hierarchical, and built from simple reusable components. Sparse compositionality tells us what learnable functions look like.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9868984282016754
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.38257575757575757,
+              "width": 0.35294117647058826,
+              "height": 0.016414141414141416,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "But it does not tell us why learning succeeds.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9017005145549775
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.4015151515151515,
+              "width": 0.29820261437908496,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "This brings us to the second principle:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9365099549293519
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.4534313725490196,
+              "top": 0.44002525252525254,
+              "width": 0.09313725490196079,
+              "height": 0.012626262626262626,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Genericity.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9350501477718354
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.4621212121212121,
+              "width": 0.7663398692810458,
+              "height": 0.054292929292929296,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Where compositionality is about structure, genericity is about geometry: the shape of the opti-mization landscape, the presence of gradients, and the existence of stable signals that guide learn-ing.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9835427403450012
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.5189393939393939,
+              "width": 0.47549019607843135,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Genericity answers one of the deepest puzzles in modern AI:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.961625388264656
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1642156862745098,
+              "top": 0.5467171717171717,
+              "width": 0.670751633986928,
+              "height": 0.03977272727272727,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Why does training enormous neural networks with simple gradient descent actu-ally work?",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9604574799537658
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6167929292929293,
+              "width": 0.5866013071895425,
+              "height": 0.022095959595959596,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Why Optimization Should Have Been Impossible",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9583934068679809
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6559343434343434,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "High-dimensional nonconvex optimization should, in principle, be hopeless. A naive theoretical picture suggests that training a neural network in a million-dimensional space should lead to:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9827811300754548
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7077020202020202,
+              "width": 0.24183006535947713,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• countless poor local minima,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9664388597011566
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7386363636363636,
+              "width": 0.29983660130718953,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• flat plateaus where gradients vanish,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9670693635940552
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7689393939393939,
+              "width": 0.14950980392156862,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• chaotic behavior,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9620736062526702
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7998737373737373,
+              "width": 0.2777777777777778,
+              "height": 0.01452020202020202,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• and no guarantee of convergence.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9672500222921372
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.8333333333333334,
+              "width": 0.5130718954248366,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Yet in practice, none of this happens. Stochastic gradient descent:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9641848295927048
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14705882352941177,
+              "top": 0.8686868686868687,
+              "width": 0.16339869281045752,
+              "height": 0.012626262626262626,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "\\( \\cdot \\) converges reliably,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9622489184141159
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8970959595959596,
+              "width": 0.3374183006535948,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "• finds good solutions across architectures,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9666264533996582
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4959150326797386,
+              "top": 0.9368686868686869,
+              "width": 0.008169934640522876,
+              "height": 0.00946969696969697,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "1",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8485615670680999
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.09406565656565656,
+              "width": 0.511437908496732,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• reaches global minima in massively overparameterized models,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9677026182413101
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.125,
+              "width": 0.2908496732026144,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• is robust to noise and initialization.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9554843872785568
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.1590909090909091,
+              "width": 0.17483660130718953,
+              "height": 0.015782828282828284,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "The question is: Why?",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9547069311141968
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.2058080808080808,
+              "width": 0.32679738562091504,
+              "height": 0.022095959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "The Principle of Genericity",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9656461000442504
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.24494949494949494,
+              "width": 0.30637254901960786,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "The principle of Genericity states that:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.949464225769043
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.2796717171717172,
+              "width": 0.6691176470588235,
+              "height": 0.05113636363636364,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "The functions that arise in the real world, and the learning problems we care about, lie in a special “generic” subset of all possible functions—those that leave stable, low-order footprints that optimization can detect.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.980567353963852
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.3503787878787879,
+              "width": 0.119281045751634,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "In other words:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9483499765396118
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.3851010101010101,
+              "width": 0.5408496732026143,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• They have strong low-degree components (especially linear terms).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.962963417172432
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.41603535353535354,
+              "width": 0.34477124183006536,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• Their gradients do not vanish everywhere.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9612463265657425
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.44696969696969696,
+              "width": 0.40522875816993464,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• Small perturbations do not destroy their structure.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9619068175554275
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.4779040404040404,
+              "width": 0.5833333333333334,
+              "height": 0.015151515151515152,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "• The loss landscape contains reliable signals rather than adversarial traps.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9630097925662995
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5113636363636364,
+              "width": 0.7647058823529411,
+              "height": 0.03409090909090909,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Generic functions are well-behaved. They are stable, smooth, and cooperative enough for learning to succeed.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9797873020172119
+            },
+            "extra": null
+          },
+          {
+            "type": "Figure",
+            "bbox": {
+              "left": 0.21911137400109784,
+              "top": 0.565995803987137,
+              "width": 0.5604739718967013,
+              "height": 0.12828133322975852,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Loss L(θ)\n\n| θ (arbitrary units) | Loss L(θ) (arbitrary units) |\n|---|---|\n| 0 | 8 |\n| 1 | 2 |\n| 2 | 9 |\n| 3 | 1 |\n| 4 | 8 |\n| 5 | 2 |\n| 6 | 7 |\n| 7 | 3 |\n| 8 | 6 |\n| 9 | 4 |\n| 10 | 5 |\n\n---\n\nLoss L(θ)\n\n**Legend**\n- **Actual Loss** — color: blue; symbol: Solid line\n- **Smoothed/Underlying Loss** — color: light blue; symbol: Dashed line\n\n| θ (arbitrary units) | Actual Loss (Solid Line) | Smoothed/Underlying Loss (Dashed Line) |\n|---|---|---|\n| 0 | 10 | 9.5 |\n| 1 | 8 | 7.5 |\n| 2 | 8.5 | 6 |\n| 3 | 5 | 4 |\n| 4 | 5.5 | 2.5 |\n| 5 | 4 | 1.5 |\n| 6 | 3 | 2.5 |\n| 7 | 5 | 4.5 |\n| 8 | 7 | 6.5 |\n| 9 | 8.5 | 8.5 |\n| 10 | 9.5 | 10 |\n\n**Notes:** The image contains two conceptual plots illustrating different types of loss landscapes as a function of a parameter θ. The axes are not labeled with numerical values, so the data is qualitative and represented with arbitrary units to capture the shape of the curves. The left chart shows a highly non-convex landscape with many local minima. The right chart shows a loss landscape with a clearer global structure (dashed line) underlying a more complex actual loss surface (solid line).",
+            "image_url": "https://prod-storage20241010144745140900000001.s3.amazonaws.com/6149e162-aea7-4468-9c0b-8ec4e6498476.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2UOK6OVBOUYL7WYA%2F20260201%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260201T204153Z&X-Amz-Expires=43200&X-Amz-SignedHeaders=host&X-Amz-Signature=7dfefaaab7251c2508ce0673636023428ec7f17bbafcace57d7dd89b297a10c4",
+            "chart_data": null,
+            "confidence": "low",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.6818549320101739
+            },
+            "extra": {
+              "is_chart": true
+            }
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.7146464646464646,
+              "width": 0.7655228758169934,
+              "height": 0.07007575757575757,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Figure 1: Visualizing Genericity. (A) A pathological landscape (like a parity function) has no low-order structure; local gradients tell you nothing about the global minimum. (B) A generic landscape may be nonconvex and noisy, but it possesses a dominant low-degree “footprint” (the dashed basin) that guides gradient descent toward good solutions.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9883108824491501
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.7904040404040404,
+              "width": 0.7671568627450981,
+              "height": 0.054292929292929296,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Without genericity, learning would be impossible, not just for neural networks but for biologi-cal brains and evolutionary processes.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 1
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.494281045751634,
+              "top": 0.9368686868686869,
+              "width": 0.010620915032679739,
+              "height": 0.008838383838383838,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "2",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8843954592943192
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.09154040404040405,
+              "width": 0.3831699346405229,
+              "height": 0.018308080808080808,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "An Analogy: Finding North in the Fog",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9584524124860764
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.12247474747474747,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Imagine walking through a mountainous landscape covered in fog. If the terrain is perfectly flat in every direction (or wildly jagged), you will never find your way.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9375483065843582
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.1590909090909091,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "But if there is even a faint slope—a low-order signal—you can follow it. Step by step, you make progress without ever seeing the final destination.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9156278938055038
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.19507575757575757,
+              "width": 0.7647058823529411,
+              "height": 0.03409090909090909,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Genericity says: real-world functions have these faint slopes. They leave low-degree traces that make optimization possible.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9519990652799606
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.2601010101010101,
+              "width": 0.44362745098039214,
+              "height": 0.021464646464646464,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Where Does Genericity Come From?",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9660452693700791
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.29924242424242425,
+              "width": 0.7124183006535948,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Why should the world be generic? Several forces push functions toward this benign subset:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9609303772449493
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.32575757575757575,
+              "width": 0.7426470588235294,
+              "height": 0.046085858585858584,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "1. Physics enforces smoothness and stability. Physical laws change continuously with con-tinuous inputs and suppress pathological behavior.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9837384700775147
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.37373737373737376,
+              "width": 0.7426470588235294,
+              "height": 0.04734848484848485,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "2. Evolution filters out fragile computations. Neural systems that rely on improbable coin-cidences or vanishing signals do not survive.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 1
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.4318181818181818,
+              "width": 0.7418300653594772,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "3. Noise destroys high-frequency irregularities. Real data is noisy; noise tends to wash away adversarial high-order components and highlight low-order structure.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9848064601421356
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.47285353535353536,
+              "width": 0.7426470588235294,
+              "height": 0.046085858585858584,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "4. Learning architectures impose inductive biases. Deep networks naturally emphasize low-degree structure (e.g., linear terms in early training).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 1
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.5321969696969697,
+              "width": 0.7655228758169934,
+              "height": 0.03598484848484849,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "The convergence of physics, biology, noise, and learning theory all point to the same conclu-sion:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9785681754350662
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.586489898989899,
+              "width": 0.5964052287581699,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "The functions we care to learn are far from arbitrary. They are generic.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.952660059928894
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6325757575757576,
+              "width": 0.3202614379084967,
+              "height": 0.022095959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Genericity as a Conjecture",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9619707435369491
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.6717171717171717,
+              "width": 0.7900326797385621,
+              "height": 0.03409090909090909,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Unlike sparse compositionality—which follows from efficient computability and is well-established— genericity is closer to a working conjecture:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9789645165205002
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7247474747474747,
+              "width": 0.3790849673202614,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• It is strongly supported by empirical evidence.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9720370709896088
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7556818181818182,
+              "width": 0.5571895424836601,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• It is consistent with results in optimization and overparameterization.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9732560813426971
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7866161616161617,
+              "width": 0.5334967320261438,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• It is motivated by physics, biology, and computational constraints.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9715220987796783
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.8213383838383839,
+              "width": 0.7647058823529411,
+              "height": 0.03282828282828283,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "But it is not yet a complete theorem. It is an organizing hypothesis for understanding why learning works.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.979753053188324
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4934640522875817,
+              "top": 0.9368686868686869,
+              "width": 0.010620915032679739,
+              "height": 0.008838383838383838,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "3",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8837957799434661
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.08901515151515152,
+              "width": 0.4624183006535948,
+              "height": 0.022095959595959596,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Why Genericity Completes the Picture",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.961509895324707
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.12815656565656566,
+              "width": 0.5547385620915033,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Together, sparse compositionality and genericity form a coherent view:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9416244983673095
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.16224747474747475,
+              "width": 0.5980392156862745,
+              "height": 0.015782828282828284,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• Sparse compositionality makes the target function learnable in principle.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9675753086805343
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.19255050505050506,
+              "width": 0.375,
+              "height": 0.016414141414141416,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• Genericity ensures it is learnable in practice.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9658628284931183
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.22790404040404041,
+              "width": 0.4714052287581699,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "With these two principles, we gain a unified explanation for:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9552469313144684
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.26262626262626265,
+              "width": 0.23937908496732027,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• why deep networks succeed,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9650529444217681
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.2935606060606061,
+              "width": 0.3872549019607843,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• why evolution can discover complex behaviors,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9673999965190887
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.3244949494949495,
+              "width": 0.25735294117647056,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• why generalization is possible,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9671967118978501
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.35542929292929293,
+              "width": 0.2916666666666667,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• why optimization rarely gets stuck,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9682334363460541
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.38573232323232326,
+              "width": 0.6331699346405228,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• and why intelligence—natural or artificial—can emerge in a complex universe.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9658857256174087
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.432449494949495,
+              "width": 0.2181372549019608,
+              "height": 0.021464646464646464,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "What Comes Next",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9546297550201416
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.4715909090909091,
+              "width": 0.5098039215686274,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "In the next posts, we will explore the consequences of genericity:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9609614104032517
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.5056818181818182,
+              "width": 0.40931372549019607,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• why linear terms matter so much for optimization,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9688812583684921
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.5366161616161617,
+              "width": 0.4542483660130719,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• how genericity emerges from noise, evolution, and data,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9699046552181244
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.5675505050505051,
+              "width": 0.29330065359477125,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• why model size helps optimization,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9687480986118316
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.5984848484848485,
+              "width": 0.3300653594771242,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "• and what happens when genericity fails.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.969570341706276
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.6332070707070707,
+              "width": 0.3349673202614379,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "We will also address a deep open question:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9561399579048157
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.1642156862745098,
+              "top": 0.663510101010101,
+              "width": 0.670751633986928,
+              "height": 0.039141414141414144,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Is the physical world itself generic and efficiently computable—or only approxi-mately so?",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8596678256988526
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.7203282828282829,
+              "width": 0.6535947712418301,
+              "height": 0.03345959595959596,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "This will connect naturally to a future post on chaos, simulation, and computability. For now, we have the two pillars:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9714754521846771
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.32516339869281047,
+              "top": 0.7758838383838383,
+              "width": 0.3472222222222222,
+              "height": 0.013888888888888888,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Sparse Compositionality and Genericity.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.777082622051239
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.8017676767676768,
+              "width": 0.5228758169934641,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "Together, they may form the beginnings of a theory of intelligence.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8475462198257446
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4934640522875817,
+              "top": 0.9375,
+              "width": 0.011437908496732025,
+              "height": 0.008207070707070708,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "4",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8992815256118774
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.08901515151515152,
+              "width": 0.7647058823529411,
+              "height": 0.04924242424242424,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "Technical Appendix: Hermite Expansion and the Crucial Role of Low-Degree Components",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9750473260879516
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.15782828282828282,
+              "width": 0.48284313725490197,
+              "height": 0.018308080808080808,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "1. Functions Have a Natural Spectral Expansion",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9623568177223205
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.18813131313131312,
+              "width": 0.7655228758169934,
+              "height": 0.05303030303030303,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "A central idea underlying the principle of Genericity is that the functions we want to learn can be decomposed into orthogonal degrees. When the input distribution is Gaussian (or close to Gaussian after whitening), the natural basis is the system of multivariate Hermite polynomials {H α (x)} :",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9820215344429016
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.2563131313131313,
+              "width": 0.5547385620915033,
+              "height": 0.07828282828282829,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "\\[\nH_{\\alpha}(x)=\\prod_{i=1}^{d} H_{\\alpha_{i}}\\left(x_{i}\\right), \\quad \\alpha=\\left(\\alpha_{1}, \\ldots, \\alpha_{d}\\right) \\in N^{d}\n\\]\n\nEvery square-integrable function \\( f: R^{d} \\rightarrow R \\) admits an expansion:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.6889802247285843
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.2957516339869281,
+              "top": 0.34595959595959597,
+              "width": 0.40604575163398693,
+              "height": 0.03535353535353535,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "\\( f(x)=\\sum_{\\alpha \\in N^{d}} \\hat{f}_{\\alpha} H_{\\alpha}(x), \\quad \\hat{f}_{\\alpha}=E[f(X) H_{\\alpha}(X)] \\),",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8181153953075408
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.39141414141414144,
+              "width": 0.7655228758169934,
+              "height": 0.07512626262626262,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "where X ∼ N (0, Id ). The Hermite degree of Hα is |α | = Pi αi . Low-degree terms (| α| = 0, 1, 2) capture smooth, slowly varying structure; high-degree terms contain oscillatory, fragile, or highly nonlinear com-ponents.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9077721267938614
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.4917929292929293,
+              "width": 0.5179738562091504,
+              "height": 0.017676767676767676,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "2. Low-Degree Terms Produce Learnable Gradients",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9652096599340438
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.5214646464646465,
+              "width": 0.7655228758169934,
+              "height": 0.034722222222222224,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "Genericity asserts that real-world functions possess nontrivial low-degree components. The most important is the degree-1 (linear) part:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9783755838871002
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.31209150326797386,
+              "top": 0.5713383838383839,
+              "width": 0.37173202614379086,
+              "height": 0.04292929292929293,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "\\( f_{\\mathrm{lin}}(x)=\\sum_{i=1}^{d} \\hat{f}_{e_{i}} x_{i}, \\quad e_{i}=(0, \\ldots, 1, \\ldots, 0) \\).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9434523552656173
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6281565656565656,
+              "width": 0.7622549019607843,
+              "height": 0.03409090909090909,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "This linear component creates a reliable global trend in the loss landscape. The gradient of f is:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.7497086673974991
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.39624183006535946,
+              "top": 0.6603535353535354,
+              "width": 0.20588235294117646,
+              "height": 0.037247474747474744,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "\\( \\nabla f(x)=\\sum_{\\alpha} \\hat{f}_{\\alpha} \\nabla H_{\\alpha}(x) \\).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.6958546310663223
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.7026515151515151,
+              "width": 0.33251633986928103,
+              "height": 0.015151515151515152,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "A key identity for Hermite polynomials is:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8461394220590591
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.38643790849673204,
+              "top": 0.7297979797979798,
+              "width": 0.22630718954248366,
+              "height": 0.039141414141414144,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "\\( E\\left[\\left\\|\\nabla f(X)\\right\\|^{2}\\right]=\\sum_{\\alpha}\\left|\\alpha\\right| \\hat{f}_{\\alpha}^{2} \\).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8601975202560425
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.7809343434343434,
+              "width": 0.04330065359477124,
+              "height": 0.00946969696969697,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "Thus:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9104172438383102
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.8106060606060606,
+              "width": 0.6691176470588235,
+              "height": 0.03345959595959596,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "The magnitude of the gradient is controlled by low-degree Hermite coefficients, especially the linear ones.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8476243257522583
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.8560606060606061,
+              "width": 0.7647058823529411,
+              "height": 0.05618686868686869,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "If all ˆ fe i = 0 (no linear term), gradients are much weaker and learning slows dramatically. If all coefficients of degrees 1 through k vanish, no gradient-based method can recover that structure without exponentially many samples.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9737048029899598
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.494281045751634,
+              "top": 0.9375,
+              "width": 0.010620915032679739,
+              "height": 0.008838383838383838,
+              "page": 5,
+              "original_page": 5
+            },
+            "content": "5",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9023399889469147
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.09154040404040405,
+              "width": 0.29330065359477125,
+              "height": 0.018308080808080808,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "3. The Information Exponent",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9559474438428879
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.12184343434343434,
+              "width": 0.7655228758169934,
+              "height": 0.03409090909090909,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "The information exponent, introduced in the book, formalizes this idea: it is the smallest Hermite degree ℓ for which the coefficient vector {",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9778899788856507
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.43790849673202614,
+              "top": 0.13636363636363635,
+              "width": 0.24101307189542484,
+              "height": 0.027146464646464648,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "ˆ fα : |α | = ℓ} does not vanish.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 1
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.39052287581699346,
+              "top": 0.1755050505050505,
+              "width": 0.21650326797385622,
+              "height": 0.01893939393939394,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "\\( \\ell(f)=\\min \\{|\\alpha|: \\hat{f}_{\\alpha} \\neq 0\\} \\).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9247228175401687
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.20265151515151514,
+              "width": 0.1119281045751634,
+              "height": 0.012626262626262626,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "Interpretation:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9381590127944945
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.22853535353535354,
+              "width": 0.5,
+              "height": 0.015782828282828284,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "• ℓ = 1 (generic): strong linear signal; optimization is effective.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.963093826174736
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.2569444444444444,
+              "width": 0.4534313725490196,
+              "height": 0.016414141414141416,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "• ℓ = 2: quadratic structure exists but linear terms vanish.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9615313589572907
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.2859848484848485,
+              "width": 0.7336601307189542,
+              "height": 0.03409090909090909,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "• ℓ ≫ 1 (non-generic): function behaves like parity; gradients carry almost no globally useful information.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9797051280736924
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.3314393939393939,
+              "width": 0.7647058823529411,
+              "height": 0.034722222222222224,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "Generic functions have ℓ = 1. This ensures that the optimization landscape contains a global “tilt”—a weak but reliable slope guiding gradient descent.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9790375858545304
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.39204545454545453,
+              "width": 0.47058823529411764,
+              "height": 0.018308080808080808,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "4. Why Parity-Like Functions Are Pathological",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9585501998662949
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.4198232323232323,
+              "width": 0.5187908496732027,
+              "height": 0.021464646464646464,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "Consider the parity function on {+1 , −1 } d or its Gaussian analog:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9237390547990799
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.44281045751633985,
+              "top": 0.45012626262626265,
+              "width": 0.11356209150326797,
+              "height": 0.043560606060606064,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "\\( f(x)=\\prod_{i=1}^{d} x_{i} \\).",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8381648689508439
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.5031565656565656,
+              "width": 0.5727124183006536,
+              "height": 0.016414141414141416,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "Its Hermite expansion consists solely of the monomial of degree d. Thus:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9541363626718521
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14950980392156862,
+              "top": 0.5309343434343434,
+              "width": 0.1919934640522876,
+              "height": 0.015782828282828284,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "- all \\( \\hat{f}_{\\alpha}=0 \\) for \\( |\\alpha|<d \\),",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9506504982709885
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.5599747474747475,
+              "width": 0.28594771241830064,
+              "height": 0.016414141414141416,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "• the information exponent is ℓ = d,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9565311074256897
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.5896464646464646,
+              "width": 0.2630718954248366,
+              "height": 0.015151515151515152,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "• gradients vanish in expectation,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9617883026599884
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.6186868686868687,
+              "width": 0.35947712418300654,
+              "height": 0.015151515151515152,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "• optimization receives no informative signal.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.96254061460495
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.6458333333333334,
+              "width": 0.7655228758169934,
+              "height": 0.03409090909090909,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "This illustrates the essence of non-genericity: the function is structurally “orthogonal” to all low-degree components. Learning parity requires sample complexity exponential in d.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9798647880554199
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.7058080808080808,
+              "width": 0.5089869281045751,
+              "height": 0.018308080808080808,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "5. Noise, Evolution, and Data Generically Reduce ℓ",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9568200141191483
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.7367424242424242,
+              "width": 0.6127450980392157,
+              "height": 0.015151515151515152,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "In real-world systems, high-degree Hermite components are extremely fragile:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9650467842817306
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7638888888888888,
+              "width": 0.4395424836601307,
+              "height": 0.015782828282828284,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "• Noise attenuates high-degree terms exponentially fast.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9662395268678665
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7929292929292929,
+              "width": 0.5236928104575164,
+              "height": 0.015782828282828284,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "• Evolution eliminates computations that rely on vanishing signal.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9670639783143997
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.821969696969697,
+              "width": 0.5555555555555556,
+              "height": 0.015782828282828284,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "• Physical systems enforce smoothness, suppressing high frequencies.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9658607363700866
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8516414141414141,
+              "width": 0.7263071895424836,
+              "height": 0.015151515151515152,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "• Neural network training exhibits a spectral bias: low-degree coefficients are learned first.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.94967622756958
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.8787878787878788,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "All these mechanisms push real-world functions into the ℓ = 1 regime—precisely the generic regime where optimization works.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.967324098944664
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4950980392156863,
+              "top": 0.9375,
+              "width": 0.011437908496732025,
+              "height": 0.00946969696969697,
+              "page": 6,
+              "original_page": 6
+            },
+            "content": "6",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8528459191322326
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.09154040404040405,
+              "width": 0.4395424836601307,
+              "height": 0.018308080808080808,
+              "page": 7,
+              "original_page": 7
+            },
+            "content": "6. Why Genericity Makes Learning Possible",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.963833236694336
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.12247474747474747,
+              "width": 0.24101307189542484,
+              "height": 0.015151515151515152,
+              "page": 7,
+              "original_page": 7
+            },
+            "content": "Combining these observations:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9578131556510925
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.1571969696969697,
+              "width": 0.5294117647058824,
+              "height": 0.015151515151515152,
+              "page": 7,
+              "original_page": 7
+            },
+            "content": "• Low-degree Hermite components generate large, stable gradients.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9722079277038574
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.18813131313131312,
+              "width": 0.36437908496732024,
+              "height": 0.015151515151515152,
+              "page": 7,
+              "original_page": 7
+            },
+            "content": "• Generic functions possess such components.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9721502780914306
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.21906565656565657,
+              "width": 0.511437908496732,
+              "height": 0.015151515151515152,
+              "page": 7,
+              "original_page": 7
+            },
+            "content": "• Non-generic functions do not; they provide no learnable signal.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9712996363639832
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1454248366013072,
+              "top": 0.2518939393939394,
+              "width": 0.049836601307189546,
+              "height": 0.017045454545454544,
+              "page": 7,
+              "original_page": 7
+            },
+            "content": "Thus:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9283085763454437
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.2878787878787879,
+              "width": 0.6691176470588235,
+              "height": 0.03345959595959596,
+              "page": 7,
+              "original_page": 7
+            },
+            "content": "Genericity is the mathematical condition that guarantees learnability: functions possess low-degree structure strong enough to guide optimization.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9056481570005417
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.3402777777777778,
+              "width": 0.7647058823529411,
+              "height": 0.052398989898989896,
+              "page": 7,
+              "original_page": 7
+            },
+            "content": "This complements the first pillar, Sparse Compositionality, which constrains the structure of the function. Genericity constrains its spectrum and ensures that optimization, whether in brains or machines, can actually find that structure.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9847845703363418
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.494281045751634,
+              "top": 0.9368686868686869,
+              "width": 0.010620915032679739,
+              "height": 0.00946969696969697,
+              "page": 7,
+              "original_page": 7
+            },
+            "content": "7",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8966301620006562
+            },
+            "extra": null
+          }
+        ]
+      }
+    ],
+    "ocr": null,
+    "custom": null
+  }
+}

@@ -1,0 +1,1045 @@
+{
+  "job_id": "61fc16fd-3c81-4b0b-9948-613c16344109",
+  "duration": 7.4547278881073,
+  "pdf_url": "https://prod-storage20241010144745140900000001.s3.amazonaws.com/fe62f19b-6885-4b9f-b3d7-f37b3ed842f6.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2UOK6OVBOUYL7WYA%2F20260201%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260201T204127Z&X-Amz-Expires=43200&X-Amz-SignedHeaders=host&X-Amz-Signature=3d65c5c86884af5fb050966eb0e8e0e4de9333bccd857e15d22ff109dfbc865b",
+  "studio_link": "https://studio.reducto.ai/job/61fc16fd-3c81-4b0b-9948-613c16344109",
+  "usage": {
+    "num_pages": 4,
+    "credits": 8
+  },
+  "result": {
+    "type": "full",
+    "chunks": [
+      {
+        "content": "# The Missing Foundations of Intelligence\n\nPoggio+Gabrieli\n\n## Modern AI works, but we don’t know why. Here is a proposal for the fundamental principles that explain it.\n\nWe are living through the fastest expansion of technological capability in human history. Every month, a new AI system appears that writes code, analyzes genomes, composes music, translates languages, and generates images that look indistinguishable from photographs.\n\nFrom the outside, it looks as though we have cracked the code of intelligence.\n\nBut beneath the surface is a paradox: we have astonishing systems, but we do not understand how and why they work as well as they do. If we look at the history of electricity, AI today is somewhere between Volta in 1800 and Maxwell in 1864: we can build useful artifacts, but we do not yet have a theory.\n\nModern AI is driven largely by engineering intuition and brute force. While this approach works for now, it is likely unsustainable. To build reliable, understandable AI—and to truly com-prehend intelligence itself—we need to move beyond alchemy and toward chemistry.\n\n## The Search for Fundamental Principles\n\nThis blog series begins from a simple conviction:\n\nIntelligence—natural or artificial—must rest on fundamental principles, just as physics rests on conservation laws and thermodynamics.\n\nThis is not merely philosophical. It is an empirical necessity. Three facts constrain us in the search for principles of intelligence:\n\n1. Intelligence exists in nature. Biological evolution, through a long and blind optimization process, produced human intelligence. Any true theory of intelligence must therefore be compatible with evolution.\n\n2. Artificial intelligence now exists. Transformers, diffusion models, and large associative memories succeed because they exploit deep structural regularities—not because of magic. They are a physical reality. Their success is evidence of underlying principles we have not yet articulated.\n\n3. These two forms of intelligence cannot be unrelated. Evolution discovered natural intel-ligence; engineering discovered artificial intelligence. The principles that explain both are likely to be shared or tightly connected.\n\nFrom these constraints and a survey of scientific evidence, two mathematical ideas repeatedly emerge as candidates for foundational laws:\n\n1. Sparse Compositionality\n\n2. Genericity\n\nThese are not architectural details or engineering heuristics. They are candidates for the laws that make intelligence possible.\n\n## Pillar 1: Sparse Compositionality\n\nThe world is not random. Meaningful functions in nature—visual scenes, motor control, language, physics—are built by composing a small number of potentially reusable parts. They are hierarchi-cal, modular, and sparse.\n\nThis is the principle of Sparse Compositionality. It explains why deep networks need depth; why convolution works; why transfer learning exists; and how interpretability can arise.\n\nMore importantly, sparse compositionality is a necessary consequence of efficient Turing com-putability, as we shall see. It tells us which parametric family should be used for empirical risk minimization (ERM). If the target function is realized by a sparse, bounded-fan-in computation graph, then a deep network with a corresponding sparse compositional architecture is the natural hypothesis class. In this setting, ERM is not searching over arbitrary functions; it is fitting the parameters of a structured computation that mirrors the generative structure of the target function. This is the precise sense in which sparse compositionality provides a representation principle that guarantees that deep neural nets are the right parametrization for learning from input–output data.\n\nWithout sparse compositional structure, no finite learner could generalize beyond its training data.\n\n## Pillar 2: Genericity\n\nEven if the world has structure, why can a simple algorithm like gradient descent find it in a massive, high-dimensional space? Why does optimization not get perpetually stuck in poor local minima?\n\nThis brings us to the second principle: Genericity.\n\nGenericity is a property of the target functions we are trying to learn. Generic functions do not depend on a special choice of the origin of the input variables: they are qualitatively invariant to shifts of the x variables. Genericity implies that the loss landscapes induced by real-world learning problems are not adversarially pathological. Instead, they contain stable, detectable low-order signals that guide optimization.\n\nGenericity explains why gradients do not vanish everywhere, why stochastic gradient descent is reliable, and why solutions are robust to noise and initialization. While less established than\n\nsparse compositionality, it is a critical conjecture that explains the unreasonable effectiveness of simple optimization algorithms.\n\n## Two Independent but Complementary Principles\n\nSparse compositionality explains the structure of the world and why it is learnable in principle. Genericity explains the dynamics of learning: why simple algorithms can actually find good solu-tions.\n\nOne is a property of the environment. The other is a requirement on the geometry of the learning problem.\n\nTogether, they point toward a unified picture of intelligence—one that explains not only how modern AI systems succeed, but why they succeed, and why evolution found similar solutions.\n\n## From Principles to Mathematics\n\nThese two principles are not slogans. Each corresponds to precise mathematical properties.\n\n• Sparse compositionality follows from the requirement that the functions we aim to learn are efficiently computable. Under standard computational models (Turing machines, Boolean circuits), efficient computability forces any such function to be realized by a bounded-fan-in, layered computation graph—a sparse compositional DAG.1\n\n• Genericity is more conjectural but equally concrete. It corresponds to assuming that the functions we care about possess sufficiently strong low-order components (for example, non-negligible linear terms) and are stable under small perturbations. These properties ensure informative gradients and robust solutions.\n\nSome of these links are already provable as theorems; others remain working assumptions guiding ongoing research.\n\n## The Road Ahead\n\nOver the coming weeks, this blog will explore:\n\n• the mathematics of sparse compositionality and genericity,\n\n• the role of evolution in developing the first learning systems,\n\n• the computational logic of reflexes, perception, memory, and reasoning,\n\n• the strengths and limitations of modern architectures such as Transformers and Diffusion models.\n\nWe are not at the end of the AI story. We are at the end of the beginning.\n\nTo build AI we understand—AI we can trust, extend, and reason about—we must stop only engineering and start explaining. This series, based on the book Twenty-Six Lectures on the Foun-dations of Deep Learning, is an invitation to join that search.",
+        "embed": "# The Missing Foundations of Intelligence\n\nPoggio+Gabrieli\n\n## Modern AI works, but we don’t know why. Here is a proposal for the fundamental principles that explain it.\n\nWe are living through the fastest expansion of technological capability in human history. Every month, a new AI system appears that writes code, analyzes genomes, composes music, translates languages, and generates images that look indistinguishable from photographs.\n\nFrom the outside, it looks as though we have cracked the code of intelligence.\n\nBut beneath the surface is a paradox: we have astonishing systems, but we do not understand how and why they work as well as they do. If we look at the history of electricity, AI today is somewhere between Volta in 1800 and Maxwell in 1864: we can build useful artifacts, but we do not yet have a theory.\n\nModern AI is driven largely by engineering intuition and brute force. While this approach works for now, it is likely unsustainable. To build reliable, understandable AI—and to truly com-prehend intelligence itself—we need to move beyond alchemy and toward chemistry.\n\n## The Search for Fundamental Principles\n\nThis blog series begins from a simple conviction:\n\nIntelligence—natural or artificial—must rest on fundamental principles, just as physics rests on conservation laws and thermodynamics.\n\nThis is not merely philosophical. It is an empirical necessity. Three facts constrain us in the search for principles of intelligence:\n\n1. Intelligence exists in nature. Biological evolution, through a long and blind optimization process, produced human intelligence. Any true theory of intelligence must therefore be compatible with evolution.\n\n2. Artificial intelligence now exists. Transformers, diffusion models, and large associative memories succeed because they exploit deep structural regularities—not because of magic. They are a physical reality. Their success is evidence of underlying principles we have not yet articulated.\n\n3. These two forms of intelligence cannot be unrelated. Evolution discovered natural intel-ligence; engineering discovered artificial intelligence. The principles that explain both are likely to be shared or tightly connected.\n\nFrom these constraints and a survey of scientific evidence, two mathematical ideas repeatedly emerge as candidates for foundational laws:\n\n1. Sparse Compositionality\n\n2. Genericity\n\nThese are not architectural details or engineering heuristics. They are candidates for the laws that make intelligence possible.\n\n## Pillar 1: Sparse Compositionality\n\nThe world is not random. Meaningful functions in nature—visual scenes, motor control, language, physics—are built by composing a small number of potentially reusable parts. They are hierarchi-cal, modular, and sparse.\n\nThis is the principle of Sparse Compositionality. It explains why deep networks need depth; why convolution works; why transfer learning exists; and how interpretability can arise.\n\nMore importantly, sparse compositionality is a necessary consequence of efficient Turing com-putability, as we shall see. It tells us which parametric family should be used for empirical risk minimization (ERM). If the target function is realized by a sparse, bounded-fan-in computation graph, then a deep network with a corresponding sparse compositional architecture is the natural hypothesis class. In this setting, ERM is not searching over arbitrary functions; it is fitting the parameters of a structured computation that mirrors the generative structure of the target function. This is the precise sense in which sparse compositionality provides a representation principle that guarantees that deep neural nets are the right parametrization for learning from input–output data.\n\nWithout sparse compositional structure, no finite learner could generalize beyond its training data.\n\n## Pillar 2: Genericity\n\nEven if the world has structure, why can a simple algorithm like gradient descent find it in a massive, high-dimensional space? Why does optimization not get perpetually stuck in poor local minima?\n\nThis brings us to the second principle: Genericity.\n\nGenericity is a property of the target functions we are trying to learn. Generic functions do not depend on a special choice of the origin of the input variables: they are qualitatively invariant to shifts of the x variables. Genericity implies that the loss landscapes induced by real-world learning problems are not adversarially pathological. Instead, they contain stable, detectable low-order signals that guide optimization.\n\nGenericity explains why gradients do not vanish everywhere, why stochastic gradient descent is reliable, and why solutions are robust to noise and initialization. While less established than\n\nsparse compositionality, it is a critical conjecture that explains the unreasonable effectiveness of simple optimization algorithms.\n\n## Two Independent but Complementary Principles\n\nSparse compositionality explains the structure of the world and why it is learnable in principle. Genericity explains the dynamics of learning: why simple algorithms can actually find good solu-tions.\n\nOne is a property of the environment. The other is a requirement on the geometry of the learning problem.\n\nTogether, they point toward a unified picture of intelligence—one that explains not only how modern AI systems succeed, but why they succeed, and why evolution found similar solutions.\n\n## From Principles to Mathematics\n\nThese two principles are not slogans. Each corresponds to precise mathematical properties.\n\n• Sparse compositionality follows from the requirement that the functions we aim to learn are efficiently computable. Under standard computational models (Turing machines, Boolean circuits), efficient computability forces any such function to be realized by a bounded-fan-in, layered computation graph—a sparse compositional DAG.1\n\n• Genericity is more conjectural but equally concrete. It corresponds to assuming that the functions we care about possess sufficiently strong low-order components (for example, non-negligible linear terms) and are stable under small perturbations. These properties ensure informative gradients and robust solutions.\n\nSome of these links are already provable as theorems; others remain working assumptions guiding ongoing research.\n\n## The Road Ahead\n\nOver the coming weeks, this blog will explore:\n\n• the mathematics of sparse compositionality and genericity,\n\n• the role of evolution in developing the first learning systems,\n\n• the computational logic of reflexes, perception, memory, and reasoning,\n\n• the strengths and limitations of modern architectures such as Transformers and Diffusion models.\n\nWe are not at the end of the AI story. We are at the end of the beginning.\n\nTo build AI we understand—AI we can trust, extend, and reason about—we must stop only engineering and start explaining. This series, based on the book Twenty-Six Lectures on the Foun-dations of Deep Learning, is an invitation to join that search.",
+        "enriched": null,
+        "enrichment_success": false,
+        "blocks": [
+          {
+            "type": "Title",
+            "bbox": {
+              "left": 0.22549019607843138,
+              "top": 0.14772727272727273,
+              "width": 0.5490196078431373,
+              "height": 0.025883838383838384,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "The Missing Foundations of Intelligence",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8300427436828612
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.4207516339869281,
+              "top": 0.1994949494949495,
+              "width": 0.15604575163398693,
+              "height": 0.015782828282828284,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Poggio+Gabrieli",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9467467218637466
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.17483660130718953,
+              "top": 0.26073232323232326,
+              "width": 0.6495098039215687,
+              "height": 0.04040404040404041,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Modern AI works, but we don’t know why. Here is a proposal for the fundamental principles that explain it.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8187710821628571
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.3352272727272727,
+              "width": 0.7647058823529411,
+              "height": 0.05176767676767677,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "We are living through the fastest expansion of technological capability in human history. Every month, a new AI system appears that writes code, analyzes genomes, composes music, translates languages, and generates images that look indistinguishable from photographs.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9848240494728089
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.39015151515151514,
+              "width": 0.6070261437908496,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "From the outside, it looks as though we have cracked the code of intelligence.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9347517192363739
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.4078282828282828,
+              "width": 0.7655228758169934,
+              "height": 0.07007575757575757,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "But beneath the surface is a paradox: we have astonishing systems, but we do not understand how and why they work as well as they do. If we look at the history of electricity, AI today is somewhere between Volta in 1800 and Maxwell in 1864: we can build useful artifacts, but we do not yet have a theory.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9862402230501175
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.4810606060606061,
+              "width": 0.7655228758169934,
+              "height": 0.05744949494949495,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Modern AI is driven largely by engineering intuition and brute force. While this approach works for now, it is likely unsustainable. To build reliable, understandable AI—and to truly com-prehend intelligence itself—we need to move beyond alchemy and toward chemistry.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9866090953350067
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5637626262626263,
+              "width": 0.4738562091503268,
+              "height": 0.021464646464646464,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "The Search for Fundamental Principles",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9632278382778168
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6029040404040404,
+              "width": 0.3839869281045752,
+              "height": 0.015151515151515152,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "This blog series begins from a simple conviction:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.956389656662941
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.1650326797385621,
+              "top": 0.6369949494949495,
+              "width": 0.6691176470588235,
+              "height": 0.03409090909090909,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "Intelligence—natural or artificial—must rest on fundamental principles, just as physics rests on conservation laws and thermodynamics.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9766956090927124
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6900252525252525,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "This is not merely philosophical. It is an empirical necessity. Three facts constrain us in the search for principles of intelligence:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9780838102102279
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.7430555555555556,
+              "width": 0.7418300653594772,
+              "height": 0.05176767676767677,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "1. Intelligence exists in nature. Biological evolution, through a long and blind optimization process, produced human intelligence. Any true theory of intelligence must therefore be compatible with evolution.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9885443478822709
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14052287581699346,
+              "top": 0.8099747474747475,
+              "width": 0.7418300653594772,
+              "height": 0.07007575757575757,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "2. Artificial intelligence now exists. Transformers, diffusion models, and large associative memories succeed because they exploit deep structural regularities—not because of magic. They are a physical reality. Their success is evidence of underlying principles we have not yet articulated.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.990989226102829
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4959150326797386,
+              "top": 0.9368686868686869,
+              "width": 0.007352941176470588,
+              "height": 0.00946969696969697,
+              "page": 1,
+              "original_page": 1
+            },
+            "content": "1",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8313334822654724
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.13970588235294118,
+              "top": 0.08017676767676768,
+              "width": 0.7434640522875817,
+              "height": 0.06565656565656566,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "3. These two forms of intelligence cannot be unrelated. Evolution discovered natural intel-ligence; engineering discovered artificial intelligence. The principles that explain both are likely to be shared or tightly connected.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9774638831615448
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.16161616161616163,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "From these constraints and a survey of scientific evidence, two mathematical ideas repeatedly emerge as candidates for foundational laws:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9736275494098663
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14215686274509803,
+              "top": 0.21212121212121213,
+              "width": 0.22794117647058823,
+              "height": 0.013888888888888888,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "1. Sparse Compositionality",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8880000174045563
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.13970588235294118,
+              "top": 0.24179292929292928,
+              "width": 0.11437908496732026,
+              "height": 0.013257575757575758,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "2. Genericity",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9073140472173691
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.27146464646464646,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "These are not architectural details or engineering heuristics. They are candidates for the laws that make intelligence possible.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.974459245800972
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.336489898989899,
+              "width": 0.4019607843137255,
+              "height": 0.020833333333333332,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Pillar 1: Sparse Compositionality",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.942909261584282
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.375,
+              "width": 0.7671568627450981,
+              "height": 0.054292929292929296,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "The world is not random. Meaningful functions in nature—visual scenes, motor control, language, physics—are built by composing a small number of potentially reusable parts. They are hierarchi-cal, modular, and sparse.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.977127593755722
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.4292929292929293,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "This is the principle of Sparse Compositionality. It explains why deep networks need depth; why convolution works; why transfer learning exists; and how interpretability can arise.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9751954406499863
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.46464646464646464,
+              "width": 0.7655228758169934,
+              "height": 0.14393939393939395,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "More importantly, sparse compositionality is a necessary consequence of efficient Turing com-putability, as we shall see. It tells us which parametric family should be used for empirical risk minimization (ERM). If the target function is realized by a sparse, bounded-fan-in computation graph, then a deep network with a corresponding sparse compositional architecture is the natural hypothesis class. In this setting, ERM is not searching over arbitrary functions; it is fitting the parameters of a structured computation that mirrors the generative structure of the target function. This is the precise sense in which sparse compositionality provides a representation principle that guarantees that deep neural nets are the right parametrization for learning from input–output data.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.979783970117569
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6117424242424242,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Without sparse compositional structure, no finite learner could generalize beyond its training data.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8891089171171188
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6761363636363636,
+              "width": 0.23284313725490197,
+              "height": 0.021464646464646464,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Pillar 2: Genericity",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9528282821178437
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.7152777777777778,
+              "width": 0.7647058823529411,
+              "height": 0.05113636363636364,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Even if the world has structure, why can a simple algorithm like gradient descent find it in a massive, high-dimensional space? Why does optimization not get perpetually stuck in poor local minima?",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9831971138715744
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.7689393939393939,
+              "width": 0.39705882352941174,
+              "height": 0.015782828282828284,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "This brings us to the second principle: Genericity.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9284404426813125
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.7878787878787878,
+              "width": 0.7655228758169934,
+              "height": 0.08838383838383838,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Genericity is a property of the target functions we are trying to learn. Generic functions do not depend on a special choice of the origin of the input variables: they are qualitatively invariant to shifts of the x variables. Genericity implies that the loss landscapes induced by real-world learning problems are not adversarially pathological. Instead, they contain stable, detectable low-order signals that guide optimization.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9868759572505951
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.8794191919191919,
+              "width": 0.7647058823529411,
+              "height": 0.03282828282828283,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "Genericity explains why gradients do not vanish everywhere, why stochastic gradient descent is reliable, and why solutions are robust to noise and initialization. While less established than",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9812710046768188
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.494281045751634,
+              "top": 0.9368686868686869,
+              "width": 0.010620915032679739,
+              "height": 0.008838383838383838,
+              "page": 2,
+              "original_page": 2
+            },
+            "content": "2",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8684428244829178
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.09406565656565656,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "sparse compositionality, it is a critical conjecture that explains the unreasonable effectiveness of simple optimization algorithms.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9789270132780075
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.1184640522875817,
+              "top": 0.16035353535353536,
+              "width": 0.5841503267973857,
+              "height": 0.019570707070707072,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Two Independent but Complementary Principles",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9550977438688277
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.19696969696969696,
+              "width": 0.7655228758169934,
+              "height": 0.05366161616161616,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Sparse compositionality explains the structure of the world and why it is learnable in principle. Genericity explains the dynamics of learning: why simple algorithms can actually find good solu-tions.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9640412092208862
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.25252525252525254,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "One is a property of the environment. The other is a requirement on the geometry of the learning problem.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9616396069526673
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.288510101010101,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Together, they point toward a unified picture of intelligence—one that explains not only how modern AI systems succeed, but why they succeed, and why evolution found similar solutions.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9665370732545853
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.3529040404040404,
+              "width": 0.3872549019607843,
+              "height": 0.022095959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "From Principles to Mathematics",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9567221879959107
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.39204545454545453,
+              "width": 0.7116013071895425,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "These two principles are not slogans. Each corresponds to precise mathematical properties.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9601613283157349
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.42487373737373735,
+              "width": 0.7336601307189542,
+              "height": 0.07702020202020202,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• Sparse compositionality follows from the requirement that the functions we aim to learn are efficiently computable. Under standard computational models (Turing machines, Boolean circuits), efficient computability forces any such function to be realized by a bounded-fan-in, layered computation graph—a sparse compositional DAG.1",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9912837505340576
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.51010101010101,
+              "width": 0.7344771241830066,
+              "height": 0.07007575757575757,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• Genericity is more conjectural but equally concrete. It corresponds to assuming that the functions we care about possess sufficiently strong low-order components (for example, non-negligible linear terms) and are stable under small perturbations. These properties ensure informative gradients and robust solutions.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9918906986713409
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.5978535353535354,
+              "width": 0.7647058823529411,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Some of these links are already provable as theorems; others remain working assumptions guiding ongoing research.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9764375030994416
+            },
+            "extra": null
+          },
+          {
+            "type": "Section Header",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.6616161616161617,
+              "width": 0.20261437908496732,
+              "height": 0.022095959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "The Road Ahead",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9519025951623916
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11764705882352941,
+              "top": 0.7007575757575758,
+              "width": 0.3660130718954248,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "Over the coming weeks, this blog will explore:",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9617453366518021
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7335858585858586,
+              "width": 0.47467320261437906,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• the mathematics of sparse compositionality and genericity,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9692239791154862
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.764520202020202,
+              "width": 0.49019607843137253,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• the role of evolution in developing the first learning systems,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9693599283695221
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.7948232323232324,
+              "width": 0.576797385620915,
+              "height": 0.015151515151515152,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• the computational logic of reflexes, perception, memory, and reasoning,",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9657311797142029
+            },
+            "extra": null
+          },
+          {
+            "type": "List Item",
+            "bbox": {
+              "left": 0.14869281045751634,
+              "top": 0.8251262626262627,
+              "width": 0.7336601307189542,
+              "height": 0.03345959595959596,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "• the strengths and limitations of modern architectures such as Transformers and Diffusion models.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9806203544139862
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.11683006535947713,
+              "top": 0.8674242424242424,
+              "width": 0.7655228758169934,
+              "height": 0.04419191919191919,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "1 A later post will give a precise statement: any function computable in time T (n) by a deterministic Turing machine can be represented by a bounded-fan-in computation DAG with depth O(T (n)) and size polynomial in T (n). This formal link between efficient computability and compositional sparsity is a key piece of the theoretical foundation.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9834113240242004
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4950980392156863,
+              "top": 0.9368686868686869,
+              "width": 0.008986928104575163,
+              "height": 0.008838383838383838,
+              "page": 3,
+              "original_page": 3
+            },
+            "content": "3",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8872381478548049
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.14624183006535948,
+              "top": 0.09406565656565656,
+              "width": 0.5661764705882353,
+              "height": 0.015151515151515152,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "We are not at the end of the AI story. We are at the end of the beginning.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9025930762290955
+            },
+            "extra": null
+          },
+          {
+            "type": "Text",
+            "bbox": {
+              "left": 0.11601307189542484,
+              "top": 0.11237373737373738,
+              "width": 0.7671568627450981,
+              "height": 0.059343434343434344,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "To build AI we understand—AI we can trust, extend, and reason about—we must stop only engineering and start explaining. This series, based on the book Twenty-Six Lectures on the Foun-dations of Deep Learning, is an invitation to join that search.",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.9626222461462021
+            },
+            "extra": null
+          },
+          {
+            "type": "Footer",
+            "bbox": {
+              "left": 0.4934640522875817,
+              "top": 0.9375,
+              "width": 0.011437908496732025,
+              "height": 0.008207070707070708,
+              "page": 4,
+              "original_page": 4
+            },
+            "content": "4",
+            "image_url": null,
+            "chart_data": null,
+            "confidence": "high",
+            "granular_confidence": {
+              "extract_confidence": null,
+              "parse_confidence": 0.8763221800327301
+            },
+            "extra": null
+          }
+        ]
+      }
+    ],
+    "ocr": null,
+    "custom": null
+  }
+}
