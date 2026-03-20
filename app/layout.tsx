@@ -11,9 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Poggio Lab | MIT',
-  description: 'Pioneering research at the intersection of artificial intelligence and neuroscience at MIT',
-  generator: 'v0.app',
+  title: 'OpenPI | MIT',
+  description: 'A multi-agent AI system that turns research hypotheses into high-quality papers with minimal human steering.',
   icons: {
     icon: [
       {
@@ -43,7 +42,8 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
         <Analytics />
-        <GoogleAnalytics gaId="G-1CFGQ7PN0Y" />
+        {/* TODO: Add your own Google Analytics ID */}
+        {/* <GoogleAnalytics gaId="G-XXXXXXXXXX" /> */}
       </body>
     </html>
   )

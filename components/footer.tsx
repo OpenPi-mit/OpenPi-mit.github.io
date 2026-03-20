@@ -8,22 +8,26 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-block mb-4">
               <span className="text-lg font-semibold tracking-tight text-foreground">
-                Poggio Lab
+                OpenPI
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Massachusetts Institute of Technology<br />
-              Building 46, Room 5177<br />
               Cambridge, MA 02139
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-foreground mb-4">Research</h4>
+            <h4 className="text-sm font-semibold text-foreground mb-4">Project</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/#research" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Focus Areas
+                <Link href="/#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  How It Works
                 </Link>
               </li>
               <li>
@@ -32,9 +36,14 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/blogsupdates" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Blogposts and Updates
-                </Link>
+                <a
+                  href="https://github.com/PierBeneventano/OpenPI"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  GitHub
+                </a>
               </li>
             </ul>
           </div>
@@ -48,13 +57,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/people#former-postdoctoral-associates-phd-students" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Alumni
-                </Link>
-              </li>
-              <li>
-                <Link href="/people#visiting-students-scholars-and-scientists" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Collaborators
+                <Link href="/blogsupdates" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Blog & Updates
                 </Link>
               </li>
             </ul>
@@ -64,7 +68,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © 2026 Poggio Lab, MIT. All rights reserved.
+            &copy; 2026 OpenPI, MIT. All rights reserved.
           </p>
           <a
             href="https://accessibility.mit.edu"

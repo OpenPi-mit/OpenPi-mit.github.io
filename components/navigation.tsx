@@ -4,11 +4,12 @@ import { useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 
-const navItems = [
+const navItems: { label: string; href: string; external?: boolean }[] = [
   { label: "About", href: "/" },
   { label: "People", href: "/people" },
   { label: "Publications", href: "/publications" },
   { label: "Blog & Updates", href: "/blogsupdates" },
+  { label: "GitHub", href: "https://github.com/PierBeneventano/OpenPI", external: true },
 ]
 
 export function Navigation() {
@@ -19,21 +20,33 @@ export function Navigation() {
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-lg font-semibold tracking-tight text-foreground">
-            Poggio Lab
+            OpenPI
           </span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            item.external ? (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -51,16 +64,29 @@ export function Navigation() {
       {isOpen && (
         <div className="md:hidden bg-background border-b border-border">
           <div className="px-6 py-4 flex flex-col gap-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.external ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </div>
         </div>
       )}

@@ -18,8 +18,7 @@ export default function PeoplePage() {
             Who We Are
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-            Our diverse team brings together expertise in neuroscience, computer science,
-            cognitive psychology, and engineering.
+            The researchers behind OpenPI.
           </p>
         </div>
 
