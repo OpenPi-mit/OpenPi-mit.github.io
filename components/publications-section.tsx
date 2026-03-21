@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, FileText } from "lucide-react"
 import Link from "next/link"
 import publicationsData from "@/app/data/publications.json"
 
@@ -35,8 +35,14 @@ export function PublicationsSection() {
               rel="noopener noreferrer"
               className="group py-8 flex flex-col md:flex-row md:items-start gap-4 md:gap-8"
             >
-              <div className="md:w-20 shrink-0">
+              <div className="md:w-20 shrink-0 flex flex-col items-start gap-1">
                 <span className="text-sm text-muted-foreground">{pub.year}</span>
+                {pub.link && pub.link.endsWith(".pdf") && (
+                  <span className="inline-flex items-center gap-1 text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+                    <FileText className="w-3.5 h-3.5" />
+                    PDF
+                  </span>
+                )}
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-medium text-foreground group-hover:text-muted-foreground transition-colors mb-2 text-pretty">
