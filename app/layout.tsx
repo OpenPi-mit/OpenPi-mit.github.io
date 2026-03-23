@@ -42,8 +42,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
         <Analytics />
-        {/* TODO: Add your own Google Analytics ID */}
-        {/* <GoogleAnalytics gaId="G-XXXXXXXXXX" /> */}
+        <GoogleAnalytics gaId="G-T0YHZ1J26J" />
       </body>
     </html>
   )
