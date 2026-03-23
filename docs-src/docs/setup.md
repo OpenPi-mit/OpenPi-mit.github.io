@@ -1,87 +1,137 @@
-# Consortium on SLURM/HPC Clusters — Setup Guide
+# HPC / SLURM Setup
+
+This guide covers deploying PoggioAI MSc on SLURM-managed HPC clusters.
+
+---
 
 ## Prerequisites
 
-- Access to a SLURM cluster
+- Access to a SLURM cluster with outbound internet (for LLM API calls)
 - Conda installed (Miniconda or Miniforge)
-- API keys for at least one LLM provider (Anthropic, OpenAI, Google, etc.)
+- API keys for at least one LLM provider
 
 ## Quick Start
 
 ```bash
-# 1. Clone the repo and enter it
-git clone <repo-url> PoggioAI_MSc && cd PoggioAI_MSc
+# 1. Clone and enter the repo
+git clone https://github.com/PoggioAI/PoggioAI_MSc.git && cd PoggioAI_MSc
 
-# 2. Bootstrap the environment (creates conda env + installs deps)
+# 2. Bootstrap the environment (full includes GPU experiment deps)
 ./scripts/bootstrap.sh consortium full
 
 # 3. Set up API keys
 cp .env.example .env
-# Edit .env with your API keys
+# Edit .env with your keys
 
-# 4. Configure cluster paths (if using SLURM)
-# Edit engaging_config.yaml with your cluster-specific paths:
-#   - conda_init_script, conda_env_prefix, repo_root, slurm_output_dir
-# Or set env vars: CONDA_INIT_SCRIPT, CONDA_ENV_PREFIX, REPO_ROOT, SLURM_OUTPUT_DIR
+# 4. Configure cluster paths
+# Either edit engaging_config.yaml directly, or set env vars:
+export CONDA_INIT_SCRIPT=/path/to/miniforge3/etc/profile.d/conda.sh
+export CONDA_ENV_PREFIX=/path/to/conda/envs/consortium
+export REPO_ROOT=/path/to/PoggioAI_MSc
+export SLURM_OUTPUT_DIR=/path/to/slurm_outputs
 
-# 5. Test configuration
+# 5. Validate
 conda activate consortium
-python launch_multiagent.py --dry-run
+python launch_multiagent.py --task "test" --dry-run
 
-# 6. Submit the orchestrator to SLURM
-RESEARCH_TASK="Your research prompt here..." ./scripts/submit_orchestrator.sh --no-counsel
+# 6. Submit the orchestrator
+RESEARCH_TASK="Your research prompt here" ./scripts/submit_orchestrator.sh --no-counsel
 ```
 
-## Architecture: Two-Tier SLURM Model
+---
 
-Consortium uses a **two-tier execution model** on HPC clusters:
+## Two-Tier Execution Model
+
+PoggioAI MSc uses two tiers of SLURM jobs:
 
 ### Tier 1: Orchestrator (CPU)
-- Runs on a CPU partition (e.g., 12hr limit)
+
+- Runs on a **CPU partition** (e.g., 7-day wall time)
 - Makes outbound HTTPS calls to LLM APIs (Claude, GPT, Gemini)
-- Coordinates 23+ specialist agents via LangGraph
-- Does NOT need GPU
+- Coordinates 22+ specialist agents via LangGraph
+- Does **not** need a GPU
 
 ### Tier 2: Experiment Jobs (GPU)
-- Submitted by the orchestrator via `sbatch` when experiments need GPU
-- Partition configured in `engaging_config.yaml`
-- Runs AI-Scientist-v2 experiment execution
 
-Set `CONSORTIUM_SLURM_ENABLED=1` to enable automatic GPU job submission.
+- Submitted by the orchestrator via `sbatch` when experiments need GPU compute
+- Runs AI-Scientist-v2 experiment execution (PyTorch training, etc.)
+- Partition and resources configured in `engaging_config.yaml`
 
-## Configuration
+Set `CONSORTIUM_SLURM_ENABLED=1` in your `.env` to enable automatic GPU job submission.
+
+---
+
+## Cluster Configuration
 
 ### engaging_config.yaml
-All cluster-specific settings are centralized here:
-- Partition names (GPU and CPU)
-- Conda paths and module names
-- Resource limits (CPUs, memory, time)
 
-**Important**: Set these paths for your cluster either via env vars or by editing the file directly:
-- `CONDA_INIT_SCRIPT` — path to your conda `conda.sh` init script
-- `CONDA_ENV_PREFIX` — path to your conda environment
-- `REPO_ROOT` — path to the PoggioAI_MSc clone
-- `SLURM_OUTPUT_DIR` — where to write SLURM logs
+All cluster-specific settings are centralized in this file:
 
-### .llm_config.yaml
-LLM model selection, budget limits, counsel mode settings.
+```yaml
+cluster:
+  name: engaging
+  conda_init_script: ${CONDA_INIT_SCRIPT:-}
+  conda_env_prefix: ${CONDA_ENV_PREFIX:-}
+  modules:
+    conda: miniforge/25.11.0-0
+    cuda: cuda/12.4.0
+    cudnn: cudnn/9.8.0.87-cuda12
 
-### .env
-API keys (ANTHROPIC_API_KEY, OPENAI_API_KEY, etc.)
+  orchestrator:                    # CPU partition for LLM orchestrator
+    partition: your_partition
+    time: "7-00:00:00"
+    cpus: 4
+    mem: "32G"
 
-## Running a Campaign (Multi-Stage)
+  experiment_gpu:                  # GPU partition for experiments
+    partition: your_gpu_partition
+    time: "7-00:00:00"
+    cpus: 8
+    mem: "64G"
+    gres: "gpu:a100:1"
 
-```bash
-# Initialize campaign
-python scripts/campaign_heartbeat.py --campaign campaign.yaml --init
+  repair:                          # Repair agent
+    partition: your_partition
+    time: "01:00:00"
+    cpus: 2
+    mem: "8G"
 
-# Run heartbeat (advances stages)
-python scripts/campaign_heartbeat.py --campaign campaign.yaml
-
-# Or submit heartbeat as a SLURM job that advances stages via sbatch
+  repo_root: ${REPO_ROOT:-}
+  scratch_root: ${SCRATCH_ROOT:-}
+  slurm_output_dir: ${SLURM_OUTPUT_DIR:-}
 ```
 
-Campaign stages can be launched as SLURM jobs using `launch_stage_slurm()` from the campaign runner.
+!!! tip
+    Set paths via environment variables so the same config file works across users:
+    ```bash
+    export CONDA_INIT_SCRIPT=/path/to/conda.sh
+    export CONDA_ENV_PREFIX=/path/to/envs/consortium
+    export REPO_ROOT=/path/to/PoggioAI_MSc
+    export SLURM_OUTPUT_DIR=/path/to/slurm_outputs
+    ```
+
+---
+
+## Running Campaigns on SLURM
+
+Campaigns work well with SLURM — the heartbeat launches each stage as a SLURM job:
+
+```bash
+# Initialize
+python scripts/campaign_heartbeat.py --campaign campaign.yaml --init
+
+# Run heartbeat (advances stages, submits SLURM jobs)
+python scripts/campaign_heartbeat.py --campaign campaign.yaml
+```
+
+For automated scheduling, use the OpenClaw overseer or a cron job to call the heartbeat periodically:
+
+```bash
+# Example crontab entry (every 15 minutes)
+*/15 * * * * cd /path/to/PoggioAI_MSc && conda activate consortium && python scripts/campaign_heartbeat.py --campaign campaign.yaml
+```
+
+---
 
 ## Monitoring
 
@@ -89,50 +139,78 @@ Campaign stages can be launched as SLURM jobs using `launch_stage_slurm()` from 
 # Check SLURM jobs
 squeue -u $USER
 
-# Check job output
+# Check orchestrator output
 cat slurm_outputs/orch_<job_id>.out
 
-# List past runs
+# List past runs with cost
 python launch_multiagent.py --list-runs
 
 # Check experiment GPU job logs
 cat results/consortium_*/experiment_runs/*/slurm_logs/exp_*.out
+
+# Campaign status
+python scripts/campaign_cli.py --campaign campaign.yaml dashboard
 ```
+
+---
 
 ## Troubleshooting
 
 ### "conda not found"
-Set the `CONDA_INIT_SCRIPT` env var or edit `engaging_config.yaml`:
+
+Set `CONDA_INIT_SCRIPT` and source it:
+
 ```bash
 export CONDA_INIT_SCRIPT=/path/to/miniforge3/etc/profile.d/conda.sh
 source "$CONDA_INIT_SCRIPT"
 ```
 
 ### "module not found"
+
 Load the appropriate modules for your cluster:
+
 ```bash
-module load miniforge    # or your cluster's conda module
-module load cuda         # for GPU experiments
+module load miniforge         # or your cluster's conda module
+module load cuda              # for GPU experiments
 ```
 
 ### GPU experiment job fails
+
 Check the SLURM logs in the experiment run directory:
+
 ```bash
 cat results/consortium_*/experiment_runs/*/slurm_logs/exp_*.out
 cat results/consortium_*/experiment_runs/*/slurm_logs/exp_*.err
 ```
 
 ### API calls fail from compute node
-The orchestrator needs outbound internet access. If compute nodes don't have it, run the orchestrator on a login node instead:
+
+The orchestrator needs **outbound internet access**. If compute nodes don't have it, run the orchestrator on a login node or a partition with internet:
+
 ```bash
-conda activate <your-env>
+conda activate consortium
 nohup python launch_multiagent.py --task "..." --no-counsel &
 ```
 
 ### LaTeX/PDF compilation fails
+
 ```bash
 # Install TeX toolchain in conda env
-./scripts/bootstrap.sh <your-env> latex
-# Or set the path to your system TeX installation
-export CONSORTIUM_PDFLATEX_PATH=/path/to/pdflatex
+./scripts/bootstrap.sh consortium latex
+
+# Or point to your system TeX installation
+export CONSORTIUM_TEXLIVE_BIN=/path/to/texlive/bin
+```
+
+### Campaign stage stuck in "in_progress"
+
+```bash
+# Check what's happening
+python scripts/campaign_cli.py --campaign campaign.yaml analyze-logs <stage_id>
+
+# Force status reset if the underlying job died
+python scripts/campaign_cli.py --campaign campaign.yaml set-stage-status <stage_id> failed
+
+# Trigger repair
+python scripts/campaign_cli.py --campaign campaign.yaml repair <stage_id>
 ```
