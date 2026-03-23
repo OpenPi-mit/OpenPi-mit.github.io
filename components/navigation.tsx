@@ -9,6 +9,7 @@ const navItems: { label: string; href: string; external?: boolean }[] = [
   { label: "People", href: "/people" },
   { label: "Publications", href: "/publications" },
   { label: "Blog & Updates", href: "/blogsupdates" },
+  { label: "Docs", href: "/docs/", external: true },
   { label: "GitHub", href: "https://github.com/PoggioAI/PoggioAI_MSc", external: true },
 ]
 
