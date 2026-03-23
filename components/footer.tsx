@@ -43,7 +43,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/PoggioAI/PoggioAI_MSc"
+                  href="https://github.com/PoggioAI/PoggioAI_MSc/tree/MSc_Prod"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"

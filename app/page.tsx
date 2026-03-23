@@ -132,7 +132,7 @@ export default async function Home() {
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
-              href="https://github.com/PoggioAI/PoggioAI_MSc"
+              href="https://github.com/PoggioAI/PoggioAI_MSc/tree/MSc_Prod"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-foreground px-6 py-3 text-sm font-medium hover:text-muted-foreground transition-colors"
@@ -178,7 +178,7 @@ export default async function Home() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://github.com/PoggioAI/PoggioAI_MSc"
+                  href="https://github.com/PoggioAI/PoggioAI_MSc/tree/MSc_Prod"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-muted-foreground transition-colors"
@@ -239,7 +239,7 @@ python launch_multiagent.py \\
 
           <div className="mt-8">
             <a
-              href="https://github.com/PoggioAI/PoggioAI_MSc"
+              href="https://github.com/PoggioAI/PoggioAI_MSc/tree/MSc_Prod"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-muted-foreground transition-colors"
