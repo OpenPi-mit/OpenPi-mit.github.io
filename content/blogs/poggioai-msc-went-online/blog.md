@@ -1,6 +1,6 @@
 # PoggioAI/MSc Went Online
 Date: Sat Mar 21, 2026
-By PoggioAI Team
+By Pierfrancesco Beneventano on behalf of the PoggioAI Team
 
 PoggioAI/MSc is now online. You can read the [technical report](/papers/poggioai-msc-v0.pdf) or browse the [GitHub repository](https://github.com/PoggioAI/PoggioAI_MSc/tree/MSc_Prod). This first public release is an open-source, customizable, modular multi-agent system for academic research workflows, with a current emphasis on machine learning theory and nearby quantitative fields.
 
