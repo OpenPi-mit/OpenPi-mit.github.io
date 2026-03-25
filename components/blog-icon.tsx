@@ -154,14 +154,6 @@ export function BlogIcon({ slug, className }: BlogIconProps) {
             .slice(0, 4)
             .join(" ")
 
-        const badge = label
-            .split(" ")
-            .map((word) => word.replace(/[^A-Za-z]/g, ""))
-            .filter(Boolean)
-            .slice(0, 2)
-            .map((word) => word[0]?.toUpperCase())
-            .join("")
-
         return (
             <div
                 className={cn(
@@ -169,15 +161,12 @@ export function BlogIcon({ slug, className }: BlogIconProps) {
                     className
                 )}
             >
-                <div className="flex h-full flex-col justify-between rounded-xl border border-white/10 bg-white/5 p-4">
-                    <span className="inline-flex w-fit items-center rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white/80">
-                        {badge || "PA"}
-                    </span>
-                    <div>
-                        <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-white/60">
+                <div className="flex h-full items-center justify-center rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                    <div className="max-w-[14ch]">
+                        <p className="mb-3 text-[11px] uppercase tracking-[0.22em] text-white/60">
                             Public Update
                         </p>
-                        <h3 className="max-w-[14ch] text-lg font-semibold leading-tight text-balance">
+                        <h3 className="text-lg font-semibold leading-tight text-balance">
                             {label}
                         </h3>
                     </div>

@@ -111,12 +111,14 @@ export default async function Home() {
           </p>
           <p className="text-sm text-muted-foreground mb-8">
             Built by the{" "}
-            <Link
-              href="/people"
+            <a
+              href="https://poggio-lab.mit.edu"
+              target="_blank"
+              rel="noopener noreferrer"
               className="underline hover:text-foreground transition-colors"
             >
-              PoggioAI team at MIT
-            </Link>
+              Poggio Lab team at MIT
+            </a>
           </p>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-12 text-pretty">
             Try PoggioAI/MSc, a multi-agent AI system that turns research hypotheses into high-quality, literature-grounded, experiment-backed papers with minimal human steering.
