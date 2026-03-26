@@ -320,16 +320,6 @@ python launch_multiagent.py \\
       </section>
       */}
 
-      {blogPosts.length > 0 && (
-        <BlogSection
-          posts={blogPosts}
-          title="Latest Blog Posts"
-          subtitle="From the Lab"
-          id="blog"
-          viewAllLink="/blogsupdates?filter=Blog"
-        />
-      )}
-
       <TeamSection />
 
       {/* Publications Section */}
@@ -343,6 +333,16 @@ python launch_multiagent.py \\
           id="updates"
           viewAllLink="/blogsupdates?filter=Updates"
           viewAllText="View all updates"
+        />
+      )}
+
+      {blogPosts.length > 0 && (
+        <BlogSection
+          posts={blogPosts}
+          title="Latest Blog Posts"
+          subtitle="From the Lab"
+          id="blog"
+          viewAllLink="/blogsupdates?filter=Blog"
         />
       )}
 

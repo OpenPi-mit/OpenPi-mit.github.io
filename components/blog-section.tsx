@@ -57,7 +57,7 @@ export function BlogSection({
 
   return (
     <section id={id} className="py-32 px-6 bg-background">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div className="max-w-2xl">
             <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground mb-4">

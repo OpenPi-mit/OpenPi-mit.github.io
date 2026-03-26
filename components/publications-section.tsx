@@ -7,7 +7,7 @@ const publications = publicationsData.slice(0, 5)
 export function PublicationsSection() {
   return (
     <section id="publications" className="py-32 px-6">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div className="max-w-2xl">
             <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground mb-4">
@@ -37,10 +37,10 @@ export function PublicationsSection() {
             >
               <div className="md:w-20 shrink-0 flex flex-col items-start gap-1">
                 <span className="text-sm text-muted-foreground">{pub.year}</span>
-                {pub.link && pub.link.endsWith(".pdf") && (
+                {pub.pdfLink && (
                   <span className="inline-flex items-center gap-1 text-xs text-muted-foreground group-hover:text-foreground transition-colors">
                     <FileText className="w-3.5 h-3.5" />
-                    PDF
+                    PDF available
                   </span>
                 )}
               </div>

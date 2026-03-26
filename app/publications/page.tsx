@@ -67,12 +67,12 @@ export default function PublicationsPage() {
                                             <div className="text-muted-foreground text-sm space-y-1">
                                                 <p>{pub.authors}</p>
                                                 <p className="italic">{pub.venue}</p>
-                                                {pub.link && pub.link.endsWith(".pdf") && (
+                                                {pub.pdfLink && (
                                                     <p>
-                                                        <span className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors">
+                                                        <Link href={pub.pdfLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors">
                                                             <FileText className="w-3.5 h-3.5" />
                                                             PDF
-                                                        </span>
+                                                        </Link>
                                                     </p>
                                                 )}
                                             </div>
