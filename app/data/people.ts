@@ -25,11 +25,12 @@ export const peopleData: Section[] = [
                 image: "/people/pier-285x300.jpg",
                 link: "https://pierbeneventano.github.io",
             },
-            {
-                name: "Mahmoud Abdelmoneum",
-                role: "Researcher",
-                affiliation: "Massachusetts Institute of Technology & Perseus Labs",
-            },
+  {
+    name: "Mahmoud Abdelmoneum",
+    role: "Researcher",
+    affiliation: "Massachusetts Institute of Technology & Perseus Labs",
+    image: "/people/mahmoud_a.jpg",
+  },
             {
                 name: "Riccardo Neumarker",
                 role: "Visiting Researcher",
