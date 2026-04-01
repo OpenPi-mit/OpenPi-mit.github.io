@@ -111,7 +111,11 @@ for (const slug of blogs) {
     }
 
     const texFile = path.join(blogPath, "main.tex");
+    const markdownFile = path.join(blogPath, "blog.md");
     if (!fs.existsSync(texFile)) {
+        if (fs.existsSync(markdownFile)) {
+            continue;
+        }
         console.warn(`Skipping ${slug}: main.tex not found.`);
         continue;
     }

@@ -143,14 +143,19 @@ export function BlogIcon({ slug, className }: BlogIconProps) {
 
 
     if (error || !svgContent) {
+        const stopWords = new Set(["and", "the", "a", "an", "of", "to", "for", "with", "now", "available", "as"])
         const label = slug
             .split("-")
             .map((part) => {
                 if (part === "poggioai") return "pAI"
+                if (part === "pai") return "pAI"
                 if (part === "msc") return "MSc"
                 if (part === "ai") return "AI"
+                if (part === "claude") return "Claude"
+                if (part === "openclaw") return "OpenClaw"
                 return part.charAt(0).toUpperCase() + part.slice(1)
             })
+            .filter((part) => !stopWords.has(part.toLowerCase()))
             .slice(0, 4)
             .join(" ")
 

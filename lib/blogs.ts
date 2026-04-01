@@ -61,10 +61,15 @@ export async function getPostData(slug: string) {
     // Generate a plain-text excerpt for cards and list views.
     const plainTextContent = content
         .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-        .replace(/[`#*_>~-]/g, '')
+        .replace(/^#{1,6}\s+/gm, '')
+        .replace(/^>\s?/gm, '')
+        .replace(/^\s*[-+]\s+/gm, '')
+        .replace(/[*_`~]/g, '')
         .replace(/\s+/g, ' ')
         .trim();
-    const excerpt = plainTextContent.slice(0, 200).trim() + '...';
+    const excerpt = plainTextContent.length > 200
+        ? `${plainTextContent.slice(0, 200).trim()}...`
+        : plainTextContent;
 
     return {
         slug,
