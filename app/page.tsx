@@ -100,9 +100,6 @@ export default async function Home() {
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-6 pt-16">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground mb-6">
-            Massachusetts Institute of Technology
-          </p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] text-balance mb-4">
             pAI
           </h1>
