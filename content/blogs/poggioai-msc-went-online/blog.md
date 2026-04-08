@@ -2,7 +2,7 @@
 Date: Sat Mar 21, 2026
 By Pierfrancesco Beneventano on behalf of the pAI Team
 
-pAI/MSc is now online. You can read the [technical report](/papers/poggioai-msc-v0/) or browse the [GitHub repository](https://github.com/PoggioAI/PoggioAI_MSc/tree/MSc_Prod). This first public release is an open-source, customizable, modular multi-agent system for academic research workflows, with a current emphasis on machine learning theory and nearby quantitative fields.
+pAI/MSc is now online. You can read the [technical report](/papers/pAI_technical_report.pdf) or browse the [GitHub repository](https://github.com/PoggioAI/PoggioAI_MSc/tree/MSc_Prod). This first public release is an open-source, customizable, modular multi-agent system for academic research workflows, with a current emphasis on machine learning theory and nearby quantitative fields.
 
 Our goal is not autonomous scientific ideation, and it is not fully automated research. The target is narrower and more practical: reduce by orders of magnitude the human steering needed to take a specified hypothesis to a literature-grounded, mathematically established, experimentally supported, submission-oriented manuscript draft.
 
@@ -44,4 +44,4 @@ The early engineering lessons in the report shaped the public release.
 
 This release is an early public step, not a claim that the problem is solved. But it is a concrete system, a concrete workflow, and a concrete argument about where AI can already be useful in research: not by replacing the researcher, but by reducing the steering burden needed to turn a strong idea into a serious manuscript draft.
 
-If you want the full scope, architecture, and limits, start with the [technical report](/papers/poggioai-msc-v0/). If you want to try it, the fastest path is the [GitHub repository](https://github.com/PoggioAI/PoggioAI_MSc/tree/MSc_Prod).
+If you want the full scope, architecture, and limits, start with the [technical report](/papers/pAI_technical_report.pdf). If you want to try it, the fastest path is the [GitHub repository](https://github.com/PoggioAI/PoggioAI_MSc/tree/MSc_Prod).

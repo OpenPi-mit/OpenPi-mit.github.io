@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { themeTokens } from "@/lib/theme";
 
@@ -25,30 +24,20 @@ export default function AboutPage() {
             style={{ color: token.textSecondary }}
           >
             <p>
-              <strong>pAI</strong> is building the first vertically integrated lab for autonomous scientific discovery. Our mission is
-              to turn strong hypotheses into validated insights faster, safer, and with clearer evidence for broad
-              public benefit.
+              <strong>pAI</strong> builds persistent AI systems for scientific and technical work.
             </p>
             <p>
-              The last century of science gave us the computational and experimental stack we rely on today. We believe
-              agentic systems can unlock the next era by coordinating literature review, experimental design, execution,
-              and synthesis with rigorous human oversight.
-            </p>
-            <p>We have one product: reliable research velocity, at scale.</p>
-            <p>
-              With roots across top universities, frontier labs, and engineering teams, we are assembling physicists,
-              ML researchers, and builders who want to industrialize scientific progress while preserving scientific
-              integrity.
+              We believe the missing layer in AI is not just more intelligence, but organized technical work. Today&apos;s
+              AI tools can produce useful local outputs, but they are still poorly suited for long-running, reviewable,
+              evidence-based workflows inside serious R&amp;D organizations.
             </p>
             <p>
-              Success means moving research from fragmented incremental steps to a continuous, compounding engine of
-              breakthroughs.
+              We are building the infrastructure that makes those workflows possible: systems with memory, provenance,
+              steerability, and human review built in from the start.
             </p>
             <p>
-              If this resonates with you, we would love to collaborate.{" "}
-              <Link href="mailto:pierb@mit.edu" className="pointer-events-auto underline underline-offset-4" style={{ color: token.textPrimary }}>
-                Partner with us.
-              </Link>
+              We begin with technical diligence and research synthesis, and over time aim to become the operating system
+              for technical R&amp;D.
             </p>
           </div>
         </div>

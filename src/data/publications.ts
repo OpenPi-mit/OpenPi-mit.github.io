@@ -15,7 +15,7 @@ export const publications: Publication[] = [
     venue: "Living Survey, Massachusetts Institute of Technology, April 2026",
     year: "2026",
     link: "/papers/survey-of-ai-for-research-v0/",
-    pdfLink: "https://poggioai.github.io/papers/survey-of-ai-for-research-v0.pdf",
+    pdfLink: "/papers/Survey_of_AI_for_Research__TRUE_VERSION_-2.pdf",
   },
   {
     title: "pAI/MSc: ML Theory Research with Humans on the Loop",
@@ -23,6 +23,6 @@ export const publications: Publication[] = [
     venue: "Technical Report, Massachusetts Institute of Technology, March 2026",
     year: "2026",
     link: "/papers/poggioai-msc-v0/",
-    pdfLink: "https://poggioai.github.io/papers/poggioai-msc-v0.pdf",
+    pdfLink: "/papers/pAI_technical_report.pdf",
   },
 ];

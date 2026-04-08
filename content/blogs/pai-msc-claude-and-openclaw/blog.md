@@ -2,7 +2,7 @@
 Date: Tue Mar 31, 2026
 By Pierfrancesco Beneventano on behalf of the pAI Team
 
-Two new ways to run the pAI/MSc research pipeline are now available: a [Claude Code skill](https://github.com/PoggioAI/PoggioAI_MSc-claude) and an [OpenClaw plugin](https://github.com/PoggioAI/PoggioAI_MSc). Both wrap the same core pipeline — 22 agents, 29 backtested prompts, multi-round persona debate, parallel theory and experiment tracks, and editorial quality gates — but they target different workflows.
+Two new ways to run the pAI/MSc research pipeline are now available: a [Claude Code skill](https://github.com/PoggioAI/PoggioAI_MSc-claude) and an [OpenClaw plugin](https://github.com/PoggioAI/PoggioAI_MSc-openclaw). Both wrap the same core pipeline — 22 agents, 29 backtested prompts, multi-round persona debate, parallel theory and experiment tracks, and editorial quality gates — but they target different workflows.
 
 ## Claude Code skill
 
@@ -43,6 +43,6 @@ For the Claude Code skill, the fastest path is:
 2. Copy the skill to `~/.claude/skills/poggioai-msc-claude/`
 3. Open Claude Code and type `/poggioai-msc-claude`
 
-For the OpenClaw plugin, follow the instructions in the [plugin repository](https://github.com/PoggioAI/PoggioAI_MSc). Again — expect it to need debugging.
+For the OpenClaw plugin, follow the instructions in the [plugin repository](https://github.com/PoggioAI/PoggioAI_MSc-openclaw). Again — expect it to need debugging.
 
-As always, the [technical report](/papers/poggioai-msc-v0/) has the full architecture, design rationale, and limits. If you use either tool in your research, please acknowledge pAI and cite the report.
+As always, the [technical report](/papers/pAI_technical_report.pdf) has the full architecture, design rationale, and limits. If you use either tool in your research, please acknowledge pAI and cite the report.
