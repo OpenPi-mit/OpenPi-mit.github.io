@@ -175,7 +175,7 @@ export function Hero() {
             </a>
           </p>
           <p className="mt-2 text-xs leading-snug md:text-3xs" style={{ color: particleBaseColor }}>
-            © 2026 pAI, MIT. All rights reserved.
+            © 2026 pAI, MIT. Mahmoud Abdelmoneum, Pierfrancesco Beneventano, Tomaso Poggio.
           </p>
         </div>
       </footer>

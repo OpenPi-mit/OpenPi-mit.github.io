@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { themeTokens } from "@/lib/theme";
 
 const NAV_LINKS = [
-  { href: "/about", label: "About" },
   { href: "/people", label: "People" },
   { href: "/publications", label: "Publications" },
   { href: "/blogsupdates", label: "Blog & Updates" },
